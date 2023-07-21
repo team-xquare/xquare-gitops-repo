@@ -1,0 +1,57 @@
+{{- $destination := "https://kubernetes.default.svc" }}
+{{- $repository := "https://github.com/team-xquare/xquare-gitops-repo.git" }}
+{{- $project := "xquare" }}
+{{- $namespace := "xquare" }}
+
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: xquare-applications
+  namespace: argocd
+  labels:
+    layer: applications
+spec:
+  generators:
+    - list:
+        elements: 
+          - environment: prod
+          - environment: stag
+          - environment: user
+  template:
+    metadata:
+      name: 'xquare-{{`{{ environment }}`}}'
+      labels:
+        environment: '{{`{{ environment }}`}}'
+        layer: environment
+    spec:
+      project: {{ $project }}
+      destination:
+        server: {{ $destination }}
+        namespace: {{ $namespace }}
+      source:
+        path: charts/apps
+        repoURL: {{ $repository }}
+        targetRevision: HEAD
+        helm:
+          valueFiles:
+            - '{{`{{ environment }}`}}.values.yaml'
+          values: |
+            {{- $map :=
+              (dict "spec"
+                (dict
+                "project" $project
+                "destination"
+                  (dict "server" $destination)
+                "source"
+                  (dict "serverPath" "charts/server" "repoURL" $repository "targetRevision" "HEAD") 
+                )
+              )
+            }}
+            {{- $map | toYaml | nindent 12 | toString }}
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+        - Createnamespace=true
+        - "--creds=argocd-ecr-secret"

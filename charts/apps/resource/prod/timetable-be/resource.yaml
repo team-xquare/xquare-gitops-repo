@@ -1,0 +1,9 @@
+config:
+  name: timetable
+  host: prod-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 7739535d02f75f39bd59c7e84ea2f92637c519da
+  containerPort: 8080
+  prefix: "/timetables"
+  environment: prod
+  type: be

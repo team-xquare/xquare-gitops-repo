@@ -1,0 +1,39 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: '{{ .Values.spec.project }}-{{ .Values.spec.environment }}-servers'
+  namespace: argocd
+spec:
+  generators:
+  - git:
+      repoURL: {{ .Values.spec.source.repoURL }}
+      revision: HEAD
+      files:
+      - path: "charts/apps/resource/{{ .Values.spec.environment }}/**/resource.yaml"
+  template:
+    metadata:
+      name: '{{`{{ config.name }}`}}-{{`{{ config.type }}`}}-{{`{{ config.environment }}`}}'
+      labels:
+        project: '{{`{{ config.name }}`}}'
+        type: '{{`{{ config.type }}`}}'
+        environment: '{{`{{ config.environment }}`}}'
+        layer: server
+    spec:
+      project: {{ .Values.spec.project }}
+      destination:
+        server: {{ .Values.spec.destination.server }}
+        namespace: {{ .Values.spec.namespace }}
+      source:
+        path: {{ .Values.spec.source.serverPath }}
+        repoURL: {{ .Values.spec.source.repoURL }}
+        targetRevision: {{ .Values.spec.source.targetRevision }}
+        helm:
+          values: |-
+            name: '{{`{{ config.name }}`}}'
+            host: '{{`{{ config.host }}`}}'
+            imageRegistry: '{{`{{ config.imageRegistry }}`}}'
+            imageTag: '{{`{{ config.imageTag }}`}}'
+            containerPort: '{{`{{ config.containerPort }}`}}'
+            prefix: '{{`{{ config.prefix }}`}}'
+            environment: '{{`{{ config.environment }}`}}'
+            type: '{{`{{ config.type }}`}}'

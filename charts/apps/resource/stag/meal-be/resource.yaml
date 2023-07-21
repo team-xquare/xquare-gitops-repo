@@ -1,0 +1,9 @@
+config:
+  name: meal
+  host: stag-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 9949cf4a23e38d8cfc6b5ece182bc7e4752d5eb7
+  containerPort: 3000
+  prefix: "/meals"
+  environment: stag
+  type: be

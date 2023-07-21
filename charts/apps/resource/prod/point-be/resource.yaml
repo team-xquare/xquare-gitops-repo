@@ -1,0 +1,9 @@
+config:
+  name: point
+  host: prod-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 207548244710ae4d9ebfb86e5ae1454129cee9cb
+  containerPort: 8080
+  prefix: "/points"
+  environment: prod
+  type: be

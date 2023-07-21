@@ -1,0 +1,29 @@
+{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ $fullname }}-deployment
+  labels:
+    app: {{ $fullname }}
+    project: {{ .Values.name }}
+    type: {{ .Values.type }}
+    environment: {{ .Values.environment }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ $fullname }}
+  template:
+    metadata:
+      labels:
+        app: {{ $fullname }}
+    spec:
+      nodeSelector:
+        environment: {{ .Values.environment }}
+      containers:
+        - name:  {{ $fullname }}
+          image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}:{{ .Values.imageTag }}
+          imagePullPolicy: Always
+          ports:
+            - containerPort: {{ .Values.containerPort }}

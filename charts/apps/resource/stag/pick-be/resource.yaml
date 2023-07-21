@@ -1,0 +1,9 @@
+config:
+  name: pick
+  host: stag-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 5ac22f574f2c8c2f1aff189f9a664659890230ba
+  containerPort: 8080
+  prefix: "/pick"
+  environment: stag
+  type: be

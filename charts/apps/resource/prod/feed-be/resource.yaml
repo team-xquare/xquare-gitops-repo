@@ -1,0 +1,9 @@
+config:
+  name: feed
+  host: prod-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 497d160a692ed98c6bdf7876af378fae34483182
+  containerPort: 8080
+  prefix: "/feeds"
+  environment: prod
+  type: be

@@ -1,0 +1,9 @@
+config:
+  name: report
+  host: prod-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 7c13308a3a1e8d9ec53ef5c190031e05f320562c
+  containerPort: 8080
+  prefix: "/reports"
+  environment: prod
+  type: be

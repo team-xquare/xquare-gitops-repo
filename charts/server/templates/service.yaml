@@ -1,0 +1,19 @@
+{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ $fullname }}-service
+  labels:
+    project: {{ .Values.name }}
+    type: {{ .Values.type }}
+    environment: {{ .Values.environment }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ $fullname }}
+  ports:
+    - name: http
+      port: 80
+      targetPort: {{ .Values.containerPort }}
+      protocol: TCP

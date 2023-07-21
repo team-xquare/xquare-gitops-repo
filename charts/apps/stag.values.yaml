@@ -1,0 +1,4 @@
+spec:
+  namespace: xquare
+  host: localhost
+  environment: stag

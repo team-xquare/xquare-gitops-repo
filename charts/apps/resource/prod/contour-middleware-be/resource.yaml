@@ -1,0 +1,9 @@
+config:
+  name: contour-middleware
+  host: ''
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: 72f68d5e076c753283039e2288991acac01fcccc
+  containerPort: 9443
+  prefix: ''
+  environment: prod
+  type: be

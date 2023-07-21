@@ -1,0 +1,9 @@
+config:
+  name: attachment
+  host: stag-api.xquare.app
+  imageRegistry: '067347400935.dkr.ecr.ap-northeast-2.amazonaws.com'
+  imageTag: f273735b9448d58ccc98e61cb8e441bc2df4d063
+  containerPort: 8080
+  prefix: "/attachment"
+  environment: stag
+  type: be
