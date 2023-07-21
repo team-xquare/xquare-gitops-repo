@@ -1,7 +1,6 @@
 config:
   name: authority
   host: stag-api.xquare.app
-  imageRegistry: '471407337433.dkr.ecr.ap-northeast-2.amazonaws.com'
   imageTag: 2fef781823533b8963ca2c8fa78ae547e130215e
   containerPort: 8080
   prefix: "/authorities"

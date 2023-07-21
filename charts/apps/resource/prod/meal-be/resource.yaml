@@ -1,7 +1,6 @@
 config:
   name: meal
   host: prod-api.xquare.app
-  imageRegistry: '471407337433.dkr.ecr.ap-northeast-2.amazonaws.com'
   imageTag: 9949cf4a23e38d8cfc6b5ece182bc7e4752d5eb7
   containerPort: 3000
   prefix: "/meals"

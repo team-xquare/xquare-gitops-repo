@@ -1,7 +1,6 @@
 config:
   name: user
   host: prod-api.xquare.app
-  imageRegistry: '471407337433.dkr.ecr.ap-northeast-2.amazonaws.com'
   imageTag: babd22595c4c12833720886dae0251040069bfac
   containerPort: 8080
   prefix: "/users"
