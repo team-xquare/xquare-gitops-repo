@@ -1,6 +1,5 @@
 config:
   name: user
-  host: prod-api.xquare.app
   imageTag: babd22595c4c12833720886dae0251040069bfac
   containerPort: 8080
   prefix: "/users"

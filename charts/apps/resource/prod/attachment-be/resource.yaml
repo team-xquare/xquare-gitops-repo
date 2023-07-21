@@ -1,6 +1,5 @@
 config:
   name: attachment
-  host: prod-api.xquare.app
   imageTag: f273735b9448d58ccc98e61cb8e441bc2df4d063
   containerPort: 8080
   prefix: "/attachment"

@@ -1,4 +1,4 @@
 spec:
   namespace: xquare
-  host: localhost
+  host: prod-api.xquare.app
   environment: user

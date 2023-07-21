@@ -1,6 +1,5 @@
 config:
   name: point
-  host: prod-api.xquare.app
   imageTag: 207548244710ae4d9ebfb86e5ae1454129cee9cb
   containerPort: 8080
   prefix: "/points"
