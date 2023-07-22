@@ -9,15 +9,15 @@ jobs:
     steps:
       - name: Check Out The Repository
         uses: actions/checkout@v2
-        
+
       - name: Set Payload Aliases
         id: set_payload
         run: |
-          echo "service_name=${{ env.service_name }}" >> $GITHUB_ENV
-          echo "service_prefix=${{ env.service_prefix }}" >> $GITHUB_ENV
-          echo "image_tag=${{ env.image_tag }}" >> $GITHUB_ENV
-          echo "environment=${{ env.environment }}" >> $GITHUB_ENV
-          echo "service_type=${{ env.service_type }}" >> $GITHUB_ENV
+          echo "service_name=${{ github.event.client_payload.service_name }}" >> $GITHUB_ENV
+          echo "service_prefix=${{ github.event.client_payload.service_prefix }}" >> $GITHUB_ENV
+          echo "image_tag=${{ github.event.client_payload.image_tag }}" >> $GITHUB_ENV
+          echo "environment=${{ github.event.client_payload.environment }}" >> $GITHUB_ENV
+          echo "service_type=${{ github.event.client_payload.service_type }}" >> $GITHUB_ENV
 
       - name: Get config file path
         id: config-file
