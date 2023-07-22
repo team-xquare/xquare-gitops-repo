@@ -27,7 +27,7 @@ jobs:
           echo "config_file_path=$config_file_path" >> $GITHUB_OUTPUT
 
       - name: Use yq to modify Config file
-        if: ${{ env.service_name && env.environment && env.service_type }}
+        if: ${{ env.service_name && env.service_prefix && env.image_tag && env.environment && env.service_type }}
         uses: mikefarah/yq@v4
         with:
           args: yq -i "
@@ -40,8 +40,8 @@ jobs:
               " ${{ steps.config-file.outputs.config_file_path }}
       
       - name: Commit The New Image Reference
+        if: ${{ env.service_name && env.service_prefix && env.image_tag && env.environment && env.service_type }}
         uses: stefanzweifel/git-auto-commit-action@v4
-        if: ${{ env.version }}
         with:
           commit_message: "🚀 :: ${{ env.service_name }}-${{ env.service_type }}-${{ env.environment }}: Deploy new image ${{ env.version }}"
           branch: master
