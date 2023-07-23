@@ -1,0 +1,7 @@
+config:
+  service_name: rlaequalqls
+  prefix: /rlaequalqls
+  imageTag: stag-76b8625555b2ff8ca9c6624431c70717f59470b8
+  containerPort: 8080
+  environment: stag
+  type: be
