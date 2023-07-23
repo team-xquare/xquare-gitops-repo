@@ -19,8 +19,8 @@ spec:
       labels:
         app: {{ $fullname }}
     spec:
-      nodeSelector:
-        environment: {{ .Values.environment }}
+      # nodeSelector:
+      #  environment: {{ .Values.environment }}
       containers:
         - name:  {{ $fullname }}
           image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}-{{ .Values.environment }}:{{ .Values.imageTag }}
