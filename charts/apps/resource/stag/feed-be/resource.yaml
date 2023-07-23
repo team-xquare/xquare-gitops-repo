@@ -1,7 +1,7 @@
 config:
   service_name: feed
   prefix: /feeds
-  imageTag: stag-e26a2fd2726ab873c445a2ca1e80066e393dc8dd
+  imageTag: stag-9582483fceca60e5c0cb60e274b356efa02bbed1
   containerPort: 8080
   environment: stag
   type: be
