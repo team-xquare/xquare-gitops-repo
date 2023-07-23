@@ -1,8 +1,8 @@
-name: Update Image
+name: Update Config
 on:
   repository_dispatch:
     types: 
-      - update_image
+      - update_config
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,7 +23,7 @@ jobs:
         id: config-file
         run: |
           config_file_path="${GITHUB_WORKSPACE}/charts/apps/resource/${{ env.environment }}/${{ env.service_name }}-${{ env.service_type }}/resource.yaml"
-          touch config_file_path
+          touch $config_file_path
           echo "config_file_path=$config_file_path" >> $GITHUB_OUTPUT
 
       - name: Use yq to modify Config file
