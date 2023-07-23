@@ -22,9 +22,10 @@ jobs:
       - name: Get config file path
         id: config-file
         run: |
-          config_file_path="${GITHUB_WORKSPACE}/charts/apps/resource/${{ env.environment }}/${{ env.service_name }}-${{ env.service_type }}/resource.yaml"
-          touch $config_file_path
-          echo "config_file_path=$config_file_path" >> $GITHUB_OUTPUT
+          config_file_path="${GITHUB_WORKSPACE}/charts/apps/resource/${{ env.environment }}/${{ env.service_name }}-${{ env.service_type }}"
+          mkdir '$config_file_path'
+          touch '$config_file_path/resource.yaml'
+          echo "config_file_path='$config_file_path/resource.yaml'" >> $GITHUB_OUTPUT
 
       - name: Use yq to modify Config file
         if: ${{ env.service_name && env.service_prefix && env.image_tag && env.environment && env.service_type }}
