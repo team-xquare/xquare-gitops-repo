@@ -1,7 +1,7 @@
 config:
   service_name: feed
   prefix: /feeds
-  imageTag: prod-e26a2fd2726ab873c445a2ca1e80066e393dc8dd
+  imageTag: prod-2cbd8153488f9b10886550c37ad4fc43405e7408
   containerPort: 8080
   environment: prod
   type: be
