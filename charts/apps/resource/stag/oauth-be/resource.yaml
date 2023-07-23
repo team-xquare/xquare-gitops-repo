@@ -1,0 +1,7 @@
+config:
+  service_name: oauth
+  prefix: /oauth
+  imageTag: stag-d4a4cf6b07cab19d58cd49323cfe1e27184c392b
+  containerPort: 8080
+  environment: stag
+  type: be
