@@ -1,0 +1,7 @@
+config:
+  service_name: application
+  prefix: /applications
+  imageTag: stag-2991ccba6c120e985771a96bfbc0b4284a072da3
+  containerPort: 8080
+  environment: stag
+  type: be
