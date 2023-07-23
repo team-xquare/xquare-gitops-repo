@@ -1,0 +1,7 @@
+config:
+  service_name: rlaisqls
+  prefix: /rlaisqls
+  imageTag: prod-6be9ee0581d98df856693c7b450cedffe73d29c3
+  containerPort: 8080
+  environment: prod
+  type: be
