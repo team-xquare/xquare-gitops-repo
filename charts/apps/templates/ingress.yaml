@@ -13,7 +13,7 @@ spec:
     {{- $environment := .Values.spec.environment }}
     {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
     {{- $yamlData := $file | toString | fromYaml }}
-    {{- if ne $yamlData.config.prefix "" }}
+    {{- if and (ne $yamlData null) (ne $yamlData.config.prefix "") }}
     - conditions:
       - prefix: {{ $yamlData.config.prefix }}
       services:
