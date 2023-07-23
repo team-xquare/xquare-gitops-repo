@@ -1,0 +1,7 @@
+config:
+  service_name: report
+  prefix: /reports
+  imageTag: stag-2db1150637af4ab69698d4308b7a0af5e5cbe677
+  containerPort: 8080
+  environment: stag
+  type: be
