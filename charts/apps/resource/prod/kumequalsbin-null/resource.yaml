@@ -1,7 +1,0 @@
-config:
-  service_name: kumequalsbin
-  prefix: /kimequalsbin
-  imageTag: prod-837ff494fde3c00bf17a4e2fa0e07e15f446ee8a
-  containerPort: 8080
-  environment: prod
-  type: "null"
