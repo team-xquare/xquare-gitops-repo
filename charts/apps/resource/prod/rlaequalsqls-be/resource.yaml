@@ -1,0 +1,7 @@
+config:
+  service_name: rlaequalsqls
+  prefix: /rlaequalsqls
+  imageTag: prod-e271aec83c8e0bc3d32601446d773f48b16cc76b
+  containerPort: 8080
+  environment: prod
+  type: be
