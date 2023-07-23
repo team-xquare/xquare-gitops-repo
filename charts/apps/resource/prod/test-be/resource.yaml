@@ -1,0 +1,7 @@
+config:
+  service_name: test
+  prefix: /test
+  imageTag: prod-a54d3a192dac0916de59de2e5eaa7f6de7a3225a
+  containerPort: 8080
+  environment: prod
+  type: be
