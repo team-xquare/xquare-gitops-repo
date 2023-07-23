@@ -12,9 +12,9 @@ spec:
       - path: "charts/apps/resource/{{ .Values.spec.environment }}/**/resource.yaml"
   template:
     metadata:
-      name: '{{`{{ config.name }}`}}-{{`{{ config.type }}`}}-{{`{{ config.environment }}`}}'
+      name: '{{`{{ config.service_name }}`}}-{{`{{ config.type }}`}}-{{`{{ config.environment }}`}}'
       labels:
-        project: '{{`{{ config.name }}`}}'
+        project: '{{`{{ config.service_name }}`}}'
         type: '{{`{{ config.type }}`}}'
         environment: '{{`{{ config.environment }}`}}'
         layer: server
@@ -29,7 +29,7 @@ spec:
         targetRevision: {{ .Values.spec.source.targetRevision }}
         helm:
           values: |-
-            name: '{{`{{ config.name }}`}}'
+            name: '{{`{{ config.service_name }}`}}'
             host: '{{ .Values.spec.host }}'
             imageRegistry: '{{ .Values.spec.imageRegistry }}'
             imageTag: '{{`{{ config.imageTag }}`}}'
