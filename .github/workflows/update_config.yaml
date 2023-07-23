@@ -32,14 +32,7 @@ jobs:
         uses: mikefarah/yq@v4
         with:
           args: |
-            yq -i '
-              .config.service_name = "${{ env.service_name }}" |
-              .config.prefix = "${{ env.service_prefix }}" |
-              .config.imageTag = "${{ env.image_tag }}" |
-              .config.containerPort = 8080 |
-              .config.environment = "${{ env.environment }}" |
-              .config.type = "${{ env.service_type }}" |
-            ' ${{ steps.config-file.outputs.config_file_path }}
+            yq eval '.config.service_name = "${{ env.service_name }}" | .config.prefix = "${{ env.service_prefix }}" | .config.imageTag = "${{ env.image_tag }}" | .config.containerPort = 8080 | .config.environment = "${{ env.environment }}" | .config.type = "${{ env.service_type }}"' ${{ steps.config-file.outputs.config_file_path }} > ${{ steps.config-file.outputs.config_file_path }}
       
       - name: Commit The New Image Reference
         if: ${{ env.service_name && env.service_prefix && env.image_tag && env.environment && env.service_type }}
