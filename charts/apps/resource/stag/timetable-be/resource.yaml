@@ -1,0 +1,7 @@
+config:
+  service_name: timetable
+  prefix: /timetables
+  imageTag: stag-e021e387d3b4c058be167c31803d163859004c0a
+  containerPort: 8080
+  environment: stag
+  type: be
