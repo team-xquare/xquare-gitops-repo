@@ -1,7 +1,0 @@
-config:
-  service_name: rlaisqls
-  prefix: /rlaisqls
-  imageTag: stag-82b63565f141db4e116b2efc24e3c49359832f10
-  containerPort: 8080
-  environment: stag
-  type: be
