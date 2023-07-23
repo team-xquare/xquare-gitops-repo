@@ -1,7 +1,0 @@
-config:
-  name: backoffice
-  imageTag: 5c82b545e23570de0e25d00bd94e9aa99aa9fc6c
-  containerPort: 8080
-  prefix: "/"
-  environment: stag
-  type: be

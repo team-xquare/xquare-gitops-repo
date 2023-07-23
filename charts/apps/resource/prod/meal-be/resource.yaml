@@ -1,7 +1,0 @@
-config:
-  name: meal
-  imageTag: 9949cf4a23e38d8cfc6b5ece182bc7e4752d5eb7
-  containerPort: 3000
-  prefix: "/meals"
-  environment: prod
-  type: be

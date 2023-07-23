@@ -1,7 +1,0 @@
-config:
-  name: report
-  imageTag: 7c13308a3a1e8d9ec53ef5c190031e05f320562c
-  containerPort: 8080
-  prefix: "/reports"
-  environment: stag
-  type: be

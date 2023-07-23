@@ -1,7 +1,0 @@
-config:
-  name: schedule
-  imageTag: b5fc14362fecd1a3994e539625ab933347892b00
-  containerPort: 8080
-  prefix: "/schedules"
-  environment: prod
-  type: be

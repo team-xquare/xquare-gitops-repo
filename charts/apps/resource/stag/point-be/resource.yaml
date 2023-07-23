@@ -1,7 +1,0 @@
-config:
-  name: point
-  imageTag: 207548244710ae4d9ebfb86e5ae1454129cee9cb
-  containerPort: 8080
-  prefix: "/points"
-  environment: stag
-  type: be

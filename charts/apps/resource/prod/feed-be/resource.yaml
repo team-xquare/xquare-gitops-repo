@@ -1,7 +1,0 @@
-config:
-  name: feed
-  imageTag: 497d160a692ed98c6bdf7876af378fae34483182
-  containerPort: 8080
-  prefix: "/feeds"
-  environment: prod
-  type: be

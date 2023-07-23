@@ -1,7 +1,0 @@
-config:
-  name: user
-  imageTag: babd22595c4c12833720886dae0251040069bfac
-  containerPort: 8080
-  prefix: "/users"
-  environment: user
-  type: be

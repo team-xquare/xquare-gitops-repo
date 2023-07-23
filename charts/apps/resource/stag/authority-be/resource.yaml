@@ -1,7 +1,0 @@
-config:
-  name: authority
-  imageTag: 2fef781823533b8963ca2c8fa78ae547e130215e
-  containerPort: 8080
-  prefix: "/authorities"
-  environment: stag
-  type: be

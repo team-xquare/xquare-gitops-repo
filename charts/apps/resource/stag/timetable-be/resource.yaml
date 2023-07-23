@@ -1,7 +1,0 @@
-config:
-  name: timetable
-  imageTag: 7739535d02f75f39bd59c7e84ea2f92637c519da
-  containerPort: 8080
-  prefix: "/timetables"
-  environment: stag
-  type: be

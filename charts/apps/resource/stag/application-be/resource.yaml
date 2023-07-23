@@ -1,7 +1,0 @@
-config:
-  name: application
-  imageTag: a79181b38b5d4269951b6bf7a7ed63b729564e62
-  containerPort: 8080
-  prefix: "/applications"
-  environment: stag
-  type: be
