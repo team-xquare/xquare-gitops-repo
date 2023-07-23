@@ -1,7 +1,0 @@
-config:
-  service_name: testtesttest
-  prefix: /test-test-test
-  imageTag: stag-a087496c07aade1c4b2548fd93720f64256b2fac
-  containerPort: 8080
-  environment: prod
-  type: be

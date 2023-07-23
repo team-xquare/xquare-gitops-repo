@@ -1,7 +1,0 @@
-config:
-  service_name: real-real-final-test
-  prefix: /real-real-final-test
-  imageTag: stag-ed3ae0e6e894fc1a6441b8ec37c36c5d712ab05d
-  containerPort: 8080
-  environment: stag
-  type: be

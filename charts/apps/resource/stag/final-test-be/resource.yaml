@@ -1,7 +1,0 @@
-config:
-  service_name: final-test
-  prefix: /final-test
-  imageTag: stag-a1295c64aa139589dc20f47025b85a13b9ae6ae3
-  containerPort: 8080
-  environment: stag
-  type: be
