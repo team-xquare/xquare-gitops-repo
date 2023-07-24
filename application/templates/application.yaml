@@ -1,6 +1,6 @@
 {{- $destination := "https://kubernetes.default.svc" }}
 {{- $repository := "https://github.com/team-xquare/xquare-gitops-repo.git" }}
-{{- $imageRegistry := "067347400935.dkr.ecr.ap-northeast-2.amazonaws.com" }}
+{{- $imageRegistry := "471407337433.dkr.ecr.ap-northeast-2.amazonaws.com" }}
 {{- $project := "xquare" }}
 {{- $namespace := "xquare" }}
 
