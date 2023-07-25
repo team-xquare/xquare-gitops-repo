@@ -2,4 +2,4 @@
 
 ### Structure diagram
 
-<img width="1374" alt="image" src="https://github.com/team-xquare/xquare-gitops-repo/assets/81006587/f57a76b2-20ea-4088-b0f8-affeca65ba26">
+<img width="1381" alt="image" src="https://github.com/team-xquare/xquare-gitops-repo/assets/81006587/68bfabfb-f37a-4137-b0ee-96194c78f3a3">
