@@ -1,0 +1,28 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ .Values.spec.project }}-{{ .Values.spec.environment }}-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+    labels:
+      project: {{ .Values.spec.project }}
+  namespace: {{ .Values.spec.namespace }}
+spec:
+  hosts:
+    - '{{ .Values.spec.environment }}-server.xquare.app'
+  http:
+    {{- $environment := .Values.spec.environment }}
+    {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
+    {{- $yamlData := $file | toString | fromYaml }}
+    {{- if and $yamlData (ne $yamlData.config.prefix "") }}
+    - route:
+      - destination:
+          {{- $fullname := (printf "%s-%s-%s" $yamlData.config.service_name $yamlData.config.type $yamlData.config.environment) }}
+          host: {{ $fullname }}-service
+          port:
+            number: 80
+        match:
+          uri:
+            prefix: {{ $yamlData.config.prefix }}
+    {{- end }}
+    {{- end }}
