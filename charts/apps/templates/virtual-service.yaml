@@ -8,6 +8,8 @@ metadata:
       project: {{ .Values.spec.project }}
   namespace: {{ .Values.spec.namespace }}
 spec:
+  gateways:
+    - istio-system/xquare-gateway
   hosts:
     - '{{ .Values.spec.environment }}-server.xquare.app'
   http:
