@@ -1,7 +1,7 @@
 config:
   service_name: application
   prefix: /applications
-  imageTag: prod-4b7efdd090bdfdb4a7358b52f66bfeb10303c110
+  imageTag: prod-d930618a4b4903d0dc492782f67d65ce679c865a
   containerPort: 8080
   environment: prod
   type: be
