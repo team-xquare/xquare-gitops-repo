@@ -1,7 +1,0 @@
-config:
-  service_name: attachment
-  prefix: /attachments
-  imageTag: prod-f0bdf51ea3aa89c21b0dc62f9bc052ef2453ef85
-  containerPort: 8080
-  environment: prod
-  type: be
