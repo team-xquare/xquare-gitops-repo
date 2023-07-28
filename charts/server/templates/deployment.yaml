@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: {{ $fullname }}-deployment
   labels:
-    app: {{ $fullname }}
+    app: server
     project: {{ .Values.name }}
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
