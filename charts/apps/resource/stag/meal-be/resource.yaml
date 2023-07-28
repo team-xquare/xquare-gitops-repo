@@ -1,7 +1,0 @@
-config:
-  service_name: meal
-  prefix: /meals
-  imageTag: stag-2d4c54c7acbd22530d109363c4a61e803e12ea80
-  containerPort: 8080
-  environment: stag
-  type: be
