@@ -26,5 +26,11 @@ spec:
         match:
           uri:
             prefix: {{ $yamlData.config.prefix }}
+      headers:
+        request:
+          remove:
+            - Request-User-Id
+            - Request-User-Role
+            - Request-User-Authorities
     {{- end }}
     {{- end }}

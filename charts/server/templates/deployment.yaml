@@ -18,12 +18,13 @@ spec:
     metadata:
       labels:
         app: {{ $fullname }}
+        type: {{ $.Values.environment }}}
     spec:
       # nodeSelector:
       #  environment: {{ .Values.environment }}
       containers:
         - name:  {{ $fullname }}
-          image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}-{{ .Values.environment }}:{{ .Values.imageTag }}
+          image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }-{{ .Values.environment }}:{{ .Values.imageTag }}
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.containerPort }}
