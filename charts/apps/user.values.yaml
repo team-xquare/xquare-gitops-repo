@@ -1,4 +1,4 @@
 spec:
-  namespace: xquare
+  namespace: xquare-user
   host: prod-api.xquare.app
   environment: user

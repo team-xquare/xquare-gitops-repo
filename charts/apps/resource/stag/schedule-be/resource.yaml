@@ -1,7 +1,0 @@
-config:
-  service_name: schedule
-  prefix: /schedules
-  imageTag: stag-04a42b7ed5dee7d5f6f88daa2f69e71b4dc5f7f5
-  containerPort: 8080
-  environment: stag
-  type: be

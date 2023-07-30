@@ -1,7 +1,0 @@
-config:
-  service_name: git
-  prefix: /gits
-  imageTag: stag-37610496495f74f5a7435a7b11f6f4e2864bb4f7
-  containerPort: 8080
-  environment: stag
-  type: be
