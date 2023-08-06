@@ -1,36 +1,73 @@
+{{- $environment := .Values.spec.environment }}
+{{- $project := .Values.spec.project }}
+{{- $host := .Values.spec.host }}
+{{- $namespace := .Values.spec.namespace }}
+
+# ======================================================================
+# custom subdomain 설정 없이
+# stag-server 또는 prod-server url 밑에 prefix로 구분 될 서버를 위한 VS
+# ======================================================================
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ .Values.spec.project }}-{{ .Values.spec.environment }}-ingress
+  name: {{ $project }}-{{ $environment }}-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
     labels:
-      project: {{ .Values.spec.project }}
-  namespace: {{ .Values.spec.namespace }}
+      project: {{ $project }}
+  namespace: {{ $namespace }}
 spec:
   gateways:
     - istio-system/xquare-gateway
   hosts:
-    - '{{ .Values.spec.environment }}-server.xquare.app'
+    - {{ $host }}
   http:
-    {{- $environment := .Values.spec.environment }}
     {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
     {{- $yamlData := $file | toString | fromYaml }}
-    {{- if and $yamlData (ne $yamlData.config.prefix "") }}
-    - route:
+    {{- if and $yamlData $yamlData.config.prefix }}
+    - name: {{ $yamlData.config.service_name }}
+      match:
+      - uri:
+          prefix: {{ $yamlData.config.prefix }}
+      route:
       - destination:
           {{- $fullname := (printf "%s-%s-%s" $yamlData.config.service_name $yamlData.config.type $yamlData.config.environment) }}
           host: {{ $fullname }}-service
           port:
             number: 80
-        match:
-          uri:
-            prefix: {{ $yamlData.config.prefix }}
-      headers:
-        request:
-          remove:
-            - Request-User-Id
-            - Request-User-Role
-            - Request-User-Authorities
     {{- end }}
     {{- end }}
+
+
+# ======================================================================
+# custom subdomain이 사용될 서버를 위한 VS
+# ======================================================================
+{{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
+{{- $yamlData := $file | toString | fromYaml }}
+{{- if and $yamlData $yamlData.config.domain }}
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ $project }}-{{ $environment }}-{{ $yamlData.config.service_name }}-domain-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+    labels:
+      project: {{ $project }}
+  namespace: {{ $namespace }}
+spec:
+  gateways:
+    - istio-system/xquare-gateway
+  hosts:
+    - {{ $yamlData.config.domain }}
+  http:
+    - name: {{ $yamlData.config.service_name }}
+      route:
+      - destination:
+          {{- $fullname := (printf "%s-%s-%s" $yamlData.config.service_name $yamlData.config.type $yamlData.config.environment) }}
+          host: {{ $fullname }}-service
+          port:
+            number: 80
+{{- end }}
+{{- end }}

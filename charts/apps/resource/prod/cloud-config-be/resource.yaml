@@ -1,0 +1,7 @@
+config:
+  service_name: cloud-config
+  prefix: /cloud-config
+  imageTag: prod-v0.0.9
+  containerPort: 8080
+  environment: prod
+  type: be

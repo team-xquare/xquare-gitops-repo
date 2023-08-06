@@ -1,0 +1,8 @@
+config:
+  service_name: jwt-middleware
+  imageTag: prod-5bc0bed32492580c3a8e9a39a9a23f5142b4e396
+  containerPort: 9443
+  environment: prod
+  type: be
+  domain: null
+  prefix: null
