@@ -6,3 +6,9 @@ config:
   type: be
   domain: null
   prefix: null
+  volume:
+    name: tls
+    mountPath: /tls
+    secretName: xquare-cert
+    secretNamespace: istio-system
+    

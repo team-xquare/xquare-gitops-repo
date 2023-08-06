@@ -37,3 +37,8 @@ spec:
             prefix: '{{`{{ config.prefix }}`}}'
             environment: '{{`{{ config.environment }}`}}'
             type: '{{`{{ config.type }}`}}'
+            volume:
+              name: '{{`{{ config.volume.name }}`}}'
+              mountPath: '{{`{{ config.volume.mountPath }}`}}'
+              secretName:  '{{`{{ config.volume.secretName }}`}}'
+              secretNamespace: '{{`{{ config.volume.secretNamespace }}`}}'
