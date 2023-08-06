@@ -1,0 +1,8 @@
+config:
+  service_name: school-meal
+  imageTag: prod-259e8fcb2ffba414d4c1b939e031de63a577f86e
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: null
+  prefix: /school-meal

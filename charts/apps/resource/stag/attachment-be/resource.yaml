@@ -1,0 +1,8 @@
+config:
+  service_name: attachment
+  imageTag: stag-7264258392e61a19f983b1e516ab74750012a422
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /attachments

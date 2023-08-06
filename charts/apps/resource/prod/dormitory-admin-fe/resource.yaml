@@ -1,0 +1,8 @@
+config:
+  service_name: dormitory-admin
+  imageTag: prod-e45d6cf17511ca077f6b018772c94e602a51c4bb
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: admin-test.xquare.app
+  prefix: null

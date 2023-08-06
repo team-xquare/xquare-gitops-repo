@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: {{ $fullname }}-deployment
   labels:
-    app: server
+    app: xquare-deployment
     project: {{ .Values.name }}
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
@@ -18,13 +18,13 @@ spec:
     metadata:
       labels:
         app: {{ $fullname }}
-        type: {{ $.Values.environment }}}
+        type: {{ .Values.type }}
     spec:
       # nodeSelector:
       #  environment: {{ .Values.environment }}
       containers:
         - name:  {{ $fullname }}
-          image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }-{{ .Values.environment }}:{{ .Values.imageTag }}
+          image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}-{{ .Values.environment }}:{{ .Values.imageTag }}
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.containerPort }}

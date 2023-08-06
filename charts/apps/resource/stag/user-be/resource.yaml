@@ -1,0 +1,8 @@
+config:
+  service_name: user
+  imageTag: stag-4832a2e99287adfb71acf0b7cd2f30281db16ec5
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /users

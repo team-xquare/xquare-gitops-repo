@@ -18,6 +18,8 @@ jobs:
           echo "image_tag=${{ github.event.client_payload.image_tag }}" >> $GITHUB_ENV
           echo "environment=${{ github.event.client_payload.environment }}" >> $GITHUB_ENV
           echo "service_type=${{ github.event.client_payload.service_type }}" >> $GITHUB_ENV
+          echo "service_domain=${{ github.event.client_payload.service_domain }}" >> $GITHUB_ENV
+          echo "service_port=${{ github.event.client_payload.service_port }}" >> $GITHUB_ENV
 
       - name: Get config file path
         id: config-file
@@ -27,23 +29,39 @@ jobs:
           mkdir -p "$config_file_path"
           touch "$config_file_path/resource.yaml"
           echo "config_file_path=$config_file_path/resource.yaml" >> $GITHUB_OUTPUT
-
+          
+      - name: Pull Commit 
+        run: git pull
+        
       - name: Use yq to modify Config file
         working-directory: ${{ github.workspace }}
         run: |
+          domain=''
+          prefix=''
+          if [ -n "${{ env.service_domain }}" ] && [ "${{ env.service_domain }}" != "null" ]; then
+            domain='.config.domain = "${{ env.service_domain }}"'
+          else
+            domain='.config.domain = null'
+          fi
+          if [ -n "${{ env.service_prefix }}" ] && [ "${{ env.service_prefix }}" != "null" ]; then
+            prefix='.config.prefix = "${{ env.service_prefix }}"'
+          else
+            prefix='.config.prefix = null'
+          fi
+
           yq eval ".config.service_name = \"${{ env.service_name }}\" | \
-                    .config.prefix = \"${{ env.service_prefix }}\" | \
                     .config.imageTag = \"${{ env.image_tag }}\" | \
-                    .config.containerPort = 8080 | \
+                    .config.containerPort = ${{ env.service_port }} | \
                     .config.environment = \"${{ env.environment }}\" | \
-                    .config.type = \"${{ env.service_type }}\"" \
-                    ${{ steps.config-file.outputs.config_file_path }} > ${{ steps.config-file.outputs.config_file_path }}
+                    .config.type = \"${{ env.service_type }}\" | \
+                    $domain | \
+                    $prefix" ${{ steps.config-file.outputs.config_file_path }} > ${{ steps.config-file.outputs.config_file_path }}
 
       - name: Commit The New Image Reference
         if: ${{ env.service_name && env.service_prefix && env.image_tag && env.environment && env.service_type }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "🚀 :: ${{ env.service_name }}-${{ env.service_type }}-${{ env.environment }}: Deploy new image ${{ env.image_tag }}"
+          commit_message: "release :: ${{ env.service_name }}-${{ env.service_type }}-${{ env.environment }}: Deploy new image ${{ env.image_tag }}"
           branch: master
           commit_options: '--no-verify --signoff'
           repository: .
