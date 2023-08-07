@@ -6,3 +6,7 @@ config:
   type: be
   domain: null
   prefix: /applications
+  volume:
+    name: null
+    mountPath: null
+    secretName: null

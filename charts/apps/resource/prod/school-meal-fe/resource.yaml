@@ -6,3 +6,7 @@ config:
   type: fe
   domain: null
   prefix: /school-meal
+  volume:
+    name: null
+    mountPath: null
+    secretName: null

@@ -6,3 +6,7 @@ config:
   type: fe
   domain: admin-test.xquare.app
   prefix: null
+  volume:
+    name: null
+    mountPath: null
+    secretName: null

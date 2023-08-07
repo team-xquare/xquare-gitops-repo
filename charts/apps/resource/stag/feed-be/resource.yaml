@@ -6,3 +6,7 @@ config:
   type: be
   domain: null
   prefix: /feeds
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
