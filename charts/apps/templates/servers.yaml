@@ -42,3 +42,7 @@ spec:
               mountPath: '{{`{{ config.volume.mountPath }}`}}'
               secretName:  '{{`{{ config.volume.secretName }}`}}'
               secretNamespace: '{{`{{ config.volume.secretNamespace }}`}}'
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
