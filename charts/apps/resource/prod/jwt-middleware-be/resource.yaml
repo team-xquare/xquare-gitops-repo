@@ -9,4 +9,4 @@ config:
   volume: 
     name: tls
     mountPath: /tls
-    secretName: xquare-cert
+    secretName: middleware-cert
