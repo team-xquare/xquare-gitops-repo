@@ -5,3 +5,7 @@ config:
   containerPort: 8080
   environment: prod
   type: be
+  volume:
+    name: null
+    mountPath: null
+    secretName: null

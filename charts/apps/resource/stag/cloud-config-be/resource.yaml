@@ -5,3 +5,7 @@ config:
   containerPort: 8080
   environment: stag
   type: be
+  volume:
+    name: null
+    mountPath: null
+    secretName: null

@@ -40,8 +40,7 @@ spec:
             volume:
               name: '{{`{{ config.volume.name }}`}}'
               mountPath: '{{`{{ config.volume.mountPath }}`}}'
-              secretName:  '{{`{{ config.volume.secretName }}`}}'
-              secretNamespace: '{{`{{ config.volume.secretNamespace }}`}}'
+              secretName: '{{`{{ config.volume.secretName }}`}}'
       syncPolicy:
         automated:
           prune: true

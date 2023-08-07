@@ -6,3 +6,7 @@ config:
   type: be
   domain: null
   prefix: /meals
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
