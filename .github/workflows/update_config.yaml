@@ -54,6 +54,9 @@ jobs:
                     .config.containerPort = ${{ env.service_port }} | \
                     .config.environment = \"${{ env.environment }}\" | \
                     .config.type = \"${{ env.service_type }}\" | \
+                    .config.volume.name = null | \
+                    .config.volume.mountPath = null | \
+                    .config.volume.secretName = null | \
                     $domain | \
                     $prefix" ${{ steps.config-file.outputs.config_file_path }} > ${{ steps.config-file.outputs.config_file_path }}
 
