@@ -34,7 +34,7 @@ spec:
           {{- $fullname := (printf "%s-%s-%s" $yamlData.config.service_name $yamlData.config.type $yamlData.config.environment) }}
           host: {{ $fullname }}-service
           port:
-            number: 80
+            number: {{ $yamlData.config.containerPort }}
     {{- end }}
     {{- end }}
 
