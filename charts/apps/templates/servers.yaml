@@ -41,6 +41,7 @@ spec:
               name: '{{`{{ config.volume.name }}`}}'
               mountPath: '{{`{{ config.volume.mountPath }}`}}'
               secretName: '{{`{{ config.volume.secretName }}`}}'
+            serviceAccount: '{{`{{ config.serviceAccount }}`}}'
       syncPolicy:
         automated:
           prune: true

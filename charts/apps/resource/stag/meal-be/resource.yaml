@@ -1,12 +1,13 @@
 config:
   service_name: meal
-  imageTag: stag-aaedd372085c05fd423e5e85d065043d9ddd8fa0
+  imageTag: stag-043afe291f6c609a43db38622755db9809c785eb
   containerPort: 3000
   environment: stag
   type: be
-  domain: null
-  prefix: /meals
   volume:
     name: null
     mountPath: null
     secretName: null
+  serviceAccount: null
+  domain: null
+  prefix: /meals

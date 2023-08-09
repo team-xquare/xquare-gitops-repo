@@ -1,13 +1,13 @@
 config:
-  service_name: jwt-middleware
-  imageTag: prod-5d1b2cca818f4d45b1d8caffc55f02fd127cc604
-  containerPort: 9443
+  service_name: envoy-middleware
+  imageTag: prod-11966655af7ca067516e100758b9f10446a60fdb
+  containerPort: 9000
   environment: prod
   type: be
+  domain: null
+  prefix: null
   volume:
     name: tls
     mountPath: /tls
     secretName: middleware-cert
   serviceAccount: jwt-middleware
-  domain: null
-  prefix: null

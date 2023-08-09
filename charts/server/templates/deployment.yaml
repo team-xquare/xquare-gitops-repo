@@ -20,6 +20,9 @@ spec:
         app: {{ $fullname }}
         type: {{ .Values.type }}
     spec:
+      {{- if ne .Values.serviceAccount "<nil>" }}
+      serviceAccountName: {{ .Values.serviceAccount }}
+      {{- end }}
       # nodeSelector:
       #  environment: {{ .Values.environment }}
       containers:
