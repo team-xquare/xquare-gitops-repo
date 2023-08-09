@@ -10,3 +10,4 @@ config:
     name: null
     mountPath: null
     secretName: null
+  serviceAccount: null

@@ -20,18 +20,30 @@ jobs:
           echo "service_type=${{ github.event.client_payload.service_type }}" >> $GITHUB_ENV
           echo "service_domain=${{ github.event.client_payload.service_domain }}" >> $GITHUB_ENV
           echo "service_port=${{ github.event.client_payload.service_port }}" >> $GITHUB_ENV
+  
+      - name: Pull Commit 
+        run: git pull
 
       - name: Get config file path
         id: config-file
         working-directory: ${{ github.workspace }}
         run: |
-          config_file_path="./charts/apps/resource/${{ env.environment }}/${{ env.service_name }}-${{ env.service_type }}"
-          mkdir -p "$config_file_path"
-          touch "$config_file_path/resource.yaml"
-          echo "config_file_path=$config_file_path/resource.yaml" >> $GITHUB_OUTPUT
-          
-      - name: Pull Commit 
-        run: git pull
+          config_file_dir="./charts/apps/resource/${{ env.environment }}/${{ env.service_name }}-${{ env.service_type }}"
+          mkdir -p "$config_file_dir"
+
+          config_file_path="$config_file_dir/resource.yaml"
+          if [ ! -e "$config_file_path" ]; then
+            echo "config file is not exists"
+            touch "$config_file_path"          
+            yq eval ".config.volume.name = null | \
+                      .config.volume.mountPath = null | \
+                      .config.volume.secretName = null | \
+                      .config.serviceAccount = null" -i $config_file_path
+          else
+            echo "config file is exists"
+          fi
+
+          echo "config_file_path=$config_file_path" >> $GITHUB_OUTPUT
         
       - name: Use yq to modify Config file
         working-directory: ${{ github.workspace }}
@@ -49,16 +61,13 @@ jobs:
             prefix='.config.prefix = null'
           fi
 
-          yq eval ".config.service_name = \"${{ env.service_name }}\" | \
+          yq eval -i ".config.service_name = \"${{ env.service_name }}\" | \
                     .config.imageTag = \"${{ env.image_tag }}\" | \
                     .config.containerPort = ${{ env.service_port }} | \
                     .config.environment = \"${{ env.environment }}\" | \
                     .config.type = \"${{ env.service_type }}\" | \
-                    .config.volume.name = null | \
-                    .config.volume.mountPath = null | \
-                    .config.volume.secretName = null | \
                     $domain | \
-                    $prefix" ${{ steps.config-file.outputs.config_file_path }} > ${{ steps.config-file.outputs.config_file_path }}
+                    $prefix" -i ${{ steps.config-file.outputs.config_file_path }}
 
       - name: Commit The New Image Reference
         if: ${{ env.service_name && env.service_prefix && env.image_tag && env.environment && env.service_type }}
