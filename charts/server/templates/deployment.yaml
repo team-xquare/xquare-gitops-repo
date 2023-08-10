@@ -19,6 +19,8 @@ spec:
       labels:
         app: {{ $fullname }}
         type: {{ .Values.type }}
+      annotations:
+        sidecar.istio.io/bootstrapOverride: "istio-custom-bootstrap-config"
     spec:
       {{- if ne .Values.serviceAccount "<nil>" }}
       serviceAccountName: {{ .Values.serviceAccount }}
