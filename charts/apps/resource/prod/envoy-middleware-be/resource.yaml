@@ -1,6 +1,6 @@
 config:
   service_name: envoy-middleware
-  imageTag: prod-d9f5d8a93d6f8cbf034761b180e66c34cbcfa007
+  imageTag: prod-95543ab92e75fc88f7405fdaa5d70b270e4d7b3a
   containerPort: 9000
   environment: prod
   type: be
