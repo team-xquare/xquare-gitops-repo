@@ -1,0 +1,13 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  service_name: application
+  imageTag: prod-5af2c5b6bb9506eb6a5640e708777c0af4afd184
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /applications
