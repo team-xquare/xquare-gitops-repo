@@ -1,6 +1,6 @@
 config:
   service_name: point
-  imageTag: stag-2bae7b3f4ff0f1f3261c036ed36fa159776cb73a
+  imageTag: stag-a49b515fb51aedf691e084635b26450292149de6
   containerPort: 8080
   environment: stag
   type: be
