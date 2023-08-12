@@ -1,6 +1,6 @@
 config:
   service_name: authority
-  imageTag: stag-48345ac4fc23d9b8464e1547d83a65ac7fea11b5
+  imageTag: stag-131ccfdc798c9aecd5f61b17bbc1fafeeacb75ff
   containerPort: 8080
   environment: stag
   type: be
