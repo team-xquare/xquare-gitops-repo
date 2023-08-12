@@ -1,6 +1,6 @@
 config:
   service_name: timetable
-  imageTag: stag-58d2d31aee573a99f08e1e380fb108500eaca491
+  imageTag: stag-b52d4180d757ecd371521c2d3eca02de93375b8c
   containerPort: 8080
   environment: stag
   type: be
