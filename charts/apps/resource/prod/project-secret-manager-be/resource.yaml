@@ -1,0 +1,13 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  service_name: project-secret-manager
+  imageTag: prod-44cc115fe2fab090e437f7dba9f281340706953b
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /project-secret-manager
