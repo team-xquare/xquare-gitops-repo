@@ -1,6 +1,6 @@
 config:
   service_name: schedule
-  imageTag: stag-7cc4c866ac29a8c0f6ea47c7329b415bbf315fd7
+  imageTag: stag-e8c98b25c34e629104c2e4817083fe3d61c063b5
   containerPort: 8080
   environment: stag
   type: be
