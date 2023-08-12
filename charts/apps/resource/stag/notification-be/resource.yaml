@@ -1,6 +1,6 @@
 config:
   service_name: notification
-  imageTag: stag-828a9b7f35e951bafd3c816bc1d8b278f68a64f0
+  imageTag: stag-f07413ee242a01cba151f54f2b674d32b7123558
   containerPort: 8080
   environment: stag
   type: be
