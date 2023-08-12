@@ -1,6 +1,6 @@
 config:
   service_name: attachment
-  imageTag: prod-158560a202969a4e34b1ec76188bcb5abad9dd80
+  imageTag: prod-c3d122de41eb7d22d5c8a989b026ec28bf133328
   containerPort: 8080
   environment: prod
   type: be
