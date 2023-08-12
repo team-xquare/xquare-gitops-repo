@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   service_name: application
-  imageTag: prod-5af2c5b6bb9506eb6a5640e708777c0af4afd184
+  imageTag: prod-3041e8aa67f980c8010be8fa61e952e8009addff
   containerPort: 8080
   environment: prod
   type: be
