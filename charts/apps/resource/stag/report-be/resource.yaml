@@ -1,6 +1,6 @@
 config:
   service_name: report
-  imageTag: stag-c4d34c7f157c77b3c5f6616173d10f834948ea08
+  imageTag: stag-54f88b42458bd9dda17e469df39cba777fc91cd0
   containerPort: 8080
   environment: stag
   type: be
