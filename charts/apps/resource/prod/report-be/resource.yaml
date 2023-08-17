@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   service_name: report
-  imageTag: prod-v1.0.6
+  imageTag: prod-v1.0.7
   containerPort: 8080
   environment: prod
   type: be
