@@ -1,6 +1,6 @@
 config:
   service_name: cloud-config
-  imageTag: prod-v0.0.0
+  imageTag: prod-v0.1.0
   containerPort: 8080
   environment: prod
   type: be
