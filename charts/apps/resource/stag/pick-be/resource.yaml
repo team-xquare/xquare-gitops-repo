@@ -1,6 +1,6 @@
 config:
   service_name: pick
-  imageTag: stag-606e657f27721c0052fe6d291107820f729c0db8
+  imageTag: stag-3ba78eba7572932e4e86c60750d2b6f3918fe6df
   containerPort: 8080
   environment: stag
   type: be
