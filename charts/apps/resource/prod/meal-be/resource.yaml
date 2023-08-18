@@ -1,0 +1,13 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  service_name: meal
+  imageTag: prod-v1.1.2
+  containerPort: 3000
+  environment: prod
+  type: be
+  domain: null
+  prefix: /meals
