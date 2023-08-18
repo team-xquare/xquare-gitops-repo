@@ -1,6 +1,6 @@
 config:
   service_name: meal
-  imageTag: stag-215e3734e182be531af5be8b73d5a747c3a81339
+  imageTag: stag-74536510d3aa3ef33d42086bc3a3e0c448059476
   containerPort: 3000
   environment: stag
   type: be
