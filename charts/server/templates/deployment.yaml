@@ -37,6 +37,13 @@ spec:
               name: {{ .Values.volume.name }}
               readOnly: true
           {{- end }}
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "50m"
+            limits:
+              memory: "512Mi"
+              cpu: "150m"
       {{- if ne .Values.volume.name "<nil>" }}
       volumes:
         - name: {{ .Values.volume.name }}
