@@ -1,6 +1,6 @@
 config:
   service_name: dormitory-admin
-  imageTag: prod-93d6ad39c4d70363206492f8b5fe479117a60988
+  imageTag: prod-9ba2c077d167091fdc26bd6ad97f56628e7a53ea
   containerPort: 3000
   environment: prod
   type: fe
