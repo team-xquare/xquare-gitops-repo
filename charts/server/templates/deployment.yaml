@@ -15,7 +15,10 @@ spec:
     matchLabels:
       app: {{ $fullname }}
   template:
-    metadata:
+    metadata:      
+      annotations:
+        sidecar.istio.io/proxyCPU: "50m"
+        sidecar.istio.io/proxyMemory: "256Mi"
       labels:
         app: {{ $fullname }}
         type: {{ .Values.type }}
