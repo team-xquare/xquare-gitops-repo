@@ -1,6 +1,6 @@
 config:
   service_name: user
-  imageTag: stag-f4bd1c63115b0c3ed47ef7792adfc61642674fa2
+  imageTag: stag-b1106f4b6e168e5a2cd57b30cfcbb641856dd2e3
   containerPort: 8080
   environment: stag
   type: be
