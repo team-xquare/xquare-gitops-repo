@@ -1,0 +1,13 @@
+config:
+  service_name: point
+  imageTag: stag-a49b515fb51aedf691e084635b26450292149de6
+  containerPort: 8080
+  environment: stag
+  type: be
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  domain: null
+  prefix: /points

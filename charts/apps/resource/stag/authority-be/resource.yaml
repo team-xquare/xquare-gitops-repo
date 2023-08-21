@@ -1,0 +1,13 @@
+config:
+  service_name: authority
+  imageTag: stag-32e6c5176ada00babfddc7992632baea2a5e1706
+  containerPort: 8080
+  environment: stag
+  type: be
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  domain: null
+  prefix: /authorities

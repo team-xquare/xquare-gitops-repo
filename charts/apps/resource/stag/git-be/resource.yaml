@@ -1,0 +1,13 @@
+config:
+  service_name: git
+  imageTag: stag-faaa7ba4e378bd35f8085971d5f1ea4fa39e1e09
+  containerPort: 8080
+  environment: stag
+  type: be
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  domain: null
+  prefix: /gits
