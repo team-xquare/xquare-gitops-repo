@@ -1,0 +1,13 @@
+config:
+  service_name: cloud-config
+  imageTag: stag-9eef7b00684f2ec732f014a48ff11700e0e8a847
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /cloud-config
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
