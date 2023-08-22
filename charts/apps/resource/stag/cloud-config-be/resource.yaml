@@ -1,6 +1,6 @@
 config:
   service_name: cloud-config
-  imageTag: stag-6a86bea353acb1386574cb234d9a5ca948deeb1a
+  imageTag: stag-9eef7b00684f2ec732f014a48ff11700e0e8a847
   containerPort: 8080
   environment: stag
   type: be
