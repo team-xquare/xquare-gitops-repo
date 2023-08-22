@@ -57,6 +57,7 @@ spec:
         - accept
         - accept-encoding
         - Refresh-Token
+        - X-Not-Using-Xquare-Auth
         expose_headers:
         - Access-Control-Allow-Credentials
     {{- end }}
@@ -93,5 +94,30 @@ spec:
           host: {{ $fullname }}
           port:
             number: 80
+      corsPolicy:
+        allowOrigins:
+        - prefix: https://service.xquare.app
+        - prefix: https://admin.xquare.app
+        - prefix: https://admin.dsm-pick.com
+        - prefix: https://teacher.dsm-pick.com
+        - prefix: https://keeper.dsm-pick.com
+        - prefix: http://localhost:3000
+        - prefix: http://localhost:3001
+        allowMethods:
+        - GET
+        - POST
+        - PUT
+        - PATCH
+        - DELETE
+        - OPTIONS
+        allow_headers:
+        - content-type
+        - authorization
+        - accept
+        - accept-encoding
+        - Refresh-Token
+        - X-Not-Using-Xquare-Auth
+        expose_headers:
+        - Access-Control-Allow-Credentials
 {{- end }}
 {{- end }}
