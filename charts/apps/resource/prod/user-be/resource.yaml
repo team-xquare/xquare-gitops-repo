@@ -1,0 +1,13 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  service_name: user
+  imageTag: prod-v0.0.0
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /users
