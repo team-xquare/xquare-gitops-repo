@@ -35,6 +35,16 @@ spec:
           host: {{ $fullname }}
           port:
             number: {{ $yamlData.config.containerPort }}
+        corsPolicy:
+          allowOrigin:
+          - example.com
+          allowMethods:
+          - POST
+          - GET
+          allowCredentials: false
+          allowHeaders:
+          - X-Foo-Bar
+          maxAge: "24h"
     {{- end }}
     {{- end }}
 
@@ -69,5 +79,15 @@ spec:
           host: {{ $fullname }}
           port:
             number: 80
+        corsPolicy:
+          allowOrigin:
+          - example.com
+          allowMethods:
+          - POST
+          - GET
+          allowCredentials: false
+          allowHeaders:
+          - X-Foo-Bar
+          maxAge: "24h"
 {{- end }}
 {{- end }}
