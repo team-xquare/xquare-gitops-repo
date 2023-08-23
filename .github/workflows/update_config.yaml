@@ -38,8 +38,7 @@ jobs:
             yq eval ".config.volume.name = null | \
                       .config.volume.mountPath = null | \
                       .config.volume.secretName = null | \
-                      .config.serviceAccount = null | \
-                      .config.replicas = 1" -i $config_file_path
+                      .config.serviceAccount = null" -i $config_file_path
           else
             echo "config file is exists"
           fi

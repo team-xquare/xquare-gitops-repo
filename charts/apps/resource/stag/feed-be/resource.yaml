@@ -1,5 +1,4 @@
 config:
-  replicas: 1
   service_name: feed
   imageTag: stag-7ae848a5c3e840e30a39e6c5d5a2cf251727e342
   containerPort: 8080

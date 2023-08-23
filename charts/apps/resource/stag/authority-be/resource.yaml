@@ -1,5 +1,4 @@
 config:
-  replicas: 1
   service_name: authority
   imageTag: stag-32e6c5176ada00babfddc7992632baea2a5e1706
   containerPort: 8080

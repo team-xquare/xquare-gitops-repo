@@ -1,5 +1,4 @@
 config:
-  replicas: 1
   service_name: dormitory-admin
   imageTag: prod-9ba2c077d167091fdc26bd6ad97f56628e7a53ea
   containerPort: 3000
