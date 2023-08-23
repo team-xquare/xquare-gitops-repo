@@ -35,6 +35,13 @@ spec:
           host: {{ $fullname }}
           port:
             number: {{ $yamlData.config.containerPort }}
+        headers:
+          response:
+            add:
+              Access-Control-Allow-Origin: "*"
+              Access-Control-Expose-Headers: "content-type, authorization, accept, accept-encoding, Refresh-Token, X-Not-Using-Xquare-Auth"
+              Access-Control-Request-Method: "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+              Access-Control-Allow-Credentials: "true"
     {{- end }}
     {{- end }}
 
@@ -69,5 +76,12 @@ spec:
           host: {{ $fullname }}
           port:
             number: 80
+        headers:
+          response:
+            add:
+              Access-Control-Allow-Origin: "*"
+              Access-Control-Expose-Headers: "content-type, authorization, accept, accept-encoding, Refresh-Token, X-Not-Using-Xquare-Auth"
+              Access-Control-Request-Method: "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+              Access-Control-Allow-Credentials: "true"
 {{- end }}
 {{- end }}
