@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   service_name: mukgen
-  imageTag: stag-0d50ec3fcbcdb0dcc3e1e9e9504d5c1cd4dabb00
+  imageTag: stag-df740937e92e663df86d89ab2883f57f65d37a46
   containerPort: 8080
   environment: stag
   type: be
