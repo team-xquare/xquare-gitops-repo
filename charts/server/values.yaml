@@ -1,5 +1,4 @@
 config:
-  replicas: 1
   service_name: null
   imageTag: null
   containerPort: null

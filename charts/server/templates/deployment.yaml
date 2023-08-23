@@ -10,9 +10,7 @@ metadata:
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:
-  {{- if .Values.replicas }}
-  replicas: {{ .Values.replicas | int }}
-  {{- end }}
+  replicas: 1
   selector:
     matchLabels:
       app: {{ $fullname }}
@@ -25,13 +23,6 @@ spec:
         app: {{ $fullname }}
         type: {{ .Values.type }}
     spec:
-      topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app: {{ $fullname }}
       {{- if ne .Values.serviceAccount "<nil>" }}
       serviceAccountName: {{ .Values.serviceAccount }}
       {{- end }}

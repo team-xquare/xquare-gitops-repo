@@ -1,5 +1,4 @@
 config:
-  replicas: 1
   service_name: schedule
   imageTag: stag-e8c98b25c34e629104c2e4817083fe3d61c063b5
   containerPort: 8080
