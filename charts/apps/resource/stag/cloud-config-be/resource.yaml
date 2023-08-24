@@ -1,4 +1,5 @@
 config:
+  replicas: 1
   service_name: cloud-config
   imageTag: stag-9eef7b00684f2ec732f014a48ff11700e0e8a847
   containerPort: 8080
