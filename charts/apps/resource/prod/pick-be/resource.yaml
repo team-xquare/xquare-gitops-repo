@@ -1,5 +1,5 @@
 config:
-  replicas: 1
+  replicas: 2
   volume:
     name: null
     mountPath: null
