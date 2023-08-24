@@ -6,7 +6,7 @@ config:
     secretName: null
   serviceAccount: null
   service_name: feed
-  imageTag: prod-9ba2c077d167091fdc26bd6ad97f56628e7a53ea
+  imageTag: prod-667d56fa0029fb49b3e03c34153d4ed0975e4110
   containerPort: 3000
   environment: prod
   type: fe
