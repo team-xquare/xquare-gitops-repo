@@ -6,7 +6,7 @@ config:
     secretName: null
   serviceAccount: null
   service_name: envoy-middleware
-  imageTag: prod-1853ea3d115a8292668ff2ac2f44a521c7db63c5
+  imageTag: prod-efe6fec187de70fc09a708a1202c2378e070cd65
   containerPort: 9000
   environment: prod
   type: be
