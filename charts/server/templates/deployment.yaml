@@ -10,7 +10,9 @@ metadata:
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:
-  replicas: 1
+  {{- if .Values.replicas }}
+  replicas: {{ .Values.replicas }}
+  {{- end }}
   selector:
     matchLabels:
       app: {{ $fullname }}
@@ -23,11 +25,16 @@ spec:
         app: {{ $fullname }}
         type: {{ .Values.type }}
     spec:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: {{ $fullname }}
       {{- if ne .Values.serviceAccount "<nil>" }}
       serviceAccountName: {{ .Values.serviceAccount }}
       {{- end }}
-      # nodeSelector:
-      #  environment: {{ .Values.environment }}
       containers:
         - name:  {{ $fullname }}
           image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}-{{ .Values.environment }}:{{ .Values.imageTag }}

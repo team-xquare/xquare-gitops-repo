@@ -37,6 +37,7 @@ spec:
             prefix: '{{`{{ config.prefix }}`}}'
             environment: '{{`{{ config.environment }}`}}'
             type: '{{`{{ config.type }}`}}'
+            replicas: {{`{{ config.replicas }}}`}}
             volume:
               name: '{{`{{ config.volume.name }}`}}'
               mountPath: '{{`{{ config.volume.mountPath }}`}}'

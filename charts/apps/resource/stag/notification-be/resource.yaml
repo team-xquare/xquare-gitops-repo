@@ -1,4 +1,5 @@
 config:
+  replicas: 1
   service_name: notification
   imageTag: stag-8822f5449606109198485c7c4a9846a1ad26d49d
   containerPort: 8080
