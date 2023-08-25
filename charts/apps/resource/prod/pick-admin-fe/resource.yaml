@@ -6,9 +6,9 @@ config:
   serviceAccount: null
   replicas: 1
   service_name: pick-admin
-  imageTag: prod-3ca52fbcbef9409839043e2cb4ce422dfc574e57
+  imageTag: prod-c1b36a3c2c0c0454c86dbb3d034d5303bb2cea5c
   containerPort: 3000
   environment: prod
   type: fe
-  domain: null
+  domain: admin.dsm-pick.com
   prefix: /admin
