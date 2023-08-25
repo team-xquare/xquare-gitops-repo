@@ -1,0 +1,14 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  service_name: pick-admin
+  imageTag: prod-3ca52fbcbef9409839043e2cb4ce422dfc574e57
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: null
+  prefix: /admin
