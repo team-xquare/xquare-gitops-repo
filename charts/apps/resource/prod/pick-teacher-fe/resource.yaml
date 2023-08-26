@@ -1,0 +1,14 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  service_name: pick-teacher
+  imageTag: prod-102488e350fb2b47287105bbb72dca60ca7e4167
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: teacher.dsm-pick.com
+  prefix: /teacher
