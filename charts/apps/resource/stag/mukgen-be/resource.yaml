@@ -1,0 +1,14 @@
+config:
+  replicas: 1
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  service_name: mukgen
+  imageTag: stag-828200aec56e729aae08c2b66973745d347585f0
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /mukgen

@@ -1,0 +1,14 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  service_name: repo-user
+  imageTag: prod-9136c27944bf21b96dd5ac270910d7208f179732
+  containerPort: 3001
+  environment: prod
+  type: fe
+  domain: repo-user
+  prefix: null
