@@ -1,7 +1,7 @@
 config:
   replicas: 1
   service_name: feed
-  imageTag: stag-7ae848a5c3e840e30a39e6c5d5a2cf251727e342
+  imageTag: stag-1c11b9f05bdb49c1bf81d8b0a8950dd5da9a5219
   containerPort: 8080
   environment: stag
   type: be
@@ -11,4 +11,4 @@ config:
     secretName: null
   serviceAccount: null
   domain: null
-  prefix: /feeds
+  prefix: /feeds/
