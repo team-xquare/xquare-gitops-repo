@@ -24,7 +24,8 @@ spec:
   http:
     {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
     {{- $yamlData := $file | toString | fromYaml }}
-    {{- if and $yamlData $yamlData.config.prefix }}
+    {{- if $yamlData.config }}
+    {{- if $yamlData.config.prefix }}
     - name: {{ $yamlData.config.service_name }}
       match:
       - uri:
@@ -62,14 +63,15 @@ spec:
         maxAge: "24h"
     {{- end }}
     {{- end }}
-
+    {{- end }}
 
 # ======================================================================
 # custom subdomain이 사용될 서버를 위한 VS
 # ======================================================================
 {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
 {{- $yamlData := $file | toString | fromYaml }}
-{{- if and $yamlData $yamlData.config.domain }}
+{{- if $yamlData.config }}
+{{- if $yamlData.config.domain }}
 ---
 
 apiVersion: networking.istio.io/v1alpha3
@@ -119,5 +121,6 @@ spec:
         - Refresh-Token
         - X-Not-Using-Xquare-Auth
         maxAge: "24h"
+{{- end }}
 {{- end }}
 {{- end }}
