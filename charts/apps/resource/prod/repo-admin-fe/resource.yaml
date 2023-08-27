@@ -6,9 +6,9 @@ config:
   serviceAccount: null
   replicas: 1
   service_name: repo-admin
-  imageTag: prod-9136c27944bf21b96dd5ac270910d7208f179732
+  imageTag: prod-12d23ecc511ea59f5cb0b80a47071f4690206e1f
   containerPort: 3002
   environment: prod
   type: fe
-  domain: repo-admin
+  domain: repo-admin.xquare.app
   prefix: null
