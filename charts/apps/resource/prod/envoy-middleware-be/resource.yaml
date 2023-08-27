@@ -1,0 +1,14 @@
+config:
+  replicas: 1
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  service_name: envoy-middleware
+  imageTag: prod-be720ab17a23f02b5c91e229b5bff852f77d15ae
+  containerPort: 9000
+  environment: prod
+  type: be
+  domain: null
+  prefix: null
