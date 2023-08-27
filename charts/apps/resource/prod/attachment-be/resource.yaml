@@ -1,12 +1,12 @@
 config:
   replicas: 1
   service_name: attachment
-  imageTag: prod-v0.1.0
+  imageTag: prod-v1.0.4
   containerPort: 8080
   environment: prod
   type: be
   domain: null
-  prefix: /attachments
+  prefix: /attachment
   volume:
     name: null
     mountPath: null
