@@ -93,6 +93,31 @@ spec:
           {{- $fullname := (printf "%s-%s-%s" $yamlData.config.service_name $yamlData.config.type $yamlData.config.environment) }}
           host: {{ $fullname }}
           port:
-            number: 80
+            number: {{ $yamlData.config.containerPort }}
+      corsPolicy:
+        allowOrigins:
+        - exact: "https://service.xquare.app"
+        - exact: "https://admin.xquare.app"
+        - exact: "https://admin.dsm-pick.com"
+        - exact: "https://teacher.dsm-pick.com"
+        - exact: "https://keeper.dsm-pick.com"
+        - exact: "http://localhost:3000"
+        - exact: "http://localhost:3001"
+        allowMethods:
+        - POST
+        - GET
+        - PUT
+        - PATCH
+        - DELETE
+        - OPTIONS
+        allowCredentials: true
+        allowHeaders:
+        - content-type
+        - authorization
+        - accept
+        - accept-encoding
+        - Refresh-Token
+        - X-Not-Using-Xquare-Auth
+        maxAge: "24h"
 {{- end }}
 {{- end }}
