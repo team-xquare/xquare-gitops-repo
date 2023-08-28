@@ -10,6 +10,7 @@ metadata:
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:
+  revisionHistoryLimit: 1
   {{- if .Values.replicas }}
   replicas: {{ .Values.replicas }}
   {{- end }}
