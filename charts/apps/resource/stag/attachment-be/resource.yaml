@@ -1,7 +1,7 @@
 config:
   replicas: 1
   service_name: attachment
-  imageTag: stag-dc3718169d120ff65c8b5b45d515ce5cd5c4f12f
+  imageTag: stag-39b1414f41109941d7b24a22296d33129696865c
   containerPort: 8080
   environment: stag
   type: be
