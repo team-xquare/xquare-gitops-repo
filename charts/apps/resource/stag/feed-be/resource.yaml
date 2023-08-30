@@ -1,7 +1,7 @@
 config:
   replicas: 1
   service_name: feed
-  imageTag: stag-0504d7d13249315e3b04d9b9f271df6c82a101f8
+  imageTag: stag-fba6915e3eb5ceee7941e5a9db83dada34caae4e
   containerPort: 8080
   environment: stag
   type: be
