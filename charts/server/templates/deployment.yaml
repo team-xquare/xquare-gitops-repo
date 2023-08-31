@@ -24,6 +24,7 @@ spec:
         sidecar.istio.io/proxyMemory: "256Mi"
       labels:
         app: {{ $fullname }}
+        project: {{ .Values.name }}
         type: {{ .Values.type }}
     spec:
       topologySpreadConstraints:
