@@ -11,3 +11,4 @@ config:
   volume_mount_path: null
   volume_secret_name: null
   volume_secret_namespace: null
+  principal: NamSeungGwon
