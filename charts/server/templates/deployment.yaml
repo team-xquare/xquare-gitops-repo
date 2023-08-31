@@ -25,7 +25,6 @@ spec:
       labels:
         app: {{ $fullname }}
         type: {{ .Values.type }}
-        principal: {{ .Values.principal }}
     spec:
       topologySpreadConstraints:
       - maxSkew: 1
