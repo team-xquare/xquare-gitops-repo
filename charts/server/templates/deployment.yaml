@@ -10,13 +10,14 @@ metadata:
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:
-  strategy:
-    type: RollingUpdate
-    rollingUp:
-      maxSurge: 50%
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
   replicas: {{ .Values.replicas }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 50%
+      maxUnavailable: 50%
   {{- end }}
   selector:
     matchLabels:
