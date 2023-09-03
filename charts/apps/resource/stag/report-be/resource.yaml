@@ -1,7 +1,7 @@
 config:
   replicas: 1
   service_name: report
-  imageTag: stag-54f88b42458bd9dda17e469df39cba777fc91cd0
+  imageTag: stag-77a31968087924e409b43a2146ed4023e4bf101b
   containerPort: 8080
   environment: stag
   type: be
