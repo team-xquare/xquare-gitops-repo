@@ -11,7 +11,9 @@ metadata:
     environment: {{ .Values.environment }}
 spec:
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUp:
+      maxSurge: 50%
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
   replicas: {{ .Values.replicas }}
