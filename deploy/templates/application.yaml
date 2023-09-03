@@ -17,7 +17,6 @@ spec:
         elements: 
           - environment: prod
           - environment: stag
-          - environment: user
   template:
     metadata:
       name: 'xquare-{{`{{ environment }}`}}'
