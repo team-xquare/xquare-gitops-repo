@@ -10,6 +10,8 @@ metadata:
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:
+  strategy:
+    type: Recreate
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
   replicas: {{ .Values.replicas }}
