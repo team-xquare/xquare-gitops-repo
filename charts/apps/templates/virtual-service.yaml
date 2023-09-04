@@ -106,6 +106,9 @@ spec:
         - exact: "https://admin.dsm-pick.com"
         - exact: "https://teacher.dsm-pick.com"
         - exact: "https://keeper.dsm-pick.com"
+        - exact: "https://admin.dsm-repo.com"
+        - exact: "https://user.dsm-repo.com"
+        - exact: "https://www.dsm-repo.com"
         - exact: "http://localhost:3000"
         - exact: "http://localhost:3001"
         allowMethods:
