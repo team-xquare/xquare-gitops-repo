@@ -6,8 +6,8 @@ config:
   serviceAccount: null
   replicas: 1
   service_name: repo-admin
-  imageTag: prod-1c8b81de785e7a9668b92bc351da1beeff5c8ee7
-  containerPort: 3000
+  imageTag: prod-3df71c148beba4b49ddb523e5007e7dd162e89a4
+  containerPort: 3002
   environment: prod
   type: fe
   domain: admin.dsm-repo.com
