@@ -6,9 +6,9 @@ config:
   serviceAccount: null
   replicas: 1
   service_name: repo-main
-  imageTag: prod-1c3573435e036ae436f6e8de5c001c6c0b288ce3
+  imageTag: prod-28d400c350e3bd6fede5dc40b0a0c363f40a4102
   containerPort: 3000
   environment: prod
   type: fe
-  domain: repo.xquare.app
+  domain: www.dsm-repo.com
   prefix: null
