@@ -1,5 +1,5 @@
 config:
-  replicas: 2
+  replicas: 1
   service_name: cloud-config
   imageTag: prod-v0.1.3
   containerPort: 8080
