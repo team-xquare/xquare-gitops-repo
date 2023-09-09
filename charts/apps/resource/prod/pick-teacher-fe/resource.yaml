@@ -6,7 +6,7 @@ config:
   serviceAccount: null
   replicas: 1
   service_name: pick-teacher
-  imageTag: prod-7d4dcc973ff8e541ca2d861afdd1d676132789d6
+  imageTag: prod-6768ce23bec548a4b92c233ca51fb7143c87661a
   containerPort: 3000
   environment: prod
   type: fe
