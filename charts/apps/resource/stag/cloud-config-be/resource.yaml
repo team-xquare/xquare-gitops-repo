@@ -1,7 +1,7 @@
 config:
   replicas: 1
   service_name: cloud-config
-  imageTag: stag-81fdb3bba240c3b011ed1f266197fe1a89f712ce
+  imageTag: stag-ec1e159b1c52c383d9d1ba2d2e050dcd5af342da
   containerPort: 8080
   environment: stag
   type: be
