@@ -1,7 +1,7 @@
 config:
   replicas: 1
   service_name: meal
-  imageTag: stag-74536510d3aa3ef33d42086bc3a3e0c448059476
+  imageTag: stag-2e5fbb9de50c6ee92eb4bb1fc377dd90846ee0f6
   containerPort: 3000
   environment: stag
   type: be
