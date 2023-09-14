@@ -1,7 +1,7 @@
 config:
   replicas: 1
   service_name: application
-  imageTag: stag-ae33ed91734d46e28ecf28b9b3ec0aa936188ae7
+  imageTag: stag-a93e0e708f1b5327c9759e685aeebf60ba918ae8
   containerPort: 8080
   environment: stag
   type: be
