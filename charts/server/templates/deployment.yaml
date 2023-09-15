@@ -13,7 +13,7 @@ spec:
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
   {{ if eq .Values.environment "stag" }}
-  replicas: 3
+  replicas: 1
   {{ else }}
   replicas: {{ .Values.replicas }}
   {{ end }}
