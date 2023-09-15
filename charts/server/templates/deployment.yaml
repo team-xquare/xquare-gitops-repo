@@ -32,6 +32,15 @@ spec:
         project: {{ .Values.name }}
         type: {{ .Values.type }}
     spec:
+      {{ if eq .Values.environment "stag" }}
+      nodeSelector:
+        Karpenter: enabled
+      tolerations:
+      - effect: "NoSchedule"
+        key: karpenter
+        operator: "Equal"
+        value: "true"
+      {{ end }}
       topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
