@@ -32,6 +32,13 @@ spec:
         project: {{ .Values.name }}
         type: {{ .Values.type }}
     spec:
+      nodeSelector:
+        Karpenter: enabled
+      tolerations:
+      - effect: "NoSchedule"
+        key: karpenter
+        operator: "Equal"
+        value: "true"
       topologySpreadConstraints:
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
