@@ -12,7 +12,11 @@ metadata:
 spec:
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
+  {{ if eq .Values.environment "stag" }}
+  replicas: 3
+  {{ else }}
   replicas: {{ .Values.replicas }}
+  {{ end }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
