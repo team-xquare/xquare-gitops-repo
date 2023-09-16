@@ -33,6 +33,7 @@ spec:
         project: {{ .Values.name }}
         type: {{ .Values.type }}
     spec:
+      {{ if not (or (eq $fullname "user-be-prod") (eq $fullname "dormitory-admin-fe-prod") (eq $fullname "application-be-prod") (eq $fullname "authority-be-prod")) }}
       nodeSelector:
         Karpenter: enabled
       tolerations:
@@ -41,6 +42,7 @@ spec:
         operator: "Equal"
         value: "true"
       topologySpreadConstraints:
+      {{ else }}
       - maxSkew: 1
         topologyKey: kubernetes.io/hostname
         whenUnsatisfiable: DoNotSchedule
