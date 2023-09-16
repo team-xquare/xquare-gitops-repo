@@ -13,7 +13,6 @@ spec:
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
   replicas: {{ .Values.replicas }}
-  {{ end }}
   strategy:
     type: RollingUpdate
     rollingUpdate:
