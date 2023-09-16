@@ -25,8 +25,8 @@ spec:
   template:
     metadata:      
       annotations:
-        sidecar.istio.io/proxyCPU: "50m"
-        sidecar.istio.io/proxyMemory: "256Mi"
+        sidecar.istio.io/proxyCPU: "5m"
+        sidecar.istio.io/proxyMemory: "128Mi"
       labels:
         app: {{ $fullname }}
         project: {{ .Values.name }}
@@ -65,8 +65,8 @@ spec:
           {{- end }}
           resources:
             requests:
-              memory: "128Mi"
-              cpu: "15m"
+              memory: "64Mi"
+              cpu: "5m"
       {{- if ne .Values.volume.name "<nil>" }}
       volumes:
         - name: {{ .Values.volume.name }}
