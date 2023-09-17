@@ -35,7 +35,7 @@ spec:
       nodeSelector:
         Karpenter: enabled
       tolerations:
-      - effect: "PreferNoSchedule"
+      - effect: "NoSchedule"
         key: karpenter
         operator: "Equal"
         value: "true"
