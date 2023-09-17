@@ -35,8 +35,8 @@ spec:
       nodeSelector:
         Karpenter: enabled
       tolerations:
-      - effect: "NoSchedule"
-        key: karpenter
+      - effect: "PreferNoSchedule"
+        key: xquare/server
         operator: "Equal"
         value: "true"
       topologySpreadConstraints:
