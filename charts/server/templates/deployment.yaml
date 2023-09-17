@@ -63,7 +63,7 @@ spec:
           {{- end }}
           resources:
             requests:
-              memory: "256Mi"
+              memory: "128Mi"
               cpu: "5m"
       {{- if ne .Values.volume.name "<nil>" }}
       volumes:
