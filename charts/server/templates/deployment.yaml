@@ -61,10 +61,17 @@ spec:
               name: {{ .Values.volume.name }}
               readOnly: true
           {{- end }}
+          {{- if eq $fullname "repo-be-prod" }}
           resources:
             requests:
               memory: "400Mi"
               cpu: "5m"
+          {{- else }}
+          resources:
+            requests:
+              memory: "800Mi"
+              cpu: "10m"
+          {{- end }}
       {{- if ne .Values.volume.name "<nil>" }}
       volumes:
         - name: {{ .Values.volume.name }}
