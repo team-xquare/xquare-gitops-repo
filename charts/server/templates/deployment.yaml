@@ -64,12 +64,12 @@ spec:
           {{- if eq $fullname "repo-be-prod" }}
           resources:
             requests:
-              memory: "800Mi"
+              memory: "600Mi"
               cpu: "10m"
           {{- else }}
           resources:
             requests:
-              memory: "400Mi"
+              memory: "300Mi"
               cpu: "5m"
           {{- end }}
       {{- if ne .Values.volume.name "<nil>" }}
