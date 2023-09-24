@@ -31,6 +31,7 @@ spec:
           values: |-
             name: '{{`{{ config.serviceName }}`}}'
             host: '{{ .Values.spec.host }}'
+            clubName: '{{`{{ config.clubName }}`}}'
             imageRegistry: '{{ .Values.spec.source.imageRegistry }}'
             imageTag: '{{`{{ config.imageTag }}`}}'
             containerPort: '{{`{{ config.containerPort }}`}}'
