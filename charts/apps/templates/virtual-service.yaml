@@ -33,7 +33,7 @@ spec:
       route:
       - destination:
           {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
-          host: {{ $fullname }}
+          host: {{ $fullname }}.{{`{{ config.clubName }}`}}.svc.cluster.local
           port:
             number: {{ $yamlData.config.containerPort }}
       corsPolicy:
@@ -96,7 +96,7 @@ spec:
       route:
       - destination:
           {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
-          host: {{ $fullname }}
+          host: {{ $fullname }}.{{`{{ config.clubName }}`}}.svc.cluster.local
           port:
             number: {{ $yamlData.config.containerPort }}
       corsPolicy:
