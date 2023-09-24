@@ -1,6 +1,7 @@
 config:
+  clubName: xquare
   replicas: 1
-  service_name: dormitory-admin
+  serviceName: dormitory-admin
   imageTag: prod-9bc5992bf2b40be3d5c98c0d60d73beec0f08902
   containerPort: 3000
   environment: prod

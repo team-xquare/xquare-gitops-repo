@@ -1,11 +1,12 @@
 config:
+  clubName: pick
   replicas: 1
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
-  service_name: pick
+  serviceName: pick
   imageTag: prod-v1.3.0
   containerPort: 8080
   environment: prod

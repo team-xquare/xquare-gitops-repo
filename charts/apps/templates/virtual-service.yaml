@@ -26,13 +26,13 @@ spec:
     {{- $yamlData := $file | toString | fromYaml }}
     {{- if $yamlData.config }}
     {{- if $yamlData.config.prefix }}
-    - name: {{ $yamlData.config.service_name }}
+    - name: {{ $yamlData.config.serviceName }}
       match:
       - uri:
           prefix: {{ $yamlData.config.prefix }}
       route:
       - destination:
-          {{- $fullname := (printf "%s-%s-%s" $yamlData.config.service_name $yamlData.config.type $yamlData.config.environment) }}
+          {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
           host: {{ $fullname }}
           port:
             number: {{ $yamlData.config.containerPort }}
@@ -80,7 +80,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ $project }}-{{ $environment }}-{{ $yamlData.config.service_name }}-domain-ingress
+  name: {{ $project }}-{{ $environment }}-{{ $yamlData.config.serviceName }}-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
     labels:
@@ -92,10 +92,10 @@ spec:
   hosts:
     - {{ $yamlData.config.domain }}
   http:
-    - name: {{ $yamlData.config.service_name }}
+    - name: {{ $yamlData.config.serviceName }}
       route:
       - destination:
-          {{- $fullname := (printf "%s-%s-%s" $yamlData.config.service_name $yamlData.config.type $yamlData.config.environment) }}
+          {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
           host: {{ $fullname }}
           port:
             number: {{ $yamlData.config.containerPort }}

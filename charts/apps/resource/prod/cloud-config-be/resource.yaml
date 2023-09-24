@@ -1,6 +1,7 @@
 config:
+  clubName: xquare
   replicas: 1
-  service_name: cloud-config
+  serviceName: cloud-config
   imageTag: prod-615d80500580f671efec40597126b3fccad709f0
   containerPort: 8080
   environment: prod
