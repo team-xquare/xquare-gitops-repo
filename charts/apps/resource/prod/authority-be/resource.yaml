@@ -1,11 +1,12 @@
 config:
+  clubName: xquare
   replicas: 1
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
-  service_name: authority
+  serviceName: authority
   imageTag: prod-v1.0.5
   containerPort: 8080
   environment: prod

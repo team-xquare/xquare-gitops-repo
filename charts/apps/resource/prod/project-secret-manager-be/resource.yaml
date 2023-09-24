@@ -1,11 +1,12 @@
 config:
+  clubName: xquare
   replicas: 1
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
-  service_name: project-secret-manager
+  serviceName: project-secret-manager
   imageTag: prod-df789bc2e42300c41379f52f1d2566f0609a85d0
   containerPort: 8080
   environment: prod

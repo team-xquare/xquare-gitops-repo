@@ -1,11 +1,12 @@
 config:
+  clubName: xquare
   replicas: 1
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
-  service_name: meal
+  serviceName: meal
   imageTag: prod-v1.1.3
   containerPort: 3000
   environment: prod

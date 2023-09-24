@@ -1,11 +1,12 @@
 config:
+  clubName: xquare
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
   replicas: 1
-  service_name: xbridge-test
+  serviceName: xbridge-test
   imageTag: prod-6ecd900cf3ffe93197b7a8a189ec6c8e9e79b63c
   containerPort: 3000
   environment: prod

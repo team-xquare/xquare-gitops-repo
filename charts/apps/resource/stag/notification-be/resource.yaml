@@ -1,6 +1,7 @@
 config:
+  clubName: xquare
   replicas: 1
-  service_name: notification
+  serviceName: notification
   imageTag: stag-cc9c622d781b49607eec0f03386723832a65ac7d
   containerPort: 8080
   environment: stag

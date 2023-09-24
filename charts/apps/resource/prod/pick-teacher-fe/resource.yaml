@@ -1,11 +1,12 @@
 config:
+  clubName: pick
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
   replicas: 1
-  service_name: pick-teacher
+  serviceName: pick-teacher
   imageTag: prod-675dccd07ee4fc484053d0871a006c4e14c42cee
   containerPort: 3000
   environment: prod

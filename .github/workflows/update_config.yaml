@@ -13,7 +13,7 @@ jobs:
       - name: Set Payload Aliases
         id: set_payload
         run: |
-          echo "service_name=${{ github.event.client_payload.service_name }}" >> $GITHUB_ENV
+          echo "serviceName=${{ github.event.client_payload.serviceName }}" >> $GITHUB_ENV
           echo "service_prefix=${{ github.event.client_payload.service_prefix }}" >> $GITHUB_ENV
           echo "image_tag=${{ github.event.client_payload.image_tag }}" >> $GITHUB_ENV
           echo "environment=${{ github.event.client_payload.environment }}" >> $GITHUB_ENV
@@ -24,11 +24,20 @@ jobs:
       - name: Pull Commit 
         run: git pull
 
+    - name: Get club name
+      id: get-club-name
+      shell: bash
+      run: |
+        url="https://prod-server.xquare.app/project-secret-manager/club\
+        ?project-name=${{ env.project_name }}"
+        response=$(curl -X GET $url)
+        echo "club_name=$response" >> $GITHUB_ENV
+
       - name: Get config file path
         id: config-file
         working-directory: ${{ github.workspace }}
         run: |
-          config_file_dir="./charts/apps/resource/${{ env.environment }}/${{ env.service_name }}-${{ env.service_type }}"
+          config_file_dir="./charts/apps/resource/${{ env.environment }}/${{ env.serviceName }}-${{ env.service_type }}"
           mkdir -p "$config_file_dir"
 
           config_file_path="$config_file_dir/resource.yaml"
@@ -39,7 +48,9 @@ jobs:
                       .config.volume.mountPath = null | \
                       .config.volume.secretName = null | \
                       .config.serviceAccount = null | \
-                      .config.replicas = 1" -i $config_file_path
+                      .config.replicas = 1 | \
+                      .config.clubName = ${{ steps.get-club-name.outputs.club_name }}" -i $config_file_path
+              
           else
             echo "config file is exists"
           fi
@@ -62,7 +73,7 @@ jobs:
             prefix='.config.prefix = null'
           fi
 
-          yq eval -i ".config.service_name = \"${{ env.service_name }}\" | \
+          yq eval -i ".config.serviceName = \"${{ env.serviceName }}\" | \
                     .config.imageTag = \"${{ env.image_tag }}\" | \
                     .config.containerPort = ${{ env.service_port }} | \
                     .config.environment = \"${{ env.environment }}\" | \
@@ -71,10 +82,10 @@ jobs:
                     $prefix" -i ${{ steps.config-file.outputs.config_file_path }}
 
       - name: Commit The New Image Reference
-        if: ${{ env.service_name && env.service_prefix && env.image_tag && env.environment && env.service_type }}
+        if: ${{ env.serviceName && env.service_prefix && env.image_tag && env.environment && env.service_type }}
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "release :: ${{ env.service_name }}-${{ env.service_type }}-${{ env.environment }}: Deploy new image ${{ env.image_tag }}"
+          commit_message: "release :: ${{ env.serviceName }}-${{ env.service_type }}-${{ env.environment }}: Deploy new image ${{ env.image_tag }}"
           branch: master
           commit_options: '--no-verify --signoff'
           repository: .

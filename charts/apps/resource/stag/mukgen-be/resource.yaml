@@ -1,11 +1,12 @@
 config:
+  clubName: mukgen
   replicas: 1
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
-  service_name: mukgen
+  serviceName: mukgen
   imageTag: stag-a4aa2f2842d1f0763f6b71079a2b6a6d4058e772
   containerPort: 8080
   environment: stag

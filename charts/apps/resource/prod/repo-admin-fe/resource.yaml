@@ -1,11 +1,12 @@
 config:
+  clubName: repo
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
   replicas: 1
-  service_name: repo-admin
+  serviceName: repo-admin
   imageTag: prod-dd5f2e6075d5016c48f1ee8e2d187ad7e0ce6bcd
   containerPort: 3000
   environment: prod
