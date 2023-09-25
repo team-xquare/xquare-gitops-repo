@@ -3,6 +3,7 @@ on:
   repository_dispatch:
     types: 
       - update_config
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -24,14 +25,14 @@ jobs:
       - name: Pull Commit 
         run: git pull
 
-    - name: Get club name
-      id: get-club-name
-      shell: bash
-      run: |
-        url="https://prod-server.xquare.app/project-secret-manager/club\
-        ?project-name=${{ env.project_name }}"
-        response=$(curl -X GET $url)
-        echo "club_name=$response" >> $GITHUB_ENV
+      - name: Get club name
+        id: get-club-name
+        shell: bash
+        run: |
+          url="https://prod-server.xquare.app/project-secret-manager/club\
+          ?project-name=${{ env.project_name }}"
+          response=$(curl -X GET $url)
+          echo "club_name=$response" >> $GITHUB_ENV
 
       - name: Get config file path
         id: config-file
