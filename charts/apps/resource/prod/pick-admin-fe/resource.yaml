@@ -7,7 +7,7 @@ config:
   serviceAccount: null
   replicas: 1
   serviceName: pick-admin
-  imageTag: prod-ea2c6af704853e8301741dbc4f08bb9bc5edb7e2
+  imageTag: prod-a389813504ab862f83041043e16f8d0da2c7a359
   containerPort: 3000
   environment: prod
   type: fe
