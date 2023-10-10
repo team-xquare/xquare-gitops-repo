@@ -30,7 +30,7 @@ jobs:
         shell: bash
         run: |
           url="https://prod-server.xquare.app/project-secret-manager/club\
-          ?project-name=${{ env.project_name }}"
+          ?project-name=${{ env.service_name }}"
           response=$(curl -X GET $url)
           echo "club_name=$response" >> $GITHUB_ENV
 
