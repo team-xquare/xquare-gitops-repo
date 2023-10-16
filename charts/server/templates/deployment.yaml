@@ -49,6 +49,7 @@ spec:
       {{- if ne .Values.serviceAccount "<nil>" }}
       serviceAccountName: {{ .Values.serviceAccount }}
       {{- end }}
+      terminationGracePeriodSeconds: 120
       containers:
         - name:  {{ $fullname }}
           image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}-{{ .Values.environment }}:{{ .Values.imageTag }}
