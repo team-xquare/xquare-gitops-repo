@@ -2,7 +2,7 @@ config:
   clubName: xquare
   replicas: 1
   serviceName: attachment
-  imageTag: prod-v1.0.8
+  imageTag: prod-v0.0.3
   containerPort: 8080
   environment: prod
   type: be
