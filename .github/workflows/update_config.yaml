@@ -50,7 +50,7 @@ jobs:
                       .config.volume.secretName = null | \
                       .config.serviceAccount = null | \
                       .config.replicas = 1 | \
-                      .config.clubName = ${{ steps.get-club-name.outputs.club_name }}" -i $config_file_path
+                      .config.clubName = ${{ env.club_name }}" -i $config_file_path
               
           else
             echo "config file is exists"
