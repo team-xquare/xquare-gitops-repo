@@ -2,7 +2,7 @@ config:
   clubName: xquare
   replicas: 1
   serviceName: meal
-  imageTag: stag-2e5fbb9de50c6ee92eb4bb1fc377dd90846ee0f6
+  imageTag: stag-7c85f8f8205b587fd89ba4b30cfed9a1f0b6dec1
   containerPort: 3000
   environment: stag
   type: be
