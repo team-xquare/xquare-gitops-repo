@@ -7,7 +7,7 @@ config:
     secretName: null
   serviceAccount: null
   serviceName: meal
-  imageTag: prod-v1.1.3
+  imageTag: prod-v0.0.3
   containerPort: 3000
   environment: prod
   type: be
