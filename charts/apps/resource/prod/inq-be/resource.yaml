@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: inq
-  imageTag: prod-0ab9abeec74a22a94f058d6fc4af379ed1c94d30
+  imageTag: prod-3871640b735f89af3cdc9a58293996cc4a873981
   containerPort: 8080
   environment: prod
   type: be
