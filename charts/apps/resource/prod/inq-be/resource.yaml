@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: inq
+  imageTag: prod-e10c6588d268b854e226abf5a2dc7fd61e8e93b9
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /inq
