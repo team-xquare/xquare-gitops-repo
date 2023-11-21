@@ -38,11 +38,7 @@ spec:
             number: {{ $yamlData.config.containerPort }}
       corsPolicy:
         allowOrigins:
-        - regex: "^https?://(.*\\.)?xquare\\.app$"
-        - regex: "^https?://(.*\\.)?dsm-pick\\.com$"
-        - regex: "^https?://(.*\\.)?dsm-repo\\.com$"
-        - exact: "http://localhost:3000"
-        - exact: "http://localhost:3001"
+        - '*'
         allowMethods:
         - POST
         - GET
