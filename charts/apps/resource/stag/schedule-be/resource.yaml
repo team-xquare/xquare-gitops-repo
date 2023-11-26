@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: schedule
+  imageTag: stag-fbca28fd82e544be34dc91bd1079debf3a525210
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /schedules
