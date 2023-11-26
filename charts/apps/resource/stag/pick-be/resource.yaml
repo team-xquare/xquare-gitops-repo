@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: pick
+  serviceName: pick
+  imageTag: stag-d9e3f57563854d825efa44b76edb6b4165afa54e
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /pick
