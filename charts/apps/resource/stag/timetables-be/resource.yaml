@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: ""
+  clubName: "xquare"
   serviceName: timetables
   imageTag: stag-144d8758b191d090b8aedcb6bc7905a07ac24d70
   containerPort: 8080
