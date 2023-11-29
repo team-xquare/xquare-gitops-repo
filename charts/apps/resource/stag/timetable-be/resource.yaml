@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: timetable
+  imageTag: stag-fa530a405ee80571e77b8832d92aaa55d3520d7f
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /timetables
