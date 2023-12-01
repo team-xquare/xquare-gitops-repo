@@ -7,7 +7,7 @@ config:
     secretName: null
   serviceAccount: null
   serviceName: pick
-  imageTag: stag-dfffba2d88119a45edd469b39d9ad5a5a0d563e7
+  imageTag: prod-v1.3.1
   containerPort: 8080
   environment: prod
   type: be
