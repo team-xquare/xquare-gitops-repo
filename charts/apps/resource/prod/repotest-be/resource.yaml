@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: repo
+  serviceName: repotest
+  imageTag: prod-a6dcc74cfb3b3b90583f9901d05454263e30ad29
+  containerPort: 8000
+  environment: prod
+  type: be
+  domain: api.dsm-repo.com
+  prefix: null
