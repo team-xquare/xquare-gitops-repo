@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: aster
   serviceName: aster
-  imageTag: prod-86ecea0822a9b85fb46d86a8acec458651408456
+  imageTag: prod-89ce76c20f9fc958d5dfe9c3738113d2224bd18d
   containerPort: 8080
   environment: prod
   type: be
