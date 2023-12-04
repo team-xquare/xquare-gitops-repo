@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: teamsvap
+  serviceName: svap
+  imageTag: stag-c6a9b9566c2823d112ea91dddef4e2c6ffb2dbad
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /svap
