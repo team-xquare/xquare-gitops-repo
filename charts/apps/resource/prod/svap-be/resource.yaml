@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: teamsvap
   serviceName: svap
-  imageTag: prod-5c7a03f2139839b3d574e829608ed68430b9cb4c
+  imageTag: prod-15c518ebc1e523bc6b337fb98b9fee37c29af61f
   containerPort: 8080
   environment: prod
   type: be
