@@ -7,8 +7,8 @@ config:
   replicas: 1
   clubName: aster
   serviceName: aster-frontend
-  imageTag: prod-dee334f57c28803e877fff14a892ba9a96b50c5d
-  containerPort: 8080
+  imageTag: prod-4afba26949e75de26a03b2b5dfafd6fe3671a5ad
+  containerPort: 3000
   environment: prod
   type: fe
   domain: aster.xquare.app
