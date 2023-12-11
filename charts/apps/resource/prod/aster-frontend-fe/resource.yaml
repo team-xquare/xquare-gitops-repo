@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: aster
+  serviceName: aster-frontend
+  imageTag: prod-dee334f57c28803e877fff14a892ba9a96b50c5d
+  containerPort: 8080
+  environment: prod
+  type: fe
+  domain: aster.xquare.app
+  prefix: null
