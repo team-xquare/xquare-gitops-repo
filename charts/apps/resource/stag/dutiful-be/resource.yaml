@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: dutiful
   serviceName: dutiful
-  imageTag: stag-c52b89c8d9794d06eae1df9c4f29fb6874a193de
+  imageTag: stag-987ac2c8cc7cc578c4394c0f498bbf52825d7ac5
   containerPort: 8080
   environment: stag
   type: be
