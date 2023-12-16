@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: dutiful
   serviceName: dutiful
-  imageTag: stag-d471f4f5026f6629a5d0e666c7fa7aa048363247
+  imageTag: stag-a6fcccdeb4f20ae9a0990e3e0fea937617cdec22
   containerPort: 8080
   environment: stag
   type: be
-  domain: null
-  prefix: /dutyful
+  domain: dutyful-stag.xquare.app
+  prefix: null
