@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: git
+  imageTag: stag-bec31f0c73f2c8b82586aff6a8776a202cbf9571
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /gits
