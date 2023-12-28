@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: rma
   serviceName: juso
-  imageTag: prod-43dcdd2520d4afb4f80f901524d3685887f2e6fa
-  containerPort: 8080
+  imageTag: prod-94d9923f3f5ff95e27bbc41b18379d001476c3c5
+  containerPort: 8081
   environment: prod
   type: be
-  domain: null
-  prefix: /juso
+  domain: juso.xquare.app
+  prefix: null
