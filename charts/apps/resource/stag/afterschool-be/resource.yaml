@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: kodomo
+  serviceName: afterschool
+  imageTag: stag-116a00f4b5b5c26cfab5e5dee896f9c45451f5c9
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /after
