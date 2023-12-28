@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: rma
   serviceName: juso
-  imageTag: prod-1a6b1ddc5dcc2e814209340328e05311246b849b
+  imageTag: prod-0fa2117c7eecd8174020ca3cc3111d909265fabf
   containerPort: 8081
   environment: prod
   type: be
