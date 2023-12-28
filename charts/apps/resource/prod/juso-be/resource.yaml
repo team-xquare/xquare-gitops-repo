@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: rma
+  serviceName: juso
+  imageTag: prod-cdc3a173b3468f33585b2da60ec785cae8424f93
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /juso
