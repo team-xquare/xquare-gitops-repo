@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: rma
   serviceName: juso-batch
-  imageTag: prod-2eab161f5aefc7bb264a8242c1b931070cf0edf9
+  imageTag: prod-e350602c955c1eb920603dbdcd95921ad6007d7b
   containerPort: 8080
   environment: prod
   type: be
