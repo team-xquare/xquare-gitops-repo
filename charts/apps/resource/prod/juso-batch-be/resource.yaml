@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: rma
+  serviceName: juso-batch
+  imageTag: prod-5e24fa01f94419bd8f799d6a5f9f85c2a924735b
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: juso-batch.xquare.app
+  prefix: null
