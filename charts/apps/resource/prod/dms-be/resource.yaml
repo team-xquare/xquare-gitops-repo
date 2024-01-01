@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: rma
   serviceName: dms
-  imageTag: prod-c3a7fdbb6483462f4473cbe7af23c5a4e6b82d6b
+  imageTag: prod-4b6c1d502b97feee08aee69f65301ae4313e5ed8
   containerPort: 8080
   environment: prod
   type: be
