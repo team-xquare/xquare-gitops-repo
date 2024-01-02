@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: info
   serviceName: mukgen
-  imageTag: stag-ba4213891049555508be51b2c7a9afd6ad342d09
+  imageTag: stag-af847265de0c22b0e732a161257104c94302128f
   containerPort: 8080
   environment: stag
   type: be
