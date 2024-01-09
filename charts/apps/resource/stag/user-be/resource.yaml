@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: user
+  imageTag: stag-82b13de3be549a304456c72e12db2ecae607a282
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  prefix: /users
