@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: dashboard-tsdata-bridge
-  imageTag: prod-0f2fd3fe4f91c98c7849a0aa211df848fb8ae2b8
+  imageTag: prod-fd7ebbcb798077170853f3c0923185d370e9a423
   containerPort: 9090
   environment: prod
   type: be
