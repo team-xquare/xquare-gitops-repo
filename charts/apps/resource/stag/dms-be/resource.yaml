@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: rma
+  serviceName: dms
+  imageTag: stag-655ebaaf986c6273b98f7af3c730de02ea1fe523
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: dev-dms.xquare.app
+  prefix: null
