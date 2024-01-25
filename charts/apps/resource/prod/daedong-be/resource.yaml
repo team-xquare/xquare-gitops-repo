@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: daedongyeojido
   serviceName: daedong
-  imageTag: prod-19c818c678d576bf78f8d85bf2c23520d3882426
+  imageTag: prod-a377e15d73f82031060c9aa6ab7c2e1a6a9fd657
   containerPort: 8080
   environment: prod
   type: be
