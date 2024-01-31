@@ -9,8 +9,6 @@ metadata:
     project: {{ .Values.name }}
     type: {{ .Values.type }}
     environment: {{ .Values.environment }}
-    tags.datadoghq.com/env: {{ .Values.environment }}
-    tags.datadoghq.com/service: {{ $fullname }}
 spec:
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
@@ -33,9 +31,6 @@ spec:
         app: {{ $fullname }}
         project: {{ .Values.name }}
         type: {{ .Values.type }}
-        tags.datadoghq.com/env: {{ .Values.environment }}
-        tags.datadoghq.com/service: {{ $fullname }}
-        admission.datadoghq.com/enabled: "true"
     spec:
       nodeSelector:
         Karpenter: enabled
@@ -58,9 +53,6 @@ spec:
       containers:
         - name:  {{ $fullname }}
           image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}-{{ .Values.environment }}:{{ .Values.imageTag }}
-          env:
-            - name: DD_LOGS_INJECTION
-              value: "true"
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.containerPort }}
