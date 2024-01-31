@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: info
+  serviceName: maeumgagym-frontend
+  imageTag: stag-ab12c1fda34490c60db917ac95f1b9ff143ead9e
+  containerPort: 3000
+  environment: stag
+  type: fe
+  domain: null
+  language: null
