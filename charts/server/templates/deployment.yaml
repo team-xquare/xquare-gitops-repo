@@ -123,3 +123,8 @@ spec:
           secret:
             secretName: {{ .Values.volume.secretName }}
       {{- end }}
+      {{- if eq .Values.language "java"}}
+      volumes:
+        - name: datadog-apm-agent
+          emptyDir: { }
+      {{- end }}
