@@ -7,9 +7,10 @@ config:
   replicas: 1
   clubName: daedongyeojido
   serviceName: daedong
-  imageTag: prod-b92c6e3f8fbe73cfee918342346d9e018b82778f
+  imageTag: prod-81a113de37e578dbc98060cd0e9096de45c9bc9a
   containerPort: 8080
   environment: prod
   type: be
   domain: null
   prefix: /jung-ho
+  language: java
