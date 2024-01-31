@@ -34,6 +34,17 @@ jobs:
           response=$(curl -X GET $url)
           echo "club_name=$response" >> $GITHUB_ENV
 
+      - name: Get Language
+        id: get-language
+        shell: bash
+        run: |
+          url="https://prod-server.xquare.app/project-secret-manager/language?project-name=${{ env.service_name }}"
+          response=$(curl -s -o /dev/null -w "%{http_code}" $url)
+          if [ $response != "404" ]; then
+            project_language=$(curl -s $url)
+            echo "language=$project_language" >> $GITHUB_ENV
+          fi
+
       - name: Get config file path
         id: config-file
         working-directory: ${{ github.workspace }}
@@ -72,6 +83,11 @@ jobs:
             prefix='.config.prefix = "${{ env.service_prefix }}"'
           else
             prefix='.config.prefix = null'
+          fi
+          if [ -n "${{ env.language }}" ] && [ "${{ env.language }}" != "null" ]; then
+            prefix='.config.language = "${{ env.language }}"'
+          else
+            prefix='.config.language = null'
           fi
 
           yq eval -i ".config.serviceName = \"${{ env.service_name }}\" | \
