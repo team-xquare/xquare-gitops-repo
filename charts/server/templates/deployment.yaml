@@ -70,6 +70,9 @@ spec:
               readOnly: true
           {{- end }}
           {{- if eq .Values.language "java"}}
+          volumeMounts:
+            - name: datadog-apm-agent
+              mountPath: /datadog/apm/agent
           env:
             - name: DD_AGENT_HOST
               valueFrom:
