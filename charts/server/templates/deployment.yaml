@@ -69,7 +69,6 @@ spec:
               name: {{ .Values.volume.name }}
               readOnly: true
           {{- end }}
-          {{- if eq $fullname "repo-be-prod" }}
           {{- if eq .Values.language "java"}}
           env:
             - name: DD_AGENT_HOST
@@ -77,9 +76,7 @@ spec:
                 fieldRef:
                   fieldPath: status.hostIP
             - name: DD_SERVICE
-              valueFrom:
-                fieldRef:
-                  fieldPath: {{ $fullname }}
+              value: {{ $fullname }}
             - name: DD_ENV
               value: {{ .Values.environment }}
             - name: DD_TRACE_ENABLED
@@ -93,6 +90,7 @@ spec:
             - name: DD_JMXFETCH_ENABLED
               value: "true"
           {{- end }}
+          {{- if eq $fullname "repo-be-prod" }}
           resources:
             requests:
               memory: "600Mi"
