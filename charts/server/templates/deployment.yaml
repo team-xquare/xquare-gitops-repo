@@ -107,7 +107,7 @@ spec:
       {{- if eq .Values.language "java"}}
       initContainers:
         - name: datadog-apm-agent
-          image: busybox
+          image: alpine
           command:
             - wget
             - -O
