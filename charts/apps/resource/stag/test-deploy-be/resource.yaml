@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: hyunsu
   serviceName: test-deploy
-  imageTag: stag-bd736205e0738e754d6a3cda6c12761c6b093672
+  imageTag: stag-9ac15a50553a86a31de4231d8b36237c4f6a7752
   containerPort: 8080
   environment: stag
   type: be
