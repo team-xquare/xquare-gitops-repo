@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: hyunsu
+  serviceName: test-deploy
+  imageTag: stag-222d015610e2e353b89a03ab73e41746262dc266
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: null
+  language: null
