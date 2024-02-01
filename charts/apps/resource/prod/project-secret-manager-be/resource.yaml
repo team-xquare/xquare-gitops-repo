@@ -7,7 +7,7 @@ config:
     secretName: null
   serviceAccount: null
   serviceName: project-secret-manager
-  imageTag: prod-eb412d5e06f59b561ccaaf12e9bf405db71e2986
+  imageTag: prod-e1a547cdb62393b60fe0d9d82ce1f99b1b190d8e
   containerPort: 8080
   environment: prod
   type: be
