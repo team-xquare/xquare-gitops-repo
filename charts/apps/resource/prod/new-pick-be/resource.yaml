@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: pick
+  serviceName: new-pick
+  imageTag: prod-71639fb52b730eb5747475329a2d522c2b79bce9
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  language: null
