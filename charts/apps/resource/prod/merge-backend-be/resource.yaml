@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: jeong
   serviceName: merge-backend
-  imageTag: prod-6dc44b80fc3dce6200560a85ab0cdd3fbda8120b
+  imageTag: prod-bf40db8434749d0d38b6124612ab9602b762a4e3
   containerPort: 8080
   environment: prod
   type: be
-  domain: merge-backend.xquare.app
+  domain: null
   language: java
