@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: jeong
+  serviceName: merge-user
+  imageTag: prod-85bb1c96096a1a64ec430be7b0029d0cb28136fa
+  containerPort: 5173
+  environment: prod
+  type: fe
+  domain: merge-user.xquare.app
+  language: null
