@@ -7,8 +7,8 @@ config:
   replicas: 1
   clubName: jeong
   serviceName: merge-user
-  imageTag: prod-45f8d68bced7322fe1b153056ab1cdf0a2d21061
-  containerPort: 5173
+  imageTag: prod-31ddbcb33e3b3b4277c52c46e109a7b0d23f5583
+  containerPort: 3000
   environment: prod
   type: fe
   domain: merge-user.xquare.app
