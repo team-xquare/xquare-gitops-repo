@@ -7,9 +7,10 @@ config:
     secretName: null
   serviceAccount: null
   serviceName: oauth
-  imageTag: prod-v1.0.1
+  imageTag: prod-v1.0.2
   containerPort: 8080
   environment: prod
   type: be
   domain: null
   prefix: /oauth2
+  language: java
