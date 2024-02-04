@@ -7,9 +7,10 @@ config:
     secretName: null
   serviceAccount: null
   serviceName: user
-  imageTag: prod-v1.2.1
+  imageTag: prod-v1.2.2
   containerPort: 8080
   environment: prod
   type: be
   domain: null
   prefix: /users
+  language: null
