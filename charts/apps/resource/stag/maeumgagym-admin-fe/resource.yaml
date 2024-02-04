@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: maeumgagym
+  serviceName: maeumgagym-admin
+  imageTag: stag-95ba3daf0ee495a06c9b5d4f36590be78aa7ce2c
+  containerPort: 3000
+  environment: stag
+  type: fe
+  domain: maeumgagym-admin-stag.xquare.app
+  language: null
