@@ -7,9 +7,10 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: user
-  imageTag: stag-15bd628655f81a5a6e12c38c92009e9bf6d7155e
+  imageTag: stag-c68ae11f10ca874d902ee6f7f770f7a7c4352e5f
   containerPort: 8080
   environment: stag
   type: be
   domain: null
   prefix: /users
+  language: null
