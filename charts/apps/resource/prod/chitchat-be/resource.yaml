@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: chitchat
+  serviceName: chitchat
+  imageTag: prod-820eb2b5b291fc4cd7fba309d680acd1ca96c948
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: api-chitchat.xquare.app
+  language: null
