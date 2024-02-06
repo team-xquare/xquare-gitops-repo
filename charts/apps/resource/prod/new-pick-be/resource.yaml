@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: pick
   serviceName: new-pick
-  imageTag: prod-10d3adecee170493cf7b1aa3ba2355f392b0ad65
+  imageTag: prod-4e4a030dee86b3bcf5a5c66c0ee759ca475e520d
   containerPort: 8080
   environment: prod
   type: be
-  domain: dms.xquare.app
+  domain: null
   language: null
