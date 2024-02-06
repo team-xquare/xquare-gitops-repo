@@ -1,9 +1,9 @@
 name: Update Config
 on:
   repository_dispatch:
-    types: 
+    types:
       - update_config
-      
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -21,8 +21,8 @@ jobs:
           echo "service_type=${{ github.event.client_payload.service_type }}" >> $GITHUB_ENV
           echo "service_domain=${{ github.event.client_payload.service_domain }}" >> $GITHUB_ENV
           echo "service_port=${{ github.event.client_payload.service_port }}" >> $GITHUB_ENV
-  
-      - name: Pull Commit 
+
+      - name: Pull Commit
         run: git pull
 
       - name: Get club name
@@ -62,13 +62,13 @@ jobs:
                       .config.serviceAccount = null | \
                       .config.replicas = 1 | \
                       .config.clubName = \"${{ env.club_name }}\"" -i $config_file_path
-              
+          
           else
             echo "config file is exists"
           fi
 
           echo "config_file_path=$config_file_path" >> $GITHUB_OUTPUT
-        
+
       - name: Use yq to modify Config file
         working-directory: ${{ github.workspace }}
         run: |
@@ -79,15 +79,11 @@ jobs:
           else
             domain='.config.domain = null'
           fi
+          
           if [ -n "${{ env.service_prefix }}" ] && [ "${{ env.service_prefix }}" != "null" ]; then
             prefix='.config.prefix = "${{ env.service_prefix }}"'
           else
             prefix='.config.prefix = null'
-          fi
-          if [ -n "${{ env.language }}" ] && [ "${{ env.language }}" != "null" ]; then
-            prefix='.config.language = "${{ env.language }}"'
-          else
-            prefix='.config.language = null'
           fi
 
           yq eval -i ".config.serviceName = \"${{ env.service_name }}\" | \
