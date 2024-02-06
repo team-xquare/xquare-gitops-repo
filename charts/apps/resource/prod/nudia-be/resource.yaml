@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: pick
-  serviceName: new-pick
-  imageTag: prod-525811a6f30f8229194ab38277756dd23a8e80f1
+  clubName: nudia
+  serviceName: nudia
+  imageTag: prod-334c4ba71348046a1605cdb237a7c37ecea66821
   containerPort: 8080
   environment: prod
   type: be
   domain: null
-  language: null
+  language: java
