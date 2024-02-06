@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: nudia
+  serviceName: nudia
+  imageTag: prod-390e726ae3fa364b6414e468d2ff1c631d6cf3bd
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  language: java
