@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: nudia
   serviceName: nudia
-  imageTag: prod-98aaa8370663230113637c345127024f74ef037c
+  imageTag: prod-6afa5cffbdd1e6a99737351d8e16a8d5bfed841a
   containerPort: 8080
   environment: prod
   type: be
