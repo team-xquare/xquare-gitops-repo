@@ -12,4 +12,4 @@ config:
   environment: prod
   type: be
   domain: null
-  prefix: dsm-pick
+  prefix: /dsm-pick
