@@ -7,9 +7,10 @@ config:
   replicas: 1
   clubName: chitchat
   serviceName: chitchat
-  imageTag: prod-f09d65612d178ecfe221ca470fb8bdcfc7710c05
+  imageTag: prod-95d860cb2c518642c2255fda420e38cbdd09e7d3
   containerPort: 8080
   environment: prod
   type: be
   domain: api-chitchat.xquare.app
   language: null
+  prefix: null
