@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: chitchat
   serviceName: chitchat
-  imageTag: prod-95d860cb2c518642c2255fda420e38cbdd09e7d3
+  imageTag: prod-8c19f82245ba9f613f5224e6739a560006c6182f
   containerPort: 8080
   environment: prod
   type: be
