@@ -7,9 +7,10 @@ config:
   replicas: 1
   clubName: jeong
   serviceName: merge-user
-  imageTag: prod-55f0b6cdcfc5df585e8fec18afe47bf743cd5d0c
+  imageTag: prod-06357f61feb79565f3ca635ebd8e4680f6efeb78
   containerPort: 3000
   environment: prod
   type: fe
   domain: merge-user.xquare.app
   language: null
+  prefix: null

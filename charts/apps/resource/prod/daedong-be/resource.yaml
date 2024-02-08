@@ -5,12 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: nudia
-  serviceName: nudia
-  imageTag: prod-9dc744af11f251b629778f24757bbfa75cea0092
+  clubName: daedongyeojido
+  serviceName: daedong
+  imageTag: prod-474afc2a5f97e96c1522e9950305239a8541ec4f
   containerPort: 8080
   environment: prod
   type: be
   domain: null
-  language: java
-  prefix: /nudia
+  prefix: /jung-ho
