@@ -69,6 +69,9 @@ spec:
               name: {{ .Values.volume.name }}
               readOnly: true
           {{- end }}
+          envFrom:
+            - secretRef:
+                name: {{ $fullname }}
           {{- if eq .Values.language "java"}}
           volumeMounts:
             - name: datadog-apm-agent
