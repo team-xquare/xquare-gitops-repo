@@ -7,9 +7,10 @@ config:
   replicas: 1
   clubName: maeumgagym
   serviceName: maeumgagym-main
-  imageTag: stag-7ce0eaf6974f575a4a71998860c562374ccb5aac
+  imageTag: stag-4f1caab7fbae08264fb6c172c0236af5ef3f557f
   containerPort: 3000
   environment: stag
   type: fe
   domain: maeumgagym-main-stag.xquare.app
   language: null
+  prefix: null
