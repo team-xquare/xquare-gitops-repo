@@ -27,6 +27,7 @@ spec:
   template:
     metadata:      
       annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
         sidecar.istio.io/proxyCPU: "5m"
         sidecar.istio.io/proxyMemory: "128Mi"
       labels:
