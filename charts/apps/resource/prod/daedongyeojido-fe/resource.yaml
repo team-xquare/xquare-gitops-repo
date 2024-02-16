@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: daedongyeojido
+  serviceName: daedongyeojido
+  imageTag: prod-8ba10a68df4d1c6c638a81dd0d8f0c359e0cb60d
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: daedongyeojido.xquare.app
+  prefix: null
