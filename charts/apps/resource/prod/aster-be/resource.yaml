@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: aster
+  serviceName: aster
+  imageTag: prod-90ef7cb9a8b4b25350cfd7351b7671ffb365327c
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /aster
