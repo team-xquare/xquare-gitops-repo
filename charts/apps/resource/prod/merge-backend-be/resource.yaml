@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: jeong
   serviceName: merge-backend
-  imageTag: prod-5ef13b5f33a21b0607c08d1cd86b018955f342a0
+  imageTag: prod-f70b6bfc930c1636c7cb33fa3195b8569811779c
   containerPort: 8080
   environment: prod
   type: be
