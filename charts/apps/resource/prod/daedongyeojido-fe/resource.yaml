@@ -1,15 +1,15 @@
 config:
-  clubName: repo
   volume:
     name: null
     mountPath: null
     secretName: null
   serviceAccount: null
   replicas: 1
-  serviceName: repo-user
-  imageTag: prod-8ef12fca9b724c38c10aa8e08f93967423114a55
+  clubName: daedongyeojido
+  serviceName: daedongyeojido
+  imageTag: prod-e2fa60a1bc60dedc32e3c511461a621712aec83c
   containerPort: 3000
   environment: prod
   type: fe
-  domain: user.dsm-repo.com
+  domain: daedongyeojido.xquare.app
   prefix: null

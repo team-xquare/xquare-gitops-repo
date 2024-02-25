@@ -7,7 +7,7 @@ config:
   serviceAccount: null
   replicas: 1
   serviceName: repo-admin
-  imageTag: prod-54c0cd2893a91e511e4df5a7c4028145611993e3
+  imageTag: prod-8ef12fca9b724c38c10aa8e08f93967423114a55
   containerPort: 3000
   environment: prod
   type: fe

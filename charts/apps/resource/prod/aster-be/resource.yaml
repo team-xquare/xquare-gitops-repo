@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: pick
-  serviceName: new-pick
-  imageTag: prod-39a93c15d98ef12432d8f415c5be5fd61982a1b4
+  clubName: aster
+  serviceName: aster
+  imageTag: prod-d1d44ea0404e08e9503d64f30d11d4f1cd566931
   containerPort: 8080
   environment: prod
   type: be
   domain: null
-  prefix: /dsm-pick
+  prefix: /aster
