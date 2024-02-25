@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: pick
-  serviceName: new-pick
-  imageTag: prod-39a93c15d98ef12432d8f415c5be5fd61982a1b4
+  clubName: daedongyeojido
+  serviceName: daedong
+  imageTag: prod-9c20f867c97912c3db9aee2988d3c6a2a5355366
   containerPort: 8080
   environment: prod
   type: be
   domain: null
-  prefix: /dsm-pick
+  prefix: /jung-ho
