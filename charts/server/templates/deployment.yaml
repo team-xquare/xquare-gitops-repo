@@ -14,7 +14,7 @@ metadata:
 spec:
   revisionHistoryLimit: 0
   {{- if .Values.replicas }}
-  replicas: {{ .Values.replicas }}
+  replicas: 2
   {{- end }}
   strategy:
     rollingUpdate:
