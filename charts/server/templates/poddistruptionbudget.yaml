@@ -3,6 +3,7 @@ apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
   name: {{ $fullname }}
+  labels:
 spec:
   minAvailable: 1
   selector:
