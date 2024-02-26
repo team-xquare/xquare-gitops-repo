@@ -13,9 +13,7 @@ metadata:
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
   revisionHistoryLimit: 0
-  {{- if .Values.replicas }}
-  replicas: {{ .Values.replicas }}
-  {{- end }}
+  replicas: 1
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -80,6 +78,9 @@ spec:
             requests:
               memory: "300Mi"
               cpu: "5m"
+            limits:
+              memory: "600Mi"
+              cpu: "60m"
           {{- end }}
           readinessProbe:
             tcpSocket:
