@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: jeong
   serviceName: merge-user
-  imageTag: prod-8da96f8f52919a3e30a6230e724aa0a690ef7577
+  imageTag: prod-09e7e492d13acda1f6420a7e00125f4ec8a716ce
   containerPort: 3000
   environment: prod
   type: fe
