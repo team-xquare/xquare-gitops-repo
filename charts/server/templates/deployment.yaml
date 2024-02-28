@@ -37,7 +37,7 @@ spec:
     spec:
       {{- if eq $fullname "project-secret-manager-be-prod" }}
       priorityClassName: system-cluster-critical
-      {{- else }}
+      {{- end }}
       nodeSelector:
         Karpenter: enabled
       tolerations:
