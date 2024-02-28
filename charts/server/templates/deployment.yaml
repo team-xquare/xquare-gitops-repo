@@ -35,6 +35,9 @@ spec:
         project: {{ .Values.name }}
         type: {{ .Values.type }}
     spec:
+      {{- if eq $fullname "project-secret-manager-be-prod" }}
+      priorityClassName: system-cluster-critical
+      {{- else }}
       nodeSelector:
         Karpenter: enabled
       tolerations:
