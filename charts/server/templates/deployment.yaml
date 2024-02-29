@@ -13,7 +13,7 @@ metadata:
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
   revisionHistoryLimit: 0
-  replicas: 1
+  replicas: 2
   strategy:
     rollingUpdate:
       maxSurge: 1
