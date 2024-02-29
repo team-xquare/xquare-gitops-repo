@@ -41,7 +41,7 @@ spec:
       nodeSelector:
         Karpenter: enabled
       tolerations:
-      - effect: "PreferNoSchedule"
+      - effect: "NoSchedule"
         key: xquare/server
         operator: "Equal"
         value: "true"
