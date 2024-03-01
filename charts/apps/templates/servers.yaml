@@ -19,6 +19,11 @@ spec:
         environment: '{{`{{ config.environment }}`}}'
         layer: server
     spec:
+      ignoreDifferences:
+        - group: apps
+          kind: Deployment
+          jsonPointers:
+            - /spec/replicas
       project: {{ .Values.spec.project }}
       destination:
         server: {{ .Values.spec.destination.server }}
