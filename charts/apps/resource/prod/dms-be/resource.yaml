@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: rma
   serviceName: dms
-  imageTag: prod-b5d29509e88ed0a3444cfc7a983d79c0c9d42af8
+  imageTag: prod-v1.1.0
   containerPort: 8080
   environment: prod
   type: be
-  domain: api.aliens-dms.com
+  domain: dms.xquare.app
   prefix: null
