@@ -7,10 +7,10 @@ config:
   replicas: 1
   clubName: rma
   serviceName: dms
-  imageTag: stag-bbc2f0fe5b5fa40a489a0fbde8da23ccf366bc63
+  imageTag: stag-56a6101cd01af025b0cb4099fb9a995528e223fa
   containerPort: 8080
   environment: stag
   type: be
-  domain: dev-dms.xquare.app
+  domain: dev-api.ddms-dsm.com
   prefix: null
   language: java
