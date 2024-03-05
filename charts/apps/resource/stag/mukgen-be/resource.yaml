@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: pick
-  serviceName: new-pick
-  imageTag: prod-fc10ed180864adb95ce385393637a2944443860c
+  clubName: info
+  serviceName: mukgen
+  imageTag: stag-2626755823c27c97ae294943dfa8d1b897fb432d
   containerPort: 8080
-  environment: prod
+  environment: stag
   type: be
   domain: null
-  prefix: /dsm-pick
+  prefix: /mukgen
