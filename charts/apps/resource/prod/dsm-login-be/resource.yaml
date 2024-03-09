@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: dsm-login
+  serviceName: dsm-login
+  imageTag: prod-e8825fd61adaf30b6923463211ad3f980f48c2bd
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /dsm-login
