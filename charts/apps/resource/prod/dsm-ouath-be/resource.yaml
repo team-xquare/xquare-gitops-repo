@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: dam-ouath
   serviceName: dsm-ouath
-  imageTag: prod-eaca11ddd4b853c1c8793f99ada11a06319e0473
+  imageTag: prod-60a60fe9afe9a4ed7b67f610bd38d29276a1d32c
   containerPort: 8080
   environment: prod
   type: be
