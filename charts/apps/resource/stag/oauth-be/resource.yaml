@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: xqaure
   serviceName: oauth
-  imageTag: stag-c6c4491f35a6a3c6f5022e601bbcb90e3ee98ef5
+  imageTag: stag-d11208e82eb498b2ec0fa9a290c31a750bc5c4cf
   containerPort: 8080
   environment: stag
   type: be
