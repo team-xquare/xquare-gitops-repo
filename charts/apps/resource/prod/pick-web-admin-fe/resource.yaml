@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-web-admin
-  imageTag: prod-47613545ecda7d1990a052f6efc1ed98038e3aac
+  imageTag: prod-c1d89896114da0c3a80740f54bfe504a85ce3fff
   containerPort: 3000
   environment: prod
   type: fe
-  domain: null
-  prefix: /pick-web-admin
+  domain: pick-admin.xquare.app
+  prefix: null
