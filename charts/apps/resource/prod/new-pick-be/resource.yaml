@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: pick
   serviceName: new-pick
-  imageTag: prod-cc3179011cbea8e0a8d77f18799beea2e3bc365a
+  imageTag: prod-f417095df7b324683bec1fd3c24f70e0bb19c11c
   containerPort: 8080
   environment: prod
   type: be
