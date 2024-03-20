@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: dsm-login
   serviceName: dsm-login
-  imageTag: prod-c76b730b8afaba17f0a1f719bb6cf8f1b32ebbba
+  imageTag: prod-5f355494da6e84b2eb33f561ab47db54f6c7376c
   containerPort: 8080
   environment: prod
   type: be
