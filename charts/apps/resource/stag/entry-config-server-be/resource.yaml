@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: entry
+  serviceName: entry-config-server
+  imageTag: stag-148c357f278e2344550a908b3920f34cb86abc45
+  containerPort: 8888
+  environment: stag
+  type: be
+  domain: null
+  prefix: /equus-config
