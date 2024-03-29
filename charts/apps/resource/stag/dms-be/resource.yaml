@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: rma
+  serviceName: dms
+  imageTag: stag-65dba22e20a03433c0ae52e506d80aec1cc81b9e
+  containerPort: 8080
+  environment: stag
+  type: be
+  domain: dev-api.dms-dsm.com
+  prefix: null
