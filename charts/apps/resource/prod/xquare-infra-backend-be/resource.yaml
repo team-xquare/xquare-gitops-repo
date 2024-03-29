@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: xquare-infra-backend
+  imageTag: prod-e6d767a7f75e95939e6808755399e4496d9e9b0f
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /xquare-infra
