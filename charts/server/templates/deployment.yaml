@@ -13,7 +13,11 @@ metadata:
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
   revisionHistoryLimit: 0
+  {{- if eq $fullname "dms-be-prod" }}
+  replicas: 3
+  {{- else }}
   replicas: 1
+  {{- end }}
   strategy:
     rollingUpdate:
       maxSurge: 1
