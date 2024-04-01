@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: team-jeong-ho-kim
   serviceName: daedongyeojido-fe
-  imageTag: prod-dd3f2d2ae9175bf020a9a557f7f06967db3ea586
+  imageTag: prod-cad9380f77a81ed872cafb4499b43c9e5b75de69
   containerPort: 3000
   environment: prod
   type: fe
-  domain: Daedongyeojido_FE.xquare.app
+  domain: daedongyeojido-fe.xquare.app
   prefix: null
