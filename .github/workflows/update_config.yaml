@@ -33,7 +33,7 @@ jobs:
           ?deploy_name=${{ env.service_name }}&
           environment=${{ env.environment }}&
           domain=${{ env.domain }}"
-          response=$(curl -s -o /dev/null -w "%{http_code}" $url)
+          response=$(curl -x POST -s -o /dev/null -w "%{http_code}" $url)
 
       - name: Get config file path
         id: config-file
