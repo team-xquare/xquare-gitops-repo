@@ -25,25 +25,14 @@ jobs:
       - name: Pull Commit
         run: git pull
 
-      - name: Get club name
-        id: get-club-name
+      - name: Sync Container Status to infra server
         shell: bash
         run: |
-          url="https://prod-server.xquare.app/project-secret-manager/club\
-          ?project-name=${{ env.service_name }}"
-          response=$(curl -X GET $url)
-          echo "club_name=$response" >> $GITHUB_ENV
-
-      - name: Get Language
-        id: get-language
-        shell: bash
-        run: |
-          url="https://prod-server.xquare.app/project-secret-manager/language?project-name=${{ env.service_name }}"
+          url="https://prod-server.xquare.app/xquare-infra/container/sync\
+          ?deploy_name=${{ env.service_name }}&
+          environment=${{ env.environment }}&
+          domain=${{ env.domain }}
           response=$(curl -s -o /dev/null -w "%{http_code}" $url)
-          if [ $response != "404" ]; then
-            project_language=$(curl -s $url)
-            echo "language=$project_language" >> $GITHUB_ENV
-          fi
 
       - name: Get config file path
         id: config-file
