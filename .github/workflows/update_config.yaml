@@ -31,7 +31,7 @@ jobs:
           url="https://prod-server.xquare.app/xquare-infra/container/sync\
           ?deploy_name=${{ env.service_name }}&
           environment=${{ env.environment }}&
-          domain=${{ env.domain }}
+          domain=${{ env.domain }}"
           response=$(curl -s -o /dev/null -w "%{http_code}" $url)
 
       - name: Get config file path
