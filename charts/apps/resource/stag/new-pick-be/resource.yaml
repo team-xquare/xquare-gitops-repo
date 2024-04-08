@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: pick
   serviceName: new-pick
-  imageTag: stag-bfd9d03369d9a417c96531ef7b47087677c47685
+  imageTag: stag-594f494a68ea37f5fffe6b2d2481ddfa96adbcc6
   containerPort: 8080
   environment: stag
   type: be
-  domain: pick-stag.xquare.app
+  domain: null
   prefix: /dsm-pick
