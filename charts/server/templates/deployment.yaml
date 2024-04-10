@@ -14,7 +14,7 @@ metadata:
 spec:
   revisionHistoryLimit: 0
   {{- if eq $fullname "dms-be-prod" }}
-  replicas: 3
+  replicas: 2
   {{- else }}
   replicas: 1
   {{- end }}
