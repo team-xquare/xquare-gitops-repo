@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: team-jeong-ho-kim
   serviceName: daedongyeojido-fe
-  imageTag: prod-27ccee9a36f980a1a5dbad0c7865f15236f93b6f
+  imageTag: prod-b56fc43dec4a9cec7df430b2a3cb4454c2385840
   containerPort: 3000
   environment: prod
   type: fe
