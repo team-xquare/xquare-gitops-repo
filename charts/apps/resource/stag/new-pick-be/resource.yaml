@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: rma
-  serviceName: dms
-  imageTag: stag-c0a86b71a89663f02a83e335a9d0dabceb9bc245
+  clubName: ""
+  serviceName: new-pick
+  imageTag: stag-8941afc6bf10c9aa5abc5cd29bb2de48bccdc932
   containerPort: 8080
   environment: stag
   type: be
-  domain: dev-api.dms-dsm.com
-  prefix: null
+  domain: null
+  prefix: /dsm-pick
