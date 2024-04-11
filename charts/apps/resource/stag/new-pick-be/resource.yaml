@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: ""
+  clubName: pick
   serviceName: new-pick
   imageTag: stag-90f5db5b306d06db6161368ace459c055dc87a18
   containerPort: 8080
