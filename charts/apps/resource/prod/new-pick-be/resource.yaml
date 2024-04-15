@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: ""
+  serviceName: new-pick
+  imageTag: prod-74053daddc81dd69ce8adf8ee30ef3d4c29946c0
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /dsm-pick
