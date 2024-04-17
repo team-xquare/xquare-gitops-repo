@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: ""
+  clubName: pick
   serviceName: pick-web-teacher
   imageTag: prod-6184fb5b5ada68ff7218b895aa93a518e1514d8b
   containerPort: 3000
