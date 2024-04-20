@@ -7,8 +7,8 @@ config:
   replicas: 1
   clubName: appjam
   serviceName: appjam-singtory
-  imageTag: prod-da032f74535b54eacf8c686985078a4f5951306a
-  containerPort: null
+  imageTag: prod-7650c7d174242c8a2df2d2b1069e1e8615d847f0
+  containerPort: 8080
   environment: prod
   type: be
   domain: singtory-api.xquare.app
