@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: appjam
   serviceName: appjam
-  imageTag: prod-2155ca13e58676b5be7609a5f3ce72dcf7c10c0e
+  imageTag: prod-76e04fd0f498d87c99953d1205b187746f7816af
   containerPort: 8080
   environment: prod
   type: be
