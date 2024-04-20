@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: ""
+  serviceName: appjam-singtory
+  imageTag: prod-da032f74535b54eacf8c686985078a4f5951306a
+  containerPort: null
+  environment: prod
+  type: be
+  domain: singtory-api.xquare.app
+  prefix: /singtory-api
