@@ -8,7 +8,7 @@ config:
   clubName: appjam
   serviceName: suno-api
   imageTag: prod-46a2526f2053c48dd6e867b94829bae038ce5433
-  containerPort: null
+  containerPort: 3000
   environment: prod
   type: be
   domain: suno-api.xquare.app
