@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: ""
+  clubName: appjam
   serviceName: appjam
   imageTag: prod-fb9acdc502421557d530c862d63daaf8749bf72b
   containerPort: 8080
