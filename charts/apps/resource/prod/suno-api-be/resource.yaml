@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: ""
+  clubName: appjam
   serviceName: suno-api
   imageTag: prod-8f4175b3d45305de7a0b68400fac5219f44ffec7
   containerPort: 3000
