@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: ""
+  serviceName: scul
+  imageTag: prod-829ae6b9dbdb2f37de936c37cce6edc6f84044c6
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /scul
