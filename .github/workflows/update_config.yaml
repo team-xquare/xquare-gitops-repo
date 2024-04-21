@@ -25,6 +25,14 @@ jobs:
       - name: Pull Commit
         run: git pull
 
+      - name: Get club name
+        id: get-club-name
+        run: |
+          url="https://prod-server.xquare.app/project-secret-manager/club\
+          ?project-name=${{ env.service_name }}"
+          response=$(curl -X GET $url)
+          echo "club_name=$response" >> $GITHUB_ENV
+
       - name: Sync Container Status to infra server
         continue-on-error: true
         shell: bash
