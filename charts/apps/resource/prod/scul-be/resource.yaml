@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: jabis
   serviceName: scul
-  imageTag: prod-308859a7a2836825439bddb7c3829a2e8d58d9d0
+  imageTag: prod-f98dfc5cd7ff2946dfc16ed9949325d403b99047
   containerPort: 8080
   environment: prod
   type: be
