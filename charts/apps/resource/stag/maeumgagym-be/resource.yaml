@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: info
   serviceName: maeumgagym
-  imageTag: stag-11ec0886f0c62f82d6a5ae4cfe3517e4f122f6b0
+  imageTag: stag-2191851af7accd1bc643a9d09333f6446d3dfdb3
   containerPort: 8080
   environment: stag
   type: be
