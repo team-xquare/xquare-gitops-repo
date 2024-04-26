@@ -13,11 +13,6 @@ metadata:
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
   revisionHistoryLimit: 0
-  {{- if eq $fullname "dms-be-prod" }}
-  replicas: 2
-  {{- else }}
-  replicas: 1
-  {{- end }}
   strategy:
     rollingUpdate:
       maxSurge: 1
@@ -77,8 +72,10 @@ spec:
                 name: {{ $fullname }}
           resources:
             requests:
-              memory: "300Mi"
+              memory: "1500Mi"
               cpu: "15m"
+            limits:
+              memory: "1500Mi"
           readinessProbe:
             tcpSocket:
               port: {{ .Values.containerPort }}
