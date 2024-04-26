@@ -72,10 +72,10 @@ spec:
                 name: {{ $fullname }}
           resources:
             requests:
-              memory: "1500Mi"
+              memory: "2000Mi"
               cpu: "15m"
             limits:
-              memory: "1500Mi"
+              memory: "2000Mi"
           readinessProbe:
             tcpSocket:
               port: {{ .Values.containerPort }}
