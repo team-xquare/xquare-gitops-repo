@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: pick
+  serviceName: pick-core
+  imageTag: prod-2cf7501ca2eb4e2e62136523a06d8c3333af17a1
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /pick-core
