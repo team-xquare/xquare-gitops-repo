@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: team-xquare
+  clubName: xquare
   serviceName: xquare-infra
   imageTag: prod-e158659eb0a466fc4824bfe8aee5b68d0030c8b3
   containerPort: 3000
