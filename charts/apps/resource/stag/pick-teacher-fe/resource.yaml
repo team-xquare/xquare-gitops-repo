@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: pick
+  serviceName: pick-teacher
+  imageTag: stag-ed4020fb4cf8466a86d4ffc6f3d0a94dc6ce06ef
+  containerPort: 3000
+  environment: stag
+  type: fe
+  domain: pick-teacher-stag.xquare.app
+  prefix: null
