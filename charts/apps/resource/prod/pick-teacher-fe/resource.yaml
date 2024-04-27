@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: pick
+  serviceName: pick-teacher
+  imageTag: prod-2e18641a0172ecad419437e1b28e5d3320395d65
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: pick-teacher.xquare.app
+  prefix: null
