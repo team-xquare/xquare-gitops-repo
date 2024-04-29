@@ -70,12 +70,20 @@ spec:
           envFrom:
             - secretRef:
                 name: {{ $fullname }}
+          {{- if eq .Values.type "be" }}
           resources:
             requests:
-              memory: "1000Mi"
+              memory: "2000Mi"
               cpu: "15m"
             limits:
               memory: "2000Mi"
+          {{ end }}
+          {{- if eq .Values.type "fe" }}
+          resources:
+            requests:
+              memory: "500Mi"
+              cpu: "15m"
+          {{ end }}
           readinessProbe:
             tcpSocket:
               port: {{ .Values.containerPort }}
