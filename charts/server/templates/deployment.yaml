@@ -12,6 +12,9 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
+  {{- if eq .Values.type "fe" }}
+  replicas: 1
+  {{ end }}
   revisionHistoryLimit: 0
   strategy:
     rollingUpdate:
