@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: jobis
   serviceName: scul
-  imageTag: prod-051cc46a2fb0d33dfabd6de28f77046bf7a31885
+  imageTag: prod-a2d061f52d42297df153267e9a33fee8269cc916
   containerPort: 8080
   environment: prod
   type: be
