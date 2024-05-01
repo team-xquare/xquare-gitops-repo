@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: nonamed
+  serviceName: kht
+  imageTag: prod-d9a834e3c288e54106b3c44d55f21ec8a264ba8b
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /kht
