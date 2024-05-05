@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: pick
-  serviceName: pick-core
-  imageTag: stag-e4591fd21b1d248d7fda477a0c99ead5237aee66
+  clubName: nonamed
+  serviceName: kht
+  imageTag: prod-bc3146c417fbfe427fa3ce6d6949fd96073bf505
   containerPort: 8080
-  environment: stag
+  environment: prod
   type: be
   domain: null
-  prefix: /dsm-pick
+  prefix: /kht
