@@ -75,7 +75,7 @@ spec:
                 name: {{ $fullname }}
           resources:
             requests:
-              memory: "800Mi"
+              memory: "500Mi"
               cpu: "20m"
           readinessProbe:
             tcpSocket:
