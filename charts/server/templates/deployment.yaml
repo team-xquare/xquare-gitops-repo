@@ -12,9 +12,7 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
-  {{- if eq .Values.type "fe" }}
-  replicas: 1
-  {{ end }}
+  replicas: 2
   revisionHistoryLimit: 0
   strategy:
     rollingUpdate:
@@ -48,12 +46,12 @@ spec:
         operator: "Equal"
         value: "true"
       topologySpreadConstraints:
-      - maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: DoNotSchedule
-        labelSelector:
-          matchLabels:
-            app: {{ $fullname }}
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: DoNotSchedule
+          labelSelector:
+            matchLabels:
+              app: {{ $fullname }}
       {{- if ne .Values.serviceAccount "<nil>" }}
       serviceAccountName: {{ .Values.serviceAccount }}
       {{- end }}
