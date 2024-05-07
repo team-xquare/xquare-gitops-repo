@@ -12,9 +12,7 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
-  {{- if eq .Values.type "fe" }}
-  replicas: 1
-  {{ end }}
+  replicas: 2
   revisionHistoryLimit: 0
   strategy:
     rollingUpdate:
@@ -37,6 +35,16 @@ spec:
         project: {{ .Values.name }}
         type: {{ .Values.type }}
     spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - {{ $fullname }}
+              topologyKey: "kubernetes.io/hostname"
       {{- if eq $fullname "project-secret-manager-be-prod" }}
       priorityClassName: system-cluster-critical
       {{- end }}
