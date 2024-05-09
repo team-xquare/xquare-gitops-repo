@@ -12,7 +12,7 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 0
   strategy:
     rollingUpdate:
