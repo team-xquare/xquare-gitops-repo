@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: jobis
+  serviceName: scul-main
+  imageTag: prod-fceb7b17c8e0873df343a1efa560bc486cfcaa07
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: scul.xquare.app
+  prefix: null
