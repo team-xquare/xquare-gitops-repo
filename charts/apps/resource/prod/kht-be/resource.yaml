@@ -7,8 +7,8 @@ config:
   replicas: 1
   clubName: nonamed
   serviceName: kht
-  imageTag: prod-17700275908637ebe1d9cacba60673dadb2e0095
-  containerPort: 8080
+  imageTag: prod-d5a8393cb26ed22eae5f84a18dd8eb5d58f7e43e
+  containerPort: 8089
   environment: prod
   type: be
   domain: kht.xquare.app
