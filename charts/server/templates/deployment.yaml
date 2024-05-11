@@ -8,6 +8,7 @@ metadata:
     app: {{ $fullname }}
     project: {{ .Values.name }}
     type: {{ .Values.type }}
+    test: test
     environment: {{ .Values.environment }}
     tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ $fullname }}
