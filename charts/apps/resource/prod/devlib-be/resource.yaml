@@ -7,9 +7,9 @@ config:
   replicas: 1
   clubName: "xquare"
   serviceName: devlib
-  imageTag: prod-832c65301c04f651c6707376593ff966b3f499fc
+  imageTag: prod-744043ea790545c767e6768005fa3bb489bdc4a5
   containerPort: 8080
   environment: prod
   type: be
-  domain: devlibdtdn.xquare.app
+  domain: devlibdtdzzzn.xquare.app
   prefix: null
