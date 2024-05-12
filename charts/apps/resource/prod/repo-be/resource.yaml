@@ -7,7 +7,7 @@ config:
   serviceAccount: null
   replicas: 1
   serviceName: repo
-  imageTag: prod-2419ff5bfdfa09ba7e7eb6c6a6418e4426c53bd6
+  imageTag: prod-d3dc355a6eab0d208312a34d5f19f6268c0ff39f
   containerPort: 8000
   environment: prod
   type: be
