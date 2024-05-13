@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: nonamed
   serviceName: kht
-  imageTag: prod-5fd6433be211e2babb296a472fd35c4cc74dacb1
+  imageTag: prod-165b1ec50eb30f387ab2f8727f35afe8e2cf4968
   containerPort: 8089
   environment: prod
   type: be
