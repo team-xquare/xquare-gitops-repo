@@ -79,6 +79,8 @@ spec:
             requests:
               memory: "700Mi"
               cpu: "20m"
+            resource:
+              memory: "2000Mi"
           readinessProbe:
             tcpSocket:
               port: {{ .Values.containerPort }}
