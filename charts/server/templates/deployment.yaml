@@ -79,7 +79,7 @@ spec:
             requests:
               memory: "700Mi"
               cpu: "20m"
-            limit:
+            limits:
               memory: "2000Mi"
           readinessProbe:
             tcpSocket:
