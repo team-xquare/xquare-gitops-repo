@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: rma
+  clubName: dms
   serviceName: dms
   imageTag: prod-v1.3.0
   containerPort: 8080
