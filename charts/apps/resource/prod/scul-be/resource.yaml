@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: jobis
+  clubName: scul
   serviceName: scul
   imageTag: prod-86ae55cd927177c078a92a73094d66bf62eb70f7
   containerPort: 8080
