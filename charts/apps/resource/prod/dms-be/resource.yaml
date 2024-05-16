@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: dms
+  serviceName: dms
+  imageTag: prod-v1.2.11
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: api.dms-dsm.com
+  prefix: null
