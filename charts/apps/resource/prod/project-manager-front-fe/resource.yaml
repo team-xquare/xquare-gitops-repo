@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: ""
+  serviceName: project-manager-front
+  imageTag: prod-75d896d0c22a137da1ac7995e6fc21fe0233cd52
+  containerPort: 3000
+  environment: prod
+  type: fe
+  domain: project.xquare.app
+  prefix: null
