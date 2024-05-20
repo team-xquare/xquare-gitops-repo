@@ -54,6 +54,7 @@ spec:
         - accept-encoding
         - Refresh-Token
         - X-Not-Using-Xquare-Auth
+        - Oauth-Token
         maxAge: "24h"
     {{- end }}
     {{- end }}
@@ -108,6 +109,7 @@ spec:
         - accept-encoding
         - Refresh-Token
         - X-Not-Using-Xquare-Auth
+        - Oauth-Token
         maxAge: "24h"
 {{- end }}
 {{- end }}
