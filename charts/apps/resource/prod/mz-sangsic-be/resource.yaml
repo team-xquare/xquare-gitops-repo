@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: mz-sangsic
   serviceName: mz-sangsic
-  imageTag: prod-55b62578c9816cdf043a766820cd9db7b08e6d6a
+  imageTag: prod-30d6d0536f7b9a78d8f1a906e55cda76eeef7724
   containerPort: 8080
   environment: prod
   type: be
