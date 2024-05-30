@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: dms
   serviceName: dms
-  imageTag: stag-7e5e689dc7c2cc489486367e73f17ad05cdf71f0
+  imageTag: stag-61f99a53b6c01b67f126d4ab58df1eb198b67835
   containerPort: 8080
   environment: stag
   type: be
