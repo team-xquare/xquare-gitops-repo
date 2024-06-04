@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: propofol
+  serviceName: propofol
+  imageTag: prod-bd6e8d85448b3e62860b44f0878998d7f802e80b
+  containerPort: 80
+  environment: prod
+  type: be
+  domain: propofol.xquare.app
+  prefix: null
