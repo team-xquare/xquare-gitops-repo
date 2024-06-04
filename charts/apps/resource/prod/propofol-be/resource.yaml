@@ -7,8 +7,8 @@ config:
   replicas: 1
   clubName: propofol
   serviceName: propofol
-  imageTag: prod-4214f7df40817853d0dbd053df18ae7aaf4d97b4
-  containerPort: 80
+  imageTag: prod-6324a1cbc9007e07a2f9ec14aace5bc66c8a40cd
+  containerPort: 8080
   environment: prod
   type: be
   domain: propofol.xquare.app
