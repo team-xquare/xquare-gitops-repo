@@ -55,6 +55,7 @@ spec:
         - Refresh-Token
         - X-Not-Using-Xquare-Auth
         - Oauth-Token
+        - oa-token
         maxAge: "24h"
     {{- end }}
     {{- end }}
@@ -110,6 +111,7 @@ spec:
         - Refresh-Token
         - X-Not-Using-Xquare-Auth
         - Oauth-Token
+        - oa-token
         maxAge: "24h"
 {{- end }}
 {{- end }}
