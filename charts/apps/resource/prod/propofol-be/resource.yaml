@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: propofol
   serviceName: propofol
-  imageTag: prod-0143a2f5855faec521f4a50ae63418b1468f15c7
+  imageTag: prod-aaff75baf51b7a21e0e851541771a96b9e29ffb3
   containerPort: 8080
   environment: prod
   type: be
