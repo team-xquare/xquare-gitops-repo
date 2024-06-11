@@ -77,7 +77,7 @@ spec:
               name: {{ $fullname }}
           resources:
             requests:
-              memory: "700Mi"
+              memory: "2000Mi"
               cpu: "20m"
             limits:
               memory: "2000Mi"
