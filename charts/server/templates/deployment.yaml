@@ -79,6 +79,7 @@ spec:
             requests:
               memory: "2000Mi"
               cpu: "20m"
+              ephemeral-storage: "20Mi"
             limits:
               memory: "2000Mi"
           readinessProbe:
