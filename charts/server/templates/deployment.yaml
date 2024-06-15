@@ -29,7 +29,6 @@ spec:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
         sidecar.istio.io/proxyCPU: "5m"
         sidecar.istio.io/proxyMemory: "128Mi"
-        sidecar.opentelemetry.io/inject: "true"
         {{- if eq .Values.language "java"}}
         instrumentation.opentelemetry.io/inject-java: "true"
         {{- end }}
