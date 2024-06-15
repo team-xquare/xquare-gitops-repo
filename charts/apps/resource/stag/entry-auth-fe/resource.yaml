@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: pick
-  serviceName: pick-teacher
-  imageTag: stag-b3780f9f70a08822aff35c56c8d9460d3cad0ad8
+  clubName: entry
+  serviceName: entry-auth
+  imageTag: stag-b72ab95d9a3989179cc95204a0aeb8cd6fc7674b
   containerPort: 3000
   environment: stag
   type: fe
-  domain: pick-teacher-stag.xquare.app
+  domain: entry-auth-stag.xquare.app
   prefix: null
