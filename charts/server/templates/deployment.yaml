@@ -30,7 +30,7 @@ spec:
         sidecar.istio.io/proxyCPU: "5m"
         sidecar.istio.io/proxyMemory: "128Mi"
         sidecar.opentelemetry.io/inject: "true"
-        {{- if and .Values.language (ne .Values.language "config.language") }}
+        {{- if .Values.language }}
         instrumentation.opentelemetry.io/inject-{{ .Values.language }}: "true"
         {{- end }}
       labels:
