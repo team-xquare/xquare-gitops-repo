@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: xquare
-  serviceName: xquare-infra-fe
-  imageTag: prod-dab58b17e76d54b389cc3f80de0b2277a6708d33
+  clubName: entry
+  serviceName: entry-auth
+  imageTag: prod-ba37e6448cdf4024fd2eb5ed997aa694d3418599
   containerPort: 3000
   environment: prod
   type: fe
-  domain: xquare-infra.xquare.app
+  domain: entry-auth.xquare.app
   prefix: null

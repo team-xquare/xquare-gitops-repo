@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: "xquare"
-  serviceName: devlib
-  imageTag: prod-7c17895f890c142d6269e72ea245ed84197dae4c
+  clubName: propofol
+  serviceName: propofol
+  imageTag: prod-a3dfd34bcd55564da3cf0dfdf2d047298401076c
   containerPort: 8080
   environment: prod
   type: be
-  domain: devlib.xquare.app
+  domain: propofol.xquare.app
   prefix: null

@@ -5,11 +5,11 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: "xquare"
-  serviceName: devlib
-  imageTag: prod-7c17895f890c142d6269e72ea245ed84197dae4c
+  clubName: info
+  serviceName: maeumgagym
+  imageTag: prod-8b7eb22ec03c7bda6bc925a14abb68756b9eb9d8
   containerPort: 8080
   environment: prod
   type: be
-  domain: devlib.xquare.app
-  prefix: null
+  domain: null
+  prefix: /maeumgagym
