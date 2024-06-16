@@ -1,0 +1,15 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: ""
+  serviceName: daedong
+  imageTag: prod-134b281f7b77fa09ab7ff27b545124543c768b2a
+  containerPort: 8080
+  environment: prod
+  type: be
+  domain: null
+  prefix: /jung-ho
