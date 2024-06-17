@@ -13,3 +13,4 @@ config:
   type: be
   domain: dev-api.dms-dsm.com
   prefix: null
+  language: java
