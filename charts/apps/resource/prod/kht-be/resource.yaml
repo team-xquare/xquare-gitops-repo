@@ -13,3 +13,4 @@ config:
   type: be
   domain: kht.xquare.app
   prefix: null
+  language: java
