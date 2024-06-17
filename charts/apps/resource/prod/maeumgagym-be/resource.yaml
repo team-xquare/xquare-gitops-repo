@@ -13,3 +13,4 @@ config:
   type: be
   domain: null
   prefix: /maeumgagym
+  language: java
