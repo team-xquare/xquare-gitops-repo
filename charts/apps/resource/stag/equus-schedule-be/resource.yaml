@@ -1,0 +1,18 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: entry
+  serviceName: equus-schedule
+  imageTag: stag-92c0d3f2f0e3420a0670dfdceb9b75f0a141d003
+  containerPort: 8080
+  environment: stag
+  type: be
+  language: ""
+  critical_service: "true"
+  private_service: "true"
+  domain: null
+  prefix: /equus-schedule
