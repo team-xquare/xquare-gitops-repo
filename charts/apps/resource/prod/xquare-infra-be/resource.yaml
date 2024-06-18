@@ -7,12 +7,12 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: xquare-infra
-  imageTag: prod-7b582b66312abeca0ad536d06a04e93dc3cab25f
+  imageTag: prod-6138a5dc2ade88c3d7d52543f479bbbaa44ac27e
   containerPort: 8080
   environment: prod
   type: be
   domain: null
   prefix: /xquare-infra
   language: java
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
