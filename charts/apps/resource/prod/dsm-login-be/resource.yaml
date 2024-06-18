@@ -13,3 +13,5 @@ config:
   type: be
   domain: null
   prefix: /dsm-login
+  private_service: false
+  critical_service: false

@@ -13,3 +13,5 @@ config:
   type: fe
   domain: scul.xquare.app
   prefix: null
+  private_service: false
+  critical_service: false

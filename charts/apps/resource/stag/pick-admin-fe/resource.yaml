@@ -13,3 +13,5 @@ config:
   type: fe
   domain: pick-admin-stag.xquare.app
   prefix: null
+  private_service: false
+  critical_service: false

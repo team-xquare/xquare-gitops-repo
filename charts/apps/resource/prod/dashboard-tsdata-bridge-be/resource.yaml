@@ -14,3 +14,5 @@ config:
   domain: tsdata.xquare.app
   prefix: null
   language: go
+  private_service: false
+  critical_service: false

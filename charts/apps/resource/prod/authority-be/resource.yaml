@@ -13,3 +13,5 @@ config:
   type: be
   domain: null
   prefix: /authorities
+  private_service: false
+  critical_service: false

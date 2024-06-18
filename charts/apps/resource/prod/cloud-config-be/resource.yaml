@@ -13,3 +13,5 @@ config:
     mountPath: null
     secretName: null
   serviceAccount: null
+  private_service: false
+  critical_service: false
