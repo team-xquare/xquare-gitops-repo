@@ -25,38 +25,40 @@ spec:
     {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
     {{- $yamlData := $file | toString | fromYaml }}
     {{- if $yamlData.config }}
+    {{- if eq $yamlData.config.private_service "false" }}
     {{- if $yamlData.config.prefix }}
     - name: {{ $yamlData.config.serviceName }}
       match:
-      - uri:
-          prefix: {{ $yamlData.config.prefix }}
+        - uri:
+            prefix: {{ $yamlData.config.prefix }}
       route:
-      - destination:
+        - destination:
           {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
-          host: {{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local
-          port:
-            number: {{ $yamlData.config.containerPort }}
+            host: {{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local
+            port:
+              number: {{ $yamlData.config.containerPort }}
       corsPolicy:
         allowOrigins:
-        - regex: ".*"
+          - regex: ".*"
         allowMethods:
-        - POST
-        - GET
-        - PUT
-        - PATCH
-        - DELETE
-        - OPTIONS
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
         allowCredentials: true
         allowHeaders:
-        - content-type
-        - authorization
-        - accept
-        - accept-encoding
-        - Refresh-Token
-        - X-Not-Using-Xquare-Auth
-        - Oauth-Token
-        - oa-token
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
         maxAge: "24h"
+    {{- end }}
     {{- end }}
     {{- end }}
     {{- end }}
@@ -67,6 +69,7 @@ spec:
 {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
 {{- $yamlData := $file | toString | fromYaml }}
 {{- if $yamlData.config }}
+{{- if eq $yamlData.config.private_service "false" }}
 {{- if $yamlData.config.domain }}
 ---
 
@@ -87,32 +90,33 @@ spec:
   http:
     - name: {{ $yamlData.config.serviceName }}
       route:
-      - destination:
+        - destination:
           {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
-          host: '{{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local'
-          port:
-            number: {{ $yamlData.config.containerPort }}
+            host: '{{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local'
+            port:
+              number: {{ $yamlData.config.containerPort }}
       corsPolicy:
         allowOrigins:
-        - regex: ".*"
+          - regex: ".*"
         allowMethods:
-        - POST
-        - GET
-        - PUT
-        - PATCH
-        - DELETE
-        - OPTIONS
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
         allowCredentials: true
         allowHeaders:
-        - content-type
-        - authorization
-        - accept
-        - accept-encoding
-        - Refresh-Token
-        - X-Not-Using-Xquare-Auth
-        - Oauth-Token
-        - oa-token
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
         maxAge: "24h"
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}

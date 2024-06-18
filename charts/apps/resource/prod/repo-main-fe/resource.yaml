@@ -13,3 +13,5 @@ config:
   type: fe
   domain: www.dsm-repo.com
   prefix: null
+  private_service: false
+  critical_service: false

@@ -13,3 +13,5 @@ config:
   type: be
   domain: propofol.xquare.app
   prefix: null
+  private_service: false
+  critical_service: false
