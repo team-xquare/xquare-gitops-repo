@@ -7,9 +7,10 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-core
-  imageTag: stag-c1564201dc7d34733f963fb41940bbcb58c986a6
+  imageTag: stag-45f4d42a00d3a799028d908f0680292ee53292ac
   containerPort: 8080
   environment: stag
   type: be
   domain: null
   prefix: /dsm-pick
+  language: java
