@@ -21,7 +21,6 @@ jobs:
           echo "service_type=${{ github.event.client_payload.service_type }}" >> $GITHUB_ENV
           echo "service_domain=${{ github.event.client_payload.service_domain }}" >> $GITHUB_ENV
           echo "service_port=${{ github.event.client_payload.service_port }}" >> $GITHUB_ENV
-          echo "language=${{ github.event.client_payload.language }}" >> $GITHUB_ENV
           echo "critical_service=${{ github.event.client_payload.critical_service }}" >> $GITHUB_ENV
           echo "private_service=${{ github.event.client_payload.private_service }}" >> $GITHUB_ENV
 
@@ -89,7 +88,6 @@ jobs:
                     .config.containerPort = ${{ env.service_port }} | \
                     .config.environment = \"${{ env.environment }}\" | \
                     .config.type = \"${{ env.service_type }}\" | \
-                    .config.language = \"${{ env.language }}\" | \
                     .config.critical_service = \"${{ env.critical_service }}\" | \
                     .config.private_service = \"${{ env.private_service }}\" | \
                     $domain | \
