@@ -12,7 +12,7 @@ config:
   environment: stag
   type: be
   language: ""
-  critical_service: "false"
-  private_service: "false"
+  critical_service: false
+  private_service: false
   domain: equus-stag.xquare.app
   prefix: null
