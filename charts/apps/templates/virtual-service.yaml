@@ -69,7 +69,6 @@ spec:
 {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
 {{- $yamlData := $file | toString | fromYaml }}
 {{- if $yamlData.config }}
-{{- if eq $yamlData.config.private_service "false" }}
 {{- if $yamlData.config.domain }}
 ---
 
@@ -116,7 +115,6 @@ spec:
           - Oauth-Token
           - oa-token
         maxAge: "24h"
-{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
