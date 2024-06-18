@@ -13,3 +13,4 @@ config:
   type: be
   domain: devlib.xquare.app
   prefix: null
+  language: java
