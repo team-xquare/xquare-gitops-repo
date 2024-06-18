@@ -11,7 +11,7 @@ config:
   containerPort: 8080
   environment: stag
   type: be
-  language: ""
+  language: java
   critical_service: "false"
   private_service: "false"
   domain: equus-stag.xquare.app
