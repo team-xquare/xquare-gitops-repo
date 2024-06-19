@@ -7,12 +7,12 @@ config:
   replicas: 1
   clubName: dms
   serviceName: dms
-  imageTag: stag-1c36b548dfa500b66be8ea1ebc4824f706c492a7
+  imageTag: stag-4e69c718113ac5799d7749853ea55a490100dd4b
   containerPort: 8080
   environment: stag
   type: be
   domain: dev-api.dms-dsm.com
   prefix: null
   language: java
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
