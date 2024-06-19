@@ -7,12 +7,12 @@ config:
   replicas: 1
   clubName: info
   serviceName: maeumgagym
-  imageTag: prod-938ad29e2f0d4739f5ec91638f410c9fd09573d3
+  imageTag: prod-396248aac3d050bd07c63c94d9f3542f223185ce
   containerPort: 8080
   environment: prod
   type: be
   domain: null
   prefix: /maeumgagym
   language: java
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
