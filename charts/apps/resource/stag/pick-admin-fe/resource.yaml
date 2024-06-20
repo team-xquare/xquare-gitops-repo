@@ -7,11 +7,11 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-admin
-  imageTag: stag-a8efd18b3566526d01038c6ba1f54db4f387ddbf
+  imageTag: stag-977b47b17420c6269a6870a319b85ec50d667397
   containerPort: 3000
   environment: stag
   type: fe
   domain: pick-admin-stag.xquare.app
   prefix: null
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
