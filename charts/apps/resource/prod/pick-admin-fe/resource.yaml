@@ -7,11 +7,11 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-admin
-  imageTag: prod-1683edc9509707fac655030b9e79f44c89d00af8
+  imageTag: prod-464a052865bab9ce7d2f01aca5891e823edeaf93
   containerPort: 3000
   environment: prod
   type: fe
   domain: pick-admin.xquare.app
   prefix: null
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
