@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: Project Photohub
+  clubName: photohub
   serviceName: photohub-backend
   imageTag: stag-6cc8ef3a6bb61fcd3e7f68387e4aea762b82299e
   containerPort: 8080
