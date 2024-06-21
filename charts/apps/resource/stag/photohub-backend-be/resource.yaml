@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: Project Photohub
+  serviceName: photohub-backend
+  imageTag: stag-171e41bf90cd016f960d82b4414dbdc5af1adce1
+  containerPort: 8080
+  environment: stag
+  type: be
+  critical_service: "false"
+  private_service: "false"
+  domain: photohub-backend-stag.xquare.app
+  prefix: null
