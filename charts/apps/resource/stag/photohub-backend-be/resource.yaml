@@ -7,11 +7,11 @@ config:
   replicas: 1
   clubName: photohub
   serviceName: photohub-backend
-  imageTag: stag-6cc8ef3a6bb61fcd3e7f68387e4aea762b82299e
+  imageTag: stag-1c98d703a01d866e996cc772ecf1f98986f1eece
   containerPort: 8080
   environment: stag
   type: be
-  critical_service: false
-  private_service: false
+  critical_service: "false"
+  private_service: "false"
   domain: photohub-backend-stag.xquare.app
   prefix: null
