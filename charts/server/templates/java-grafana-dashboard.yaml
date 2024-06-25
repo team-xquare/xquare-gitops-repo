@@ -66,8 +66,7 @@ data:
           {
             "builtIn": 1,
             "datasource": {
-              "type": "datasource",
-              "uid": "grafana"
+              "type": "datasource"
             },
             "enable": true,
             "hide": true,
@@ -92,8 +91,7 @@ data:
       "panels": [
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -136,9 +134,8 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
-              },
+                "type": "prometheus"
+              }
               "editorMode": "code",
               "exemplar": true,
               "expr": "sum(http_server_requests_seconds_count{application=\"$app\", uri!=\"/actuator/prometheus\"})",
@@ -171,8 +168,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -215,8 +211,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -258,8 +253,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -310,8 +304,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -326,8 +319,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -376,8 +368,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -393,8 +384,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -473,8 +463,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -489,8 +478,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -569,8 +557,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -585,8 +572,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -664,8 +650,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -680,8 +665,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -759,8 +743,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -775,8 +758,7 @@ data:
         },
         {
           "datasource": {
-            "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "type": "prometheus"
           },
           "fieldConfig": {
             "defaults": {
@@ -854,8 +836,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "prometheus",
-                "uid": "${DS_PROMETHEUS}"
+                "type": "prometheus"
               },
               "editorMode": "code",
               "exemplar": true,
@@ -870,8 +851,7 @@ data:
         },
         {
           "datasource": {
-            "type": "loki",
-            "uid": "${DS_LOKI}"
+            "type": "loki"
           },
           "fieldConfig": {
             "defaults": {
@@ -995,8 +975,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "loki",
-                "uid": "${DS_LOKI}"
+                "type": "loki"
               },
               "editorMode": "code",
               "expr": "sum by(type) (rate({compose_service=~\"app-.*\"} | pattern `<date> <time> <_>=<trace_id> <_>=<span_id> <_>=<trace_flags> <type> <_> --- <msg>` | type != \"\" |= \"$log_keyword\" [1m]))",
@@ -1009,8 +988,7 @@ data:
         },
         {
           "datasource": {
-            "type": "loki",
-            "uid": "${DS_LOKI}"
+            "type": "loki"
           },
           "gridPos": {
             "h": 9,
@@ -1033,8 +1011,7 @@ data:
           "targets": [
             {
               "datasource": {
-                "type": "loki",
-                "uid": "${DS_LOKI}"
+                "type": "loki"
               },
               "editorMode": "code",
               "expr": "{compose_service=~\"app-.*\"} | pattern `<date> <time> <_>=<trace_id> <_>=<span_id> <_>=<trace_flags> <type> <_> --- <msg>` | line_format \"{{.compose_service}}\\t{{.type}}\\ttrace_id={{.trace_id}}\\t{{.msg}}\" |= \"$log_keyword\"",
