@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-teacher
-  imageTag: prod-a058bc24d9b2d6e18c3ba34b2f8128934e11a5b1
+  imageTag: prod-b39d0130d3e482e1f7113ae02f1c77a75328cd4c
   containerPort: 3000
   environment: prod
   type: fe
