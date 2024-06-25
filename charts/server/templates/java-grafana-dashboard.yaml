@@ -135,7 +135,7 @@ data:
             {
               "datasource": {
                 "type": "prometheus"
-              }
+              },
               "editorMode": "code",
               "exemplar": true,
               "expr": "sum(http_server_requests_seconds_count{application=\"$app\", uri!=\"/actuator/prometheus\"})",
