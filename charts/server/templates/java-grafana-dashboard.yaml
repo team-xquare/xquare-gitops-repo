@@ -5,7 +5,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: xquare-{{ $clubname }}-dashboards
+  name: xquare-{{ $clubname }}-observability-dashboards
   labels:
     grafana_dashboard: "1"
     app: monitoring
