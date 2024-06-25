@@ -10,7 +10,7 @@ metadata:
     grafana_dashboard: "1"
     app: monitoring
   annotations:
-    grafana_folder: {{ $clubname }}
+    grafana_folder: {{ $clubname }}-observability
 data:
   {{ $clubname }}.json: |
     {
