@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: photohub
   serviceName: photohub-frontend
-  imageTag: stag-c633ea7b7d527d3506fac533a45b33ebb889340d
+  imageTag: stag-82bb806cf23c471da82ff949dde70c49b67174cc
   containerPort: 5179
   environment: stag
   type: fe
