@@ -53,6 +53,7 @@ spec:
           - accept
           - accept-encoding
           - Refresh-Token
+          - X-Refresh-Token
           - X-Not-Using-Xquare-Auth
           - Oauth-Token
           - oa-token
@@ -116,6 +117,7 @@ spec:
           - oa-token
           - Request-User-Id
           - Request-User-Role
+          - X-Refresh-Token
         maxAge: "24h"
 {{- end }}
 {{- end }}
