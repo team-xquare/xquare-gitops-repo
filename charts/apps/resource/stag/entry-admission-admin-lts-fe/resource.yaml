@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: entry
+  serviceName: entry-admission-admin-lts
+  imageTag: stag-e094e4e5a17d8d114eeb59e54ca338c5019e6adf
+  containerPort: 3001
+  environment: stag
+  type: fe
+  critical_service: "false"
+  private_service: "false"
+  domain: entry-admission-admin-stag.xquare.app
+  prefix: null
