@@ -7,11 +7,11 @@ config:
   replicas: 1
   clubName: entry
   serviceName: entry-lts
-  imageTag: stag-71ce3946975baa4c96602e4c9357e89e8fe88462
+  imageTag: stag-c9ac34ce4c604ca00a8c4bec5e335bac5bcb468c
   containerPort: 3002
   environment: stag
   type: fe
-  domain: entry-lts-stag.xquare.app
+  domain: stag.entrydsm.hs.kr
   prefix: null
   private_service: "false"
   critical_service: "false"
