@@ -19,7 +19,13 @@ pipelines:
             build:
               tasks:
                 - exec:
-                    command: ./docker_build.sh
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - |
+                        curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
+                        chmod +x docker_build.sh
+                        ./docker_build.sh maeumgagym stag
       - deploy:
           jobs:
             deploy:
