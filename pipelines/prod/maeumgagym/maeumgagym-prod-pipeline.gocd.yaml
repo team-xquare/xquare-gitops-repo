@@ -17,14 +17,6 @@ pipelines:
       - build:
           jobs:
             build:
-              environment_variables:
-                BUILD_VERSION: 0.0.3
-              tasks:
-                - exec:
-                    command: ./build.sh
-      - build:
-          jobs:
-            build:
               tasks:
                 - exec:
                     command: ./build.sh
