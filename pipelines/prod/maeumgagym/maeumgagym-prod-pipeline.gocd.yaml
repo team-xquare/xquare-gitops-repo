@@ -1,6 +1,15 @@
 ---
 # Source: gocd/templates/deploy.yaml
-format_version: 10
+#ci.gocd.yaml
+format_version: 9
+environments:
+  stag:
+    environment_variables:
+      DEPLOYMENT: stag
+    secure_variables:
+      ENV_PASSWORD: ""
+    pipelines:
+      - deploy-maeumgagym
 pipelines:
   deploy-maeumgagym:
     group: info
@@ -13,6 +22,10 @@ pipelines:
       - name: Build_and_Push
         jobs:
           - name: Get_Image_Tag
+            artifacts:
+              - build:
+                  source: go_env.properties
+                  destination: .
             tasks:
               - exec:
                   run_if: passed
@@ -23,10 +36,6 @@ pipelines:
                       RANDOM_KEY=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 8 | head -n 1)
                       export VERSION_TAG="stag-${RANDOM_KEY}"
                       echo "VERSION_TAG=$VERSION_TAG" > go_env.properties
-            artifacts:
-              - build:
-                  source: go_env.properties
-                  destination: .
           - name: Docker_Build_and_Push
             tasks:
               - exec:
