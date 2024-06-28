@@ -15,6 +15,7 @@ pipelines:
       - build:
           jobs:
             build:
+              elastic_profile_id: "xquare-docker-profile"
               tasks:
                 - exec:
                     command: /bin/bash
