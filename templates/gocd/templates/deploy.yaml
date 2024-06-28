@@ -1,0 +1,31 @@
+pipelines:
+  deploy-{{ .Values.name }}:
+    group: {{ .Values.club }}
+    materials:
+      git:
+        url: https://github.com/{{ .Values.organization }}/{{ .Values.repository }}.git
+        branch: {{ .Values.branch }}
+        shallow_clone: false
+    stages:
+      - name: Build_and_Push
+        jobs:
+          - name: Get_Image_Tag
+            tasks:
+              - bash:
+                  run_if: passed
+                  command: |
+                    RANDOM_KEY=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 8 | head -n 1)
+                    export VERSION_TAG="{{ .Values.environment }}-${RANDOM_KEY}"
+                    echo "VERSION_TAG=$VERSION_TAG" > go_env.properties
+            artifacts:
+              - build: go_env.properties
+          - name: Docker_Build_and_Push
+            tasks:
+              - bash:
+                  run_if: passed
+                  command: |
+                    source go_env.properties
+                    repo="${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${VERSION_TAG}"
+                    docker build -t "$repo" "$BASE_URL"
+                    echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+                    docker push $repo

@@ -1,0 +1,12 @@
+{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ $fullname }}
+  labels:
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {{ $fullname }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
