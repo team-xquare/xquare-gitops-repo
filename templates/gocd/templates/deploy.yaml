@@ -1,3 +1,4 @@
+format_version: 10
 pipelines:
   deploy-{{ .Values.name }}:
     group: {{ .Values.club }}
@@ -11,21 +12,29 @@ pipelines:
         jobs:
           - name: Get_Image_Tag
             tasks:
-              - bash:
+              - exec:
                   run_if: passed
-                  command: |
-                    RANDOM_KEY=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 8 | head -n 1)
-                    export VERSION_TAG="{{ .Values.environment }}-${RANDOM_KEY}"
-                    echo "VERSION_TAG=$VERSION_TAG" > go_env.properties
+                  command: /bin/bash
+                  arguments:
+                    - -c
+                    - |
+                      RANDOM_KEY=$(cat /dev/urandom | tr -dc 'a-z0-9' | fold -w 8 | head -n 1)
+                      export VERSION_TAG="{{ .Values.environment }}-${RANDOM_KEY}"
+                      echo "VERSION_TAG=$VERSION_TAG" > go_env.properties
             artifacts:
-              - build: go_env.properties
+              - build:
+                  source: go_env.properties
+                  destination: .
           - name: Docker_Build_and_Push
             tasks:
-              - bash:
+              - exec:
                   run_if: passed
-                  command: |
-                    source go_env.properties
-                    repo="${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${VERSION_TAG}"
-                    docker build -t "$repo" "$BASE_URL"
-                    echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
-                    docker push $repo
+                  command: /bin/bash
+                  arguments:
+                    - -c
+                    - |
+                      source go_env.properties
+                      repo="${DOCKERHUB_USERNAME}/${DOCKERHUB_REPO_NAME}:${VERSION_TAG}"
+                      docker build -t "$repo" "$BASE_URL"
+                      echo $DOCKERHUB_PASSWORD | docker login -u $DOCKERHUB_USERNAME --password-stdin
+                      docker push $repo
