@@ -19,7 +19,7 @@ pipelines:
             build:
               tasks:
                 - exec:
-                    command: ./build.sh
+                    command: ./docker_build.sh
       - deploy:
           jobs:
             deploy:
