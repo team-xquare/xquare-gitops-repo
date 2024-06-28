@@ -7,10 +7,9 @@ jobs:
   ci:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Check Out The Repository
         uses: actions/checkout@v2
-        with:
-          persist-credentials: false
+
       - name: Grant execute permission for script
         run: chmod +x ./.github/generate_pipeline.sh
 

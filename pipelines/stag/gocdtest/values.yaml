@@ -1,0 +1,6 @@
+club: xquare
+name: gocd-test
+organization: team-xquare
+repository: gocd-test-repository
+branch: main
+environment: stag
