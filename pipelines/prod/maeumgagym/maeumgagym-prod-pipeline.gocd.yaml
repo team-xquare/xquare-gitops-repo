@@ -3,7 +3,7 @@
 format_version: 10
 pipelines:
   build-maeumgagym:
-    group: maeumgagym
+    group: xquare
     environment_variables:
 
     label_template: "${git[:7]}"
