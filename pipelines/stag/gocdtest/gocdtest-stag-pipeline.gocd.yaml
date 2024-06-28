@@ -3,7 +3,7 @@
 format_version: 10
 pipelines:
   build-gocd-test:
-    group: gocd-test
+    group: xquare
     environment_variables:
 
     label_template: "${git[:7]}"
