@@ -1,4 +1,0 @@
-spec:
-  namespace: xquare-user
-  host: prod-server.xquare.app
-  environment: user

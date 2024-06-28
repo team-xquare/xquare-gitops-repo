@@ -1,4 +1,0 @@
-spec:
-  namespace: xquare-stag
-  host: stag-server.xquare.app
-  environment: stag

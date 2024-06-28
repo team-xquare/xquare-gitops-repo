@@ -1,4 +1,0 @@
-spec:
-  namespace: xquare-prod
-  host: prod-server.xquare.app
-  environment: prod
