@@ -2,17 +2,17 @@
 # Source: gocd/templates/deploy.yaml
 format_version: 10
 pipelines:
-  build-maeumgagym:
-    group: maeumgagym
+  build-gocd-test:
+    group: gocd-test
     environment_variables:
 
     label_template: "${git[:7]}"
     materials:
       git:
-        git: https://github.com/MaeumGaGym/MaeumGaGym_Backend
+        git: https://github.com/team-xquare/gocd-test-repository
         shallow_clone: false
         auto_update: true
-        branch: develop
+        branch: main
     stages:
       - build:
           jobs:
