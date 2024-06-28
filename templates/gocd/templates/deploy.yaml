@@ -1,7 +1,7 @@
 format_version: 10
 pipelines:
   build-{{ .Values.name }}:
-    group: {{ .Values.name }}
+    group: xquare
     environment_variables:
 
     label_template: "${git[:7]}"
