@@ -1,6 +1,16 @@
 #!/bin/bash
 
-# Docker Engine 설치
+if [ "$#" -ne 2 ]; then
+    echo "Usage: $0 <AWS_ACCESS_KEY_ID> <AWS_SECRET_ACCESS_KEY>"
+    exit 1
+fi
+
+AWS_ACCESS_KEY_ID=$1
+AWS_SECRET_ACCESS_KEY=$2
+AWS_DEFAULT_REGION="ap-northeast-2"
+AWS_DEFAULT_OUTPUT="json"
+
+# Docker Engine install
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -13,7 +23,7 @@ echo \
   sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 sudo apt-get update
 
-sudo apt-get install docker-ce docker-ce-cli
+sudo apt-get install docker-ce docker-ce-cli -y
 
 sudo groupadd docker
 sudo gpasswd -a $USER docker
@@ -23,18 +33,33 @@ sudo usermod -aG docker go
 # 다른 그룹의 사용자도 접근할 수 있도록 권한을 변경
 sudo chmod 666 /var/run/docker.sock
 
-# aws-cli 설치
+# aws-cli install
 sudo apt-get update
-sudo apt-get install awscli
+sudo apt-get install awscli -y
 
-# gocd agent 설치
+mkdir -p ~/.aws
+
+cat <<EOL > ~/.aws/credentials
+[default]
+aws_access_key_id = $AWS_ACCESS_KEY_ID
+aws_secret_access_key = $AWS_SECRET_ACCESS_KEY
+EOL
+
+cat <<EOL > ~/.aws/config
+[default]
+region = $AWS_DEFAULT_REGION
+output = $AWS_DEFAULT_OUTPUT
+EOL
+
+# gocd agent install
 sudo install -m 0755 -d /etc/apt/keyrings
 curl https://download.gocd.org/GOCD-GPG-KEY.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gocd.gpg
 sudo chmod a+r /etc/apt/keyrings/gocd.gpg
 echo "deb [signed-by=/etc/apt/keyrings/gocd.gpg] https://download.gocd.org /" | sudo tee /etc/apt/sources.list.d/gocd.list
 sudo apt-get update
-sudo apt-get install go-agent
+sudo apt-get install go-agent -y
 
+# gocd server < - > gocd agent(this node) connect
 echo "wrapper.app.parameter.100=-serverUrl" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
 echo "wrapper.app.parameter.101=https://gocd.xquare.app/go" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
 sudo systemctl restart go-agent
