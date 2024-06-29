@@ -2,7 +2,7 @@
 # Source: gocd/templates/deploy.yaml
 format_version: 10
 pipelines:
-  build-gocd-test:
+  build-gocdtest:
     group: xquare
     environment_variables:
 
@@ -27,7 +27,7 @@ pipelines:
                       - |
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
                         chmod +x docker_build.sh
-                        ./docker_build.sh stag gocd-test
+                        ./docker_build.sh stag gocdtest
       - deploy:
           jobs:
             deploy:
@@ -41,4 +41,4 @@ pipelines:
                       - |
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
-                        ./resource_deploy.sh gocd-test stag $gocd-test_REPOSITORY
+                        ./resource_deploy.sh gocdtest stag $gocdtest_REPOSITORY
