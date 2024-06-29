@@ -1,4 +1,4 @@
-{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
+{{- $fullname := (printf "%s-%s" .Values.name .Values.environment) }}
 
 apiVersion: apps/v1
 kind: Deployment
@@ -7,11 +7,8 @@ metadata:
   labels:
     app: {{ $fullname }}
     project: {{ .Values.name }}
-    type: {{ .Values.type }}
     test: test
     environment: {{ .Values.environment }}
-    tags.datadoghq.com/env: {{ .Values.environment }}
-    tags.datadoghq.com/service: {{ $fullname }}
 spec:
   replicas: 1
   revisionHistoryLimit: 0
@@ -37,7 +34,6 @@ spec:
         tags.datadoghq.com/service: {{ $fullname }}
         app: {{ $fullname }}
         project: {{ .Values.name }}
-        type: {{ .Values.type }}
     spec:
       affinity:
         podAntiAffinity:
@@ -59,22 +55,13 @@ spec:
         key: xquare/server
         operator: "Equal"
         value: "true"
-      {{- if ne .Values.serviceAccount "<nil>" }}
-      serviceAccountName: {{ .Values.serviceAccount }}
-      {{- end }}
       terminationGracePeriodSeconds: 120
       containers:
-        - name:  {{ $fullname }}
-          image: {{ .Values.imageRegistry }}/{{ .Values.name }}-{{ .Values.type }}-{{ .Values.environment }}:{{ .Values.imageTag }}
+        - name: {{ $fullname }}
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/{{ .Values.name }}:{{ .Values.environment }}-{{ .Values.tag }}
           imagePullPolicy: Always
           ports:
             - containerPort: {{ .Values.containerPort }}
-          {{- if ne .Values.volume.name "<nil>" }}
-          volumeMounts:
-            - mountPath: {{ .Values.volume.mountPath }}
-              name: {{ .Values.volume.name }}
-              readOnly: true
-          {{- end }}
           envFrom:
           - secretRef:
               name: {{ $fullname }}
@@ -91,9 +78,3 @@ spec:
             initialDelaySeconds: 20
             periodSeconds: 10
             successThreshold: 3
-      {{- if ne .Values.volume.name "<nil>" }}
-      volumes:
-        - name: {{ .Values.volume.name }}
-          secret:
-            secretName: {{ .Values.volume.secretName }}
-      {{- end }}

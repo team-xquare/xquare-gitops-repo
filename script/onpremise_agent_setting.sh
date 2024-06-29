@@ -10,6 +10,22 @@ AWS_SECRET_ACCESS_KEY=$2
 AWS_DEFAULT_REGION="ap-northeast-2"
 AWS_DEFAULT_OUTPUT="json"
 
+# gocd agent install
+sudo install -m 0755 -d /etc/apt/keyrings
+curl https://download.gocd.org/GOCD-GPG-KEY.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gocd.gpg
+sudo chmod a+r /etc/apt/keyrings/gocd.gpg
+echo "deb [signed-by=/etc/apt/keyrings/gocd.gpg] https://download.gocd.org /" | sudo tee /etc/apt/sources.list.d/gocd.list
+sudo apt-get update
+sudo apt-get install go-agent -y
+
+# gocd server < - > gocd agent(this node) connect
+echo "wrapper.app.parameter.100=-serverUrl" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
+echo "wrapper.app.parameter.101=https://gocd.xquare.app/go" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
+sudo systemctl restart go-agent
+
+# go 유저로 전환
+sudo su go
+
 # Docker Engine install
 sudo apt-get update
 sudo apt-get install ca-certificates curl gnupg
@@ -51,18 +67,7 @@ region = $AWS_DEFAULT_REGION
 output = $AWS_DEFAULT_OUTPUT
 EOL
 
-# gocd agent install
-sudo install -m 0755 -d /etc/apt/keyrings
-curl https://download.gocd.org/GOCD-GPG-KEY.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gocd.gpg
-sudo chmod a+r /etc/apt/keyrings/gocd.gpg
-echo "deb [signed-by=/etc/apt/keyrings/gocd.gpg] https://download.gocd.org /" | sudo tee /etc/apt/sources.list.d/gocd.list
-sudo apt-get update
-sudo apt-get install go-agent -y
 
-# gocd server < - > gocd agent(this node) connect
-echo "wrapper.app.parameter.100=-serverUrl" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
-echo "wrapper.app.parameter.101=https://gocd.xquare.app/go" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
-sudo systemctl restart go-agent
 
 
 

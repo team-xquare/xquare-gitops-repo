@@ -1,4 +1,4 @@
-{{- $fullname := (printf "%s-%s-%s" .Values.name .Values.type .Values.environment) }}
+{{- $fullname := (printf "%s-%s" .Values.name .Values.environment) }}
 
 apiVersion: v1
 kind: Service
@@ -7,7 +7,6 @@ metadata:
   labels:
     app: {{ $fullname }}
     project: {{ .Values.name }}
-    type: {{ .Values.type }}
     environment: {{ .Values.environment }}
 spec:
   type: ClusterIP
