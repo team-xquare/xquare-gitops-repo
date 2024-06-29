@@ -28,3 +28,5 @@ sudo apt-get install docker-ce docker-ce-cli
 sudo groupadd docker
 sudo gpasswd -a $USER docker
 newgrp docker
+
+sudo usermod -aG docker go
