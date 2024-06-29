@@ -12,7 +12,10 @@ echo "deb [signed-by=/etc/apt/keyrings/gocd.gpg] https://download.gocd.org /" | 
 sudo apt-get update
 sudo apt-get install -y go-agent
 
-# Install Docker Engine
+echo "wrapper.app.parameter.100=-serverUrl" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
+echo "wrapper.app.parameter.101=https://gocd.xquare.app/go" | sudo tee -a /usr/share/go-agent/wrapper-config/wrapper-properties.conf
+sudo systemctl restart go-agent
+
 sudo apt update
 sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
