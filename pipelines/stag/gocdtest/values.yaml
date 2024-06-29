@@ -1,5 +1,5 @@
 club: xquare
-name: gocd-test
+name: gocdtest
 organization: team-xquare
 repository: gocd-test-repository
 branch: main
