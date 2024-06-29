@@ -11,9 +11,9 @@ helm template \
   templates/server \
   -f ./pipelines/$ENVIRONMENT/$SERVICE_NAME/values.yaml \
   --set repository=$REPOSITORY \
-  > manifast.yaml
+  > ./pipelines/$ENVIRONMENT/$SERVICE_NAME/manifast.yaml
 
-kubectl apply -f manifast.yaml
+kubectl apply -f ./pipelines/$ENVIRONMENT/$SERVICE_NAME/manifast.yaml
 
 #git pull
 #git add ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml

@@ -2,6 +2,7 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
+  namespace: {{ .Valeus.club }}-{{ .Values.environment }}
   name: {{ $fullname }}
 spec:
   minAvailable: 1
