@@ -5,7 +5,7 @@ on:
       - v2
     paths:
       - 'pipelines/**/**/values.yaml'
-      - 'template/gocd/templates/*.yaml'
+      - 'templates/gocd/templates/*.yaml'
 jobs:
   ci:
     runs-on: ubuntu-latest
