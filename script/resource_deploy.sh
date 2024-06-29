@@ -4,9 +4,7 @@ SERVICE_NAME=$1
 ENVIRONMENT=$2
 REPOSITORY=$3
 
-git clone https://github.com/team-xquare/xquare-gitops-repo
-cd xquare-gitops-repo
-git checkout v2
+cd /home/go/xquare-gitops-repo && git pull
 
 helm template \
   $SERVICE_NAME \
