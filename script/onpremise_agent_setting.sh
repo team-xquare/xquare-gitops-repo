@@ -5,7 +5,8 @@ sudo chmod a+r /etc/apt/keyrings/gocd.gpg
 echo "deb [signed-by=/etc/apt/keyrings/gocd.gpg] https://download.gocd.org /" | sudo tee /etc/apt/sources.list.d/gocd.list
 sudo apt-get update
 sudo apt-get install go-agent
-sudo dpkg -i go-agent-24.2.0.deb
+wget https://download.gocd.org/binaries/24.2.0-19076/deb/go-agent_24.2.0-19076_all.deb
+sudo dpkg -i go-agent-24.2.0-19076.deb
 
 # Docker Engine 설치
 sudo apt update
