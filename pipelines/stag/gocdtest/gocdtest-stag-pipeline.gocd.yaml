@@ -25,7 +25,7 @@ pipelines:
                       - |
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
                         chmod +x docker_build.sh
-                        ./docker_build.sh gocd-test stag
+                        sudo sh docker_build.sh gocd-test stag
       - deploy:
           jobs:
             deploy:
