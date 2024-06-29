@@ -15,6 +15,8 @@ pipelines:
       - build:
           jobs:
             build:
+              resources:
+                - build
               tasks:
                 - exec:
                     command: /bin/bash
@@ -23,10 +25,18 @@ pipelines:
                       - |
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
                         chmod +x docker_build.sh
-                        ./docker_build.sh {{ .Values.name }} {{ .Values.environment }}
+                        ./docker_build.sh {{ .Values.environment }} {{ .Values.name }}
       - deploy:
           jobs:
             deploy:
+              resources:
+                - deploy
               tasks:
                 - exec:
-                    command: ./deploy.sh
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - |
+                        curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
+                        chmod +x resource_deploy.sh
+                        ./resource_deploy.sh {{ .Values.name }} {{ .Values.environment }} ${{ .Values.name }}_REPOSITORY 

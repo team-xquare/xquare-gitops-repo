@@ -58,8 +58,8 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: {{ $fullname }}
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/{{ .Values.name }}:{{ .Values.environment }}-{{ .Values.tag }}
-          imagePullPolicy: Always
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/{{ .Values.repository }}
+          imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.containerPort }}
           envFrom:
