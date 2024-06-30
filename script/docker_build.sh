@@ -14,4 +14,4 @@ docker build -t "${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}" .
 
 docker push "${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}"
 
-echo "export $(SERVICE_NAME)_REPOSITORY=${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}" > build_result.env
+echo "export ${SERVICE_NAME}_REPOSITORY=${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}" > build_result.env
