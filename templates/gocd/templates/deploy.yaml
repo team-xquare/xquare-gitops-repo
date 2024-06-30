@@ -42,7 +42,6 @@ pipelines:
                     pipeline: build-{{ .Values.name }}
                     stage: build
                     job: build
-                    artifact_id: artifacts/build_result.env
                 - exec:
                     command: /bin/bash
                     arguments:
