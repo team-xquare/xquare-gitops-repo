@@ -10,7 +10,7 @@ helm template \
   $SERVICE_NAME \
   templates/server \
   -f ./pipelines/$ENVIRONMENT/$SERVICE_NAME/values.yaml \
-  --set repository=$REPOSITORY \
+  --set image_name=$REPOSITORY \
   > ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml
 
 kubectl apply -f ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml
