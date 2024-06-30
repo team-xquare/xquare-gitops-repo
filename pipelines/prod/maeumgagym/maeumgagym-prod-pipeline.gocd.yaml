@@ -29,7 +29,9 @@ pipelines:
                         chmod +x docker_build.sh
                         ./docker_build.sh stag maeumgagym
               artifacts:
-                - build_result.env
+                - build:
+                    source: build_result.env
+                    destination: artifacts
       - deploy:
           jobs:
             deploy:
