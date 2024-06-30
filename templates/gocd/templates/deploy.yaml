@@ -43,16 +43,13 @@ pipelines:
                     job: build
                     is_file: yes
                     source: artifacts/build_result.env
-                    destination: build_result.env
+                    destination: environment
                 - exec:
                     command: /bin/bash
                     arguments:
                       - -c
                       - |
-                        source build_result.env
-                        cat build_result.env
-                        cd build_result.env
-                        ls
+                        source environment/build_result.env
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
                         ./resource_deploy.sh {{ .Values.name }} {{ .Values.environment }} ${{ .Values.name }}_REPOSITORY
