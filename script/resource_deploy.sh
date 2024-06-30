@@ -15,7 +15,7 @@ helm template \
 
 kubectl apply -f ./pipelines/$ENVIRONMENT/$SERVICE_NAME/manifast.yaml
 
-#git pull
-#git add ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml
-#git commit -m "record :: $SERVICE_NAME-$ENVIRONMENT kubernetes manifest"
-#git push
+git pull
+git add ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml
+git commit -m "record :: $SERVICE_NAME-$ENVIRONMENT kubernetes manifest"
+git push --set-upstream origin v2
