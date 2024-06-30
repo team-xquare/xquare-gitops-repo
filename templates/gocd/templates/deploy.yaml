@@ -26,12 +26,16 @@ pipelines:
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
                         chmod +x docker_build.sh
                         ./docker_build.sh {{ .Values.environment }} {{ .Values.name }}
+              artifacts:
+                - build_result.env
       - deploy:
           jobs:
             deploy:
               resources:
                 - deploy
               tasks:
+                - fetch:
+                    artifact: build/build/build_result.env
                 - exec:
                     command: /bin/bash
                     arguments:
