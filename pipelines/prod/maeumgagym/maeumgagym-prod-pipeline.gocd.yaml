@@ -53,6 +53,8 @@ pipelines:
                       - |
                         source build_result.env
                         cat build_result.env
+                        cd build_result.env
+                        ls
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
                         ./resource_deploy.sh maeumgagym stag $maeumgagym_REPOSITORY
