@@ -19,6 +19,10 @@ pipelines:
             build:
               resources:
                 - build
+              artifacts:
+                - build:
+                    source: build_result.env
+                    destination: artifacts
               tasks:
                 - exec:
                     command: /bin/bash
@@ -28,10 +32,6 @@ pipelines:
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
                         chmod +x docker_build.sh
                         ./docker_build.sh stag gocdtest
-              artifacts:
-                - build:
-                    source: build_result.env
-                    destination: artifacts
       - deploy:
           jobs:
             deploy:
@@ -39,12 +39,18 @@ pipelines:
                 - deploy
               tasks:
                 - fetch:
-                    artifact: build/build/build_result.env
+                    pipeline: build-gocdtest
+                    stage: build
+                    job: build
+                    is_source_a_file: true
+                    source: artifacts/build_result.env
+                    destination: build_result.env
                 - exec:
                     command: /bin/bash
                     arguments:
                       - -c
                       - |
+                        source build_result.env
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
                         ./resource_deploy.sh gocdtest stag $gocdtest_REPOSITORY
