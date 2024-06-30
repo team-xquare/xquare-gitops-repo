@@ -3,7 +3,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: {{ .Valeus.club }}-{{ .Values.environment }}
+  namespace: {{ .Values.club }}-{{ .Values.environment }}
   name: {{ $fullname }}
   labels:
     app: {{ $fullname }}
@@ -59,7 +59,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: {{ $fullname }}
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/{{ .Values.repository }}
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/{{ .Values.image_name }}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: {{ .Values.containerPort }}

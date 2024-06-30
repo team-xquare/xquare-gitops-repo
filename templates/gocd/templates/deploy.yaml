@@ -37,12 +37,12 @@ pipelines:
                 - deploy
               tasks:
                 - fetch:
+                    run_if: any
+                    artifact_origin: external
                     pipeline: build-{{ .Values.name }}
                     stage: build
                     job: build
-                    is_source_a_file: true
-                    source: artifacts/build_result.env
-                    destination: build_result.env
+                    artifact_id: artifacts/build_result.env
                 - exec:
                     command: /bin/bash
                     arguments:
