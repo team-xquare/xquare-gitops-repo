@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: entry
   serviceName: equus-feed
-  imageTag: stag-09a1e817fdfa3bf979f62d2844b15f18be327411
+  imageTag: stag-c6411ee7b8fe4f2b25f8880f97c2db1bc2104ed4
   containerPort: 8080
   environment: stag
   type: be
