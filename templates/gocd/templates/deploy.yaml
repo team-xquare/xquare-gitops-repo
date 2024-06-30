@@ -27,7 +27,9 @@ pipelines:
                         chmod +x docker_build.sh
                         ./docker_build.sh {{ .Values.environment }} {{ .Values.name }}
               artifacts:
-                - build_result.env
+                - build:
+                    source: build_result.env
+                    destination: artifacts
       - deploy:
           jobs:
             deploy:
