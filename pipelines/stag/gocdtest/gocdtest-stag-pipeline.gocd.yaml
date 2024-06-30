@@ -40,10 +40,12 @@ pipelines:
               tasks:
                 - fetch:
                     run_if: any
-                    artifact_origin: external
-                    pipeline: build-gocdtest
+                    artifact_origin: gocd
                     stage: build
                     job: build
+                    is_file: yes
+                    source: artifacts/build_result.env
+                    destination: build_result.env
                 - exec:
                     command: /bin/bash
                     arguments:
