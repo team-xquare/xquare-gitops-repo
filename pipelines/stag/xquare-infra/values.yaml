@@ -1,7 +1,0 @@
-club: xquare
-name: xquare-infra
-organization: team-xquare
-repository: xquare-infra-backend
-branch: develop
-environment: stag
-containerPort: 8080
