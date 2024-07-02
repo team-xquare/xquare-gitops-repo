@@ -1,0 +1,45 @@
+name: Write values.yaml
+
+on:
+  repository_dispatch:
+    types: [write-values]
+
+jobs:
+  write_values_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set Variables
+        id: vars
+        run: |
+          echo "FILE_DIR=./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}" >> $GITHUB_ENV
+          echo "FILE_PATH=$FILE_DIR/values.yaml" >> $GITHUB_ENV
+
+      - name: Create Directory
+        run: mkdir -p ${{ env.FILE_DIR }}
+
+      - name: Write values.yaml file
+        run: |
+          cat <<EOF > ${{ env.FILE_PATH }}
+          club: ${{ github.event.client_payload.club }}
+          name: ${{ github.event.client_payload.name }}
+          organization: ${{ github.event.client_payload.organization }}
+          repository: ${{ github.event.client_payload.repository }}
+          branch: ${{ github.event.client_payload.branch }}
+          environment: ${{ github.event.client_payload.environment }}
+          containerPort: ${{ github.event.client_payload.containerPort }}
+          EOF
+
+      - name: Commit The New Image Reference
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "release :: Add values.yaml for ${{ github.event.client_payload.name }}"
+          branch: v2
+          commit_options: '--no-verify --signoff'
+          repository: .
+          commit_user_name: XQUARE GitOps Bot
+          commit_user_email: teamxquare@gmail.com
+          commit_author: XQUARE GitOps Bot <teamxquare@gmail.com>
