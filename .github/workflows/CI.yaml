@@ -3,9 +3,6 @@ on:
   push:
     branches:
       - v2
-    paths:
-      - 'pipelines/**/**/values.yaml'
-      - 'templates/gocd/templates/*.yaml'
 jobs:
   ci:
     runs-on: ubuntu-latest
