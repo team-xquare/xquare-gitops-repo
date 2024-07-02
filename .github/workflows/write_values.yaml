@@ -43,7 +43,3 @@ jobs:
           token: ${{ env.XQUARE_ACTION_GHP_TOKEN }}
           repository: team-xquare/xquare-gitops-repo
           event-type: generate_pipeline
-          client-payload: |
-            {
-              "ref" : "v2", 
-            }
