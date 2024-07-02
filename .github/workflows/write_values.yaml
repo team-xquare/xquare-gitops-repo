@@ -40,6 +40,10 @@ jobs:
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ env.XQUARE_ACTION_GHP_TOKEN }}
+          token: ${{ secrets.XQUARE_ACTION_GHP_TOKEN }}
           repository: team-xquare/xquare-gitops-repo
           event-type: generate_pipeline
+          client-payload: |
+            {
+              "ref" : "v2", 
+            }
