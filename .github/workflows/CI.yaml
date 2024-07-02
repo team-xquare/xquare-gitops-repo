@@ -7,7 +7,7 @@ on:
       - 'pipelines/**/**/values.yaml'
       - 'templates/gocd/templates/*.yaml'
   repository_dispatch:
-    types: [write-values]
+    types: [generate_pipeline]
 jobs:
   ci:
     runs-on: ubuntu-latest
