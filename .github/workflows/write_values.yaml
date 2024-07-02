@@ -45,5 +45,5 @@ jobs:
           event-type: generate_pipeline
           client-payload: |
             {
-              "ref" : "v2", 
+              "ref" : "v2"
             }
