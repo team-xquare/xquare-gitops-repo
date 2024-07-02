@@ -32,7 +32,6 @@ jobs:
         with:
           commit_message: "release :: Add values.yaml for ${{ github.event.client_payload.name }}"
           branch: v2
-          commit_options: '--no-verify --signoff'
           repository: .
           commit_user_name: XQUARE GitOps Bot
           commit_user_email: teamxquare@gmail.com
