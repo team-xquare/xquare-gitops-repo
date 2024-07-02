@@ -3,9 +3,11 @@ on:
   push:
     branches:
       - v2
-    path:
+    paths:
       - 'pipelines/**/**/values.yaml'
       - 'templates/gocd/templates/*.yaml'
+  repository_dispatch:
+    types: [generate_pipeline]
 jobs:
   ci:
     runs-on: ubuntu-latest
