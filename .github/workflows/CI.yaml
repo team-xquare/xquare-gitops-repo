@@ -1,0 +1,35 @@
+name : CI
+on:
+  push:
+    branches:
+      - v2
+    paths:
+      - 'pipelines/**/**/values.yaml'
+      - 'templates/gocd/templates/*.yaml'
+  repository_dispatch:
+    types: [generate_pipeline]
+jobs:
+  ci:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out The Repository
+        uses: actions/checkout@v2
+        with:
+          ref: v2
+
+      - name: Grant execute permission for script
+        run: chmod +x ./.github/generate_pipeline.sh
+
+      - name: Validate
+        run: ./.github/generate_pipeline.sh
+
+      - name: Commit The New Image Reference
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "release :: deploy pipeline"
+          branch: v2
+          commit_options: '--no-verify --signoff'
+          repository: .
+          commit_user_name: XQUARE GitOps Bot
+          commit_user_email: teamxquare@gmail.com
+          commit_author: XQUARE GitOps Bot <teamxquare@gmail.com>
