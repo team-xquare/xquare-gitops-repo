@@ -1,0 +1,51 @@
+name: Write values.yaml
+
+on:
+  repository_dispatch:
+    types: [write-values]
+
+jobs:
+  write_values_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: v2
+
+      - name: Create Directory
+        run: mkdir -p ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
+
+      - name: Write values.yaml file
+        run: |
+          cat <<EOF > ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/values.yaml
+          club: ${{ github.event.client_payload.club }}
+          name: ${{ github.event.client_payload.name }}
+          organization: ${{ github.event.client_payload.organization }}
+          repository: ${{ github.event.client_payload.repository }}
+          branch: ${{ github.event.client_payload.branch }}
+          environment: ${{ github.event.client_payload.environment }}
+          containerPort: ${{ github.event.client_payload.containerPort }}
+          EOF
+
+      - name: Commit The New Image Reference
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "release :: Add values.yaml for ${{ github.event.client_payload.name }}"
+          branch: v2
+          repository: .
+          commit_user_name: XQUARE GitOps Bot
+          commit_user_email: teamxquare@gmail.com
+          commit_author: XQUARE GitOps Bot <teamxquare@gmail.com>
+
+      - name: Repository Dispatch
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.XQUARE_ACTION_GHP_TOKEN }}
+          repository: team-xquare/xquare-gitops-repo
+          event-type: generate_pipeline
+          client-payload: |
+            {
+              "ref" : "v2"
+            }
