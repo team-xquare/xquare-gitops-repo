@@ -1,0 +1,17 @@
+{% if builder == "gradle" %}
+FROM gradle:8.8.0-{{ jdkVersion }} AS build
+
+COPY --chown=gradle:gradle . .
+
+{% for command in commands %}
+RUN {{ command }}
+{% endfor %}
+
+FROM openjdk:{{ jdkVersion }}-jdk-slim
+
+ENV TZ=Asia/Seoul
+
+COPY --from=build {{ outputDir }} app.jar
+
+ENTRYPOINT ["java", "-jar", "/app.jar"]
+{% endif %}
