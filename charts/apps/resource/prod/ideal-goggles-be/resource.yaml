@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: "xquare"
   serviceName: ideal-goggles
-  imageTag: prod-779bec35db4ed123724a0f447cfd641e6d5d8aa6
+  imageTag: prod-b9baf4b56702168d4a1628a1ce44529b27fddda3
   containerPort: 8080
   environment: prod
   type: be
