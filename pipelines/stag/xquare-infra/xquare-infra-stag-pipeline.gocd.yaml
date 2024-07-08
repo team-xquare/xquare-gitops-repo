@@ -2,7 +2,7 @@
 # Source: gocd/templates/deploy.yaml
 format_version: 10
 pipelines:
-  build-xquare-infra:
+  build-xquare-infra-stag:
     group: xquare
     environment_variables:
 
