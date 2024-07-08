@@ -30,6 +30,7 @@ pipelines:
                       - -c
                       - |
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
+                        curl -o Dockerfile https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/pipelines/stag/xquare-infra
                         chmod +x docker_build.sh
                         ./docker_build.sh stag xquare-infra
       - deploy:
