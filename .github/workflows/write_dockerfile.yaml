@@ -1,0 +1,44 @@
+name: Write Dockerfile
+
+on:
+  repository_dispatch:
+    types: [write-dockerfile]
+
+jobs:
+  write_values_file:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          ref: v2
+
+      - name: Create Directory
+        run: mkdir -p ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.7'
+
+      - name: Install Jinja2
+        run: |
+          python -m pip install --upgrade pip
+          pip install jinja2-cli
+
+      - name: Render Jinja template
+        run: |
+          echo '${{ github.event.client_payload.template_json }}' > template.json
+          jinja2 templates/dockerfile/templates/Dockerfile_use_gradle.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
+
+
+      - name: Commit The New Image Reference
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "release :: Add values.yaml for ${{ github.event.client_payload.name }}"
+          branch: v2
+          repository: .
+          commit_user_name: XQUARE GitOps Bot
+          commit_user_email: teamxquare@gmail.com
+          commit_author: XQUARE GitOps Bot <teamxquare@gmail.com>
