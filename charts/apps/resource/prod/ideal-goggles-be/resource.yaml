@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: ""
+  clubName: "xquare"
   serviceName: ideal-goggles
   imageTag: prod-9e73ae18fad65b9052441f3e30cf905b5b93b285
   containerPort: 8080
