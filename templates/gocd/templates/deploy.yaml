@@ -1,6 +1,6 @@
 format_version: 10
 pipelines:
-  build-{{ .Values.name }}:
+  build-{{ .Values.name }}-{{ .Values.environment }}:
     group: xquare
     environment_variables:
 
