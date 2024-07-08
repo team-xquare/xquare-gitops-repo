@@ -27,16 +27,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install jinja2-cli
 
-      - name: Render Jinja template
+      - name: Render Jinja template if builder is gradle
+        if: ${{ github.event.client_payload.builder == 'gradle' }}
         run: |
           echo '${{ github.event.client_payload.template_json }}' > template.json
           jinja2 templates/dockerfile/templates/Dockerfile_use_gradle.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
+          rm template.json
 
+      - name: Render Jinja template if builder is node
+        if: ${{ github.event.client_payload.builder == 'node' }}
+        run: |
+          echo '${{ github.event.client_payload.template_json }}' > template.json
+          jinja2 templates/dockerfile/templates/Dockerfile_use_node.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
+          rm template.json
+
+      - name: Render Jinja template if builder is gradle
+        if: ${{ github.event.client_payload.builder == 'node_with_nginx' }}
+        run: |
+          echo '${{ github.event.client_payload.template_json }}' > template.json
+          jinja2 templates/dockerfile/templates/Dockerfile_use_node_with_nginx.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
+          rm template.json
 
       - name: Commit The New Image Reference
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: "release :: Add values.yaml for ${{ github.event.client_payload.name }}"
+          commit_message: "release :: Add Dockerfile for ${{ github.event.client_payload.name }}"
           branch: v2
           repository: .
           commit_user_name: XQUARE GitOps Bot
