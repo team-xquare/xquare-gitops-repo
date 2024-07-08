@@ -4,4 +4,4 @@ organization: team-xquare
 repository: xquare-infra-backend
 branch: main
 environment: prod
-containerPort: 0
+containerPort: 8080
