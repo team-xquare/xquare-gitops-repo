@@ -1,0 +1,7 @@
+club: xquare
+name: xquare-infra
+organization: team-xquare
+repository: xquare-infra-backend
+branch: main
+environment: prod
+containerPort: 0
