@@ -1,9 +1,9 @@
 {%- if builder == "node" %}
-FROM node:{{ nodeVersion }}
+FROM node:{{ node_version }}
 
 COPY . .
 
-{%- for command in buildCommands %}
+{%- for command in build_commands %}
 RUN {{ command }}
 {%- endfor %}
 
@@ -14,8 +14,6 @@ CMD [
   {%- for arg in command.split() %}
   {%- if not loop.first %}, {% endif %}"{{ arg }}"
   {%- endfor %}]
-{%- else %}
-CMD ["yarn", "dev"]
 {%- endif %}
 
 {%- endif %}
