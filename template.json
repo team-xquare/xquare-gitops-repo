@@ -1,1 +1,1 @@
-{"jdk_version":17,"output_dir":"./build/libs/*.jar","builder":"gradle"}
+{"jdk_version":17,"output_dir":"./build/libs/*.jar","builder":"gradle","commands":["./gradlew build -x test"]}
