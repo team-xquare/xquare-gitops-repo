@@ -10,3 +10,7 @@ spec:
     name:       {{ $fullname }}
   updatePolicy:
     updateMode: "Auto"
+  resourcePolicy:
+    containerPolicies:
+      - containerName: "*"
+        controlledResources: [ "memory" ]
