@@ -80,7 +80,7 @@ spec:
               name: {{ $fullname }}
           resources:
             requests:
-              memory: "2000Mi"
+              memory: "1000Mi"
               cpu: "20m"
               ephemeral-storage: "20Mi"
             limits:
