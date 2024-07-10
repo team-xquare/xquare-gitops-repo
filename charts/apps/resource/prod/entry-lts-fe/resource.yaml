@@ -7,11 +7,11 @@ config:
   replicas: 1
   clubName: entry
   serviceName: entry-lts
-  imageTag: prod-75ab153ae96fc6cf7d85447801e31ebc46b65c00
+  imageTag: prod-540847d9433f4695dcc7456a25df66e924ac5a69
   containerPort: 3002
   environment: prod
   type: fe
-  domain: entry-lts.xquare.app
+  domain: entrydsm.hs.kr
   prefix: null
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
