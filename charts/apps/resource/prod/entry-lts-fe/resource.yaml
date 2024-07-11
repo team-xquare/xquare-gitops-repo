@@ -7,11 +7,11 @@ config:
   replicas: 1
   clubName: entry
   serviceName: entry-lts
-  imageTag: prod-540847d9433f4695dcc7456a25df66e924ac5a69
+  imageTag: prod-6c01b2a12ca7a2f5b8b57d8091433eba40f161d0
   containerPort: 3002
   environment: prod
   type: fe
-  domain: entrydsm.hs.kr
+  domain: www.entrydsm.hs.kr
   prefix: null
   private_service: "false"
   critical_service: "false"
