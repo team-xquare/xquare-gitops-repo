@@ -15,3 +15,4 @@ config:
   private_service: "true"
   domain: null
   prefix: /equus-application
+  critical_service: true
