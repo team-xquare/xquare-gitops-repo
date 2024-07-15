@@ -54,11 +54,19 @@ spec:
       {{- end }}
       nodeSelector:
         Karpenter: enabled
+      {{ - if eq .Values.critical_service "true" }}
       tolerations:
-      - effect: "NoSchedule"
-        key: xquare/server
-        operator: "Equal"
-        value: "true"
+        - effect: "NoSchedule"
+          key: xquare/critical
+          operator: "Equal"
+          value: "true"
+      {{ - else }}
+      tolerations:
+        - effect: "NoSchedule"
+          key: xquare/server
+          operator: "Equal"
+          value: "true"
+      { { - end } }
       {{- if ne .Values.serviceAccount "<nil>" }}
       serviceAccountName: {{ .Values.serviceAccount }}
       {{- end }}
