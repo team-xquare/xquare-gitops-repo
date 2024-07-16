@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: ""
   serviceName: demo
-  imageTag: prod-9615b8ff5acb8b935b5f35acd8cc2c5a6e9637e9
+  imageTag: prod-1211abaea0753121f13c166d15c50a8b5cfb5be1
   containerPort: 8080
   environment: prod
   type: be
