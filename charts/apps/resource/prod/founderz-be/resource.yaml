@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: founderz
-  imageTag: prod-ea4bb6dfdd79ca05b4838fea7d39be9442e5179b
+  imageTag: prod-063d0e23022f4153e102fa0232d44ecfb409710c
   containerPort: 8080
   environment: prod
   type: be
