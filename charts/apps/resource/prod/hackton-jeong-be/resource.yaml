@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: hackton-jeong
+  serviceName: hackton-jeong
+  imageTag: prod-d5cf3e2838ed1c6b8add4bcad2c781a5b2c0a8b7
+  containerPort: 8080
+  environment: prod
+  type: be
+  critical_service: "false"
+  private_service: "false"
+  domain: null
+  prefix: /jeong
