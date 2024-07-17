@@ -59,6 +59,7 @@ spec:
           - oa-token
           - Request-User-Id
           - Request-User-Role
+          - x-identifier
         maxAge: "24h"
     {{- end }}
     {{- end }}
@@ -118,6 +119,7 @@ spec:
           - Request-User-Id
           - Request-User-Role
           - X-Refresh-Token
+          - x-identifier
         maxAge: "24h"
 {{- end }}
 {{- end }}
