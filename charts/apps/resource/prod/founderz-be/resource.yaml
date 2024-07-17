@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: founderz
+  imageTag: prod-7f2a7914d99f66b4e09560c4332d41ac29208a52
+  containerPort: 8080
+  environment: prod
+  type: be
+  critical_service: "false"
+  private_service: "false"
+  domain: null
+  prefix: /founderz
