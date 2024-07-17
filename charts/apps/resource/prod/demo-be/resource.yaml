@@ -5,7 +5,7 @@ config:
     secretName: null
   serviceAccount: null
   replicas: 1
-  clubName: ""
+  clubName: "xquare"
   serviceName: demo
   imageTag: prod-d05601af12c52717ef00611d8b0f5d7314d4f039
   containerPort: 8080
