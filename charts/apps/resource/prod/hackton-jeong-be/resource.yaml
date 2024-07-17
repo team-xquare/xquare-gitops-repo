@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: hackton-jeong
   serviceName: hackton-jeong
-  imageTag: prod-a452b0f116ff1cd9630ff7da13a9ab4e610535b9
+  imageTag: prod-35c1f35fa8ee177d55a11170c1a17b5729e56f2f
   containerPort: 8080
   environment: prod
   type: be
