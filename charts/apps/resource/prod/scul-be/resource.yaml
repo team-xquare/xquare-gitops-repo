@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: scul
   serviceName: scul
-  imageTag: prod-2748fbc4b62b38b78625bc42e2d9aa0dfc065ec5
+  imageTag: prod-21b8ec8681f904c1c37454763998f1e32b0002af
   containerPort: 8080
   environment: prod
   type: be
