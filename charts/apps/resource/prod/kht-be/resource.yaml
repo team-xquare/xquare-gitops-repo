@@ -7,12 +7,12 @@ config:
   replicas: 1
   clubName: nonamed
   serviceName: kht
-  imageTag: prod-6f89bf2cf273971be4bc78ba3e11fb799fb5a482
+  imageTag: prod-f193a0d008fbedb30254ba42133198248897acae
   containerPort: 8089
   environment: prod
   type: be
   domain: kht.xquare.app
   prefix: null
   language: java
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
