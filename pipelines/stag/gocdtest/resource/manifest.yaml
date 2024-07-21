@@ -96,7 +96,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: gocdtest-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/gocdtest-stag:stag-aqg2lqs5
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/gocdtest-stag:stag-vjo0hz7l
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
