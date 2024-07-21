@@ -4,7 +4,7 @@ FROM gradle:latest AS build
 COPY --chown=gradle:gradle . .
 
 
-RUN ./gradlew build -x test
+RUN gradle build
 
 
 FROM openjdk:21-jdk-slim
