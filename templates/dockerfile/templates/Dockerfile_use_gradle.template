@@ -13,7 +13,7 @@ FROM openjdk:{{ jdk_version }}-jdk-slim
 # Set the time zone
 ENV TZ=Asia/Seoul
 
-COPY --from=build /app/{{ output_dir }} app.jar
+COPY --from=build /{{ output_dir }} app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 {% endif %}
