@@ -2,14 +2,14 @@
 # Source: gocd/templates/deploy.yaml
 format_version: 10
 pipelines:
-  build-xquare-infra-stag:
+  build-equus-application-stag:
     group: xquare
     environment_variables:
 
     label_template: "${git[:7]}"
     materials:
       git:
-        git: https://github.com/team-xquare/xquare-infra-backend
+        git: https://github.com/EntryDSM/Equus-Application
         shallow_clone: false
         auto_update: true
         branch: develop
@@ -30,9 +30,9 @@ pipelines:
                       - -c
                       - |
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
-                        curl -o Dockerfile https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/pipelines/stag/xquare-infra/Dockerfile
+                        curl -o Dockerfile https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/pipelines/stag/equus-application/Dockerfile
                         chmod +x docker_build.sh
-                        ./docker_build.sh stag xquare-infra
+                        ./docker_build.sh stag equus-application
       - deploy:
           jobs:
             deploy:
@@ -57,4 +57,4 @@ pipelines:
                         
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
-                        ./resource_deploy.sh xquare-infra stag $xquare-infra_REPOSITORY
+                        ./resource_deploy.sh equus-application stag $equus-application_REPOSITORY

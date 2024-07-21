@@ -30,7 +30,7 @@ pipelines:
                       - -c
                       - |
                         curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
-                        curl -o Dockerfile https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/pipelines/prod/equus-application
+                        curl -o Dockerfile https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/pipelines/prod/equus-application/Dockerfile
                         chmod +x docker_build.sh
                         ./docker_build.sh prod equus-application
       - deploy:
@@ -54,6 +54,7 @@ pipelines:
                       - |
                         cat environment/build_result.env
                         source environment/build_result.env
+                        
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
                         ./resource_deploy.sh equus-application prod $equus-application_REPOSITORY

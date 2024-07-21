@@ -1,0 +1,7 @@
+club: entry
+name: equus-application
+organization: EntryDSM
+repository: Equus-Application
+branch: develop
+environment: stag
+containerPort: 8080
