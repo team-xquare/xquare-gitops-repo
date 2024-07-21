@@ -7,7 +7,7 @@ COPY --chown=gradle:gradle . .
 RUN ./gradlew build -x test
 
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 
 ENV TZ=Asia/Seoul
 
