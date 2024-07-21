@@ -1,5 +1,5 @@
 
-FROM gradle:8.8.0 AS build
+FROM gradle:latest AS build
 
 COPY --chown=gradle:gradle . .
 
@@ -7,7 +7,7 @@ COPY --chown=gradle:gradle . .
 RUN ./gradlew build -x test
 
 
-FROM openjdk:17-jdk-slim
+FROM openjdk:21-jdk-slim
 
 ENV TZ=Asia/Seoul
 
