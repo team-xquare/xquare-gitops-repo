@@ -5,7 +5,7 @@ on:
       - v2
     paths:
       - 'pipelines/**/**/values.yaml'
-      - 'templates/gocd/templates/*.yaml'
+      - 'templates/gocd/templates/deploy.yaml'
   repository_dispatch:
     types: [generate_pipeline]
 jobs:
