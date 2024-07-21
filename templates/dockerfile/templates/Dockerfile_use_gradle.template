@@ -1,7 +1,8 @@
 {% if builder == "gradle" %}
-FROM gradle:latest AS build
+FROM openjdk:{{ jdk_version }}-jdk-slim AS build
+COPY . .
 
-COPY --chown=gradle:gradle . .
+RUN chmod +x gradlew
 
 {% for command in commands %}
 RUN {{ command }}
@@ -9,9 +10,10 @@ RUN {{ command }}
 
 FROM openjdk:{{ jdk_version }}-jdk-slim
 
+# Set the time zone
 ENV TZ=Asia/Seoul
 
-COPY --from=build {{ output_dir }} app.jar
+COPY --from=build /app/{{ output_dir }} app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 {% endif %}
