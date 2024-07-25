@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: info
   serviceName: maeumgagym
-  imageTag: prod-db46c2698a234c5c4a0145ad2cebe4947eb564be
+  imageTag: prod-7540fa4fcf2cc99cc038f34686f9a06e83716c40
   containerPort: 8080
   environment: prod
   type: be
