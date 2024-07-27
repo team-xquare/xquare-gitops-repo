@@ -25,4 +25,4 @@ aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS
 
 docker push "${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}"
 
-echo "export ${SERVICE_NAME}_REPOSITORY=${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}" > build_result.env
+echo "export ${SERVICE_NAME}-repository=${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}" > build_result.env
