@@ -6,16 +6,21 @@ REPOSITORY=$3
 
 cd /home/go/xquare-gitops-repo && git pull
 
+RESOURCE_DIR="./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource"
+if [ ! -d "$RESOURCE_DIR" ]; then
+  mkdir -p "$RESOURCE_DIR"
+fi
+
 helm template \
   $SERVICE_NAME \
   templates/server \
   -f ./pipelines/$ENVIRONMENT/$SERVICE_NAME/values.yaml \
   --set image_name=$REPOSITORY \
-  > ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml
+  > $RESOURCE_DIR/manifest.yaml
 
-kubectl apply -f ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml
+kubectl apply -f $RESOURCE_DIR/manifest.yaml
 
 git pull
-git add ./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource/manifest.yaml
+git add $RESOURCE_DIR/manifest.yaml
 git commit -m "record :: $SERVICE_NAME-$ENVIRONMENT kubernetes manifest"
 git push --set-upstream origin v2
