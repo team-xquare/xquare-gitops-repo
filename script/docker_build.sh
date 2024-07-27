@@ -12,6 +12,8 @@ ls
 
 docker build -t "${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}" .
 
+aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${IMAGE_REGISTRY}
+
 docker push "${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}"
 
 echo "export ${SERVICE_NAME}_REPOSITORY=${IMAGE_REGISTRY}/${REPO_NAME}:${IMAGE_TAG}" > build_result.env
