@@ -58,4 +58,5 @@ pipelines:
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
                         SANITIZED_NAME=$(echo xquare-infra | sed 's/-/_/g')
-                        ./resource_deploy.sh xquare-infra stag \$${SANITIZED_NAME}_REPOSITORY
+                        RESOURCE_VAR_NAME="${SANITIZED_NAME}_REPOSITORY"
+                        ./resource_deploy.sh xquare-infra stag ${!RESOURCE_VAR_NAME}
