@@ -54,7 +54,8 @@ pipelines:
                       - |
                         cat environment/build_result.env
                         source environment/build_result.env
-                        
+
                         curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
                         chmod +x resource_deploy.sh
-                        ./resource_deploy.sh equus-application stag $equus-application_REPOSITORY
+                        SANITIZED_NAME=$(echo equus-application | sed 's/-/_/g')
+                        ./resource_deploy.sh equus-application stag \$${SANITIZED_NAME}_REPOSITORY

@@ -96,7 +96,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-prod
-          image: -infra_REPOSITORY
+          image: $xquare_infra_REPOSITORY
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
