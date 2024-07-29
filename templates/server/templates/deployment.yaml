@@ -31,8 +31,6 @@ spec:
         instrumentation.opentelemetry.io/inject-java: "true"
         {{- end }}
       labels:
-        tags.datadoghq.com/env: {{ .Values.environment }}
-        tags.datadoghq.com/service: {{ $fullname }}
         app: {{ $fullname }}
         project: {{ .Values.name }}
     spec:
