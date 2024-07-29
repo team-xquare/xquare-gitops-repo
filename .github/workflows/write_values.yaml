@@ -10,8 +10,7 @@ jobs:
 
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
-
+      cancel-in-progress: false
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
