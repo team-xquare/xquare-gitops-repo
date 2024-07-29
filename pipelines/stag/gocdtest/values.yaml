@@ -1,7 +1,0 @@
-club: xquare
-name: gocdtest
-organization: team-xquare
-repository: gocd-test-repository
-branch: main
-environment: stag
-containerPort: 8080
