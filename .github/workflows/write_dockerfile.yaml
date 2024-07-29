@@ -5,9 +5,13 @@ on:
     types: [write-dockerfile]
 
 jobs:
-  write_values_file:
+  write_docker_file:
     runs-on: ubuntu-latest
-
+    
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: false
+      
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
