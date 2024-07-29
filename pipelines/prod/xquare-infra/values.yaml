@@ -5,3 +5,4 @@ repository: xquare-infra-backend
 branch: main
 environment: prod
 containerPort: 8080
+domain: xquare-infra-prod.xquare.app
