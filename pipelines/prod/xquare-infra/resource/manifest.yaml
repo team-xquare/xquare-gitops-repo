@@ -71,8 +71,6 @@ spec:
         sidecar.istio.io/proxyCPU: "5m"
         sidecar.istio.io/proxyMemory: "128Mi"
       labels:
-        tags.datadoghq.com/env: prod
-        tags.datadoghq.com/service: xquare-infra-prod
         app: xquare-infra-prod
         project: xquare-infra
     spec:
@@ -96,7 +94,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-1p9i6l8a
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-r29yu9zx
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -148,3 +146,49 @@ spec:
   rolloutRestartTargets:
     - kind: Deployment
       name: xquare-infra-prod
+---
+# Source: applications/templates/virtual-service.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: xquare-infra-prod-domain-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+  namespace: $namespace
+spec:
+  gateways:
+    - istio-system/xquare-ingressgateway
+  hosts:
+    - xquare-infra-prod.xquare.app
+  http:
+    - name: xquare-infra
+      route:
+        - destination:
+          host: 'xquare-infra-prod.xquare-prod.svc.cluster.local'
+          port:
+            number: 8080
+      corsPolicy:
+        allowOrigins:
+          - regex: ".*"
+        allowMethods:
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
+        allowCredentials: true
+        allowHeaders:
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
+          - Request-User-Id
+          - Request-User-Role
+          - X-Refresh-Token
+          - x-identifier
+        maxAge: "24h"
