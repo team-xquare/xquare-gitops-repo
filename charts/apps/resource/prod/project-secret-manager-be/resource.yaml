@@ -7,12 +7,12 @@ config:
     secretName: null
   serviceAccount: null
   serviceName: project-secret-manager
-  imageTag: prod-864e88d776196c51f2fcadcc88341a85ae0c331a
+  imageTag: prod-75d6be9dcb205b653482ce6adc2319104a530bb3
   containerPort: 8080
   environment: prod
   type: be
   domain: null
   prefix: /project-secret-manager
   language: go
-  private_service: false
-  critical_service: false
+  private_service: "false"
+  critical_service: "false"
