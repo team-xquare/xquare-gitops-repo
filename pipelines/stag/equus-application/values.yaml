@@ -5,3 +5,4 @@ repository: Equus-Application
 branch: develop
 environment: stag
 containerPort: 8080
+domain: equus-application-stag.xquare.app
