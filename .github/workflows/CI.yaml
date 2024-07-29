@@ -1,4 +1,4 @@
-name : CI
+name: CI
 on:
   push:
     branches:
@@ -27,6 +27,9 @@ jobs:
 
       - name: Validate
         run: ./.github/generate_pipeline.sh
+
+      - name: Pull latest changes
+        run: git pull origin v2
 
       - name: Commit The New Image Reference
         uses: stefanzweifel/git-auto-commit-action@v4
