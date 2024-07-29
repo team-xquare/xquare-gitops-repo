@@ -11,6 +11,11 @@ on:
 jobs:
   ci:
     runs-on: ubuntu-latest
+
+    concurrency:
+      group: xquare
+      cancel-in-progress: false
+    
     steps:
       - name: Check Out The Repository
         uses: actions/checkout@v2
