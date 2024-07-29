@@ -1,0 +1,62 @@
+---
+# Source: gocd/templates/deploy.yaml
+format_version: 10
+pipelines:
+  build-equus-user-prod:
+    group: xquare
+    environment_variables:
+
+    label_template: "${git[:7]}"
+    materials:
+      git:
+        git: https://github.com/EntryDSM/Equus-User
+        shallow_clone: false
+        auto_update: true
+        branch: main
+    stages:
+      - build:
+          jobs:
+            build:
+              resources:
+                - build
+              artifacts:
+                - build:
+                    source: build_result.env
+                    destination: artifacts
+              tasks:
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - |
+                        curl -o docker_build.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/docker_build.sh
+                        curl -o Dockerfile https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/pipelines/prod/equus-user/Dockerfile
+                        chmod +x docker_build.sh
+                        ./docker_build.sh prod equus-user
+      - deploy:
+          jobs:
+            deploy:
+              resources:
+                - deploy
+              tasks:
+                - fetch:
+                    run_if: any
+                    artifact_origin: gocd
+                    stage: build
+                    job: build
+                    is_file: yes
+                    source: artifacts/build_result.env
+                    destination: environment
+                - exec:
+                    command: /bin/bash
+                    arguments:
+                      - -c
+                      - |
+                        cat environment/build_result.env
+                        source environment/build_result.env
+
+                        curl -o resource_deploy.sh https://raw.githubusercontent.com/team-xquare/xquare-gitops-repo/v2/script/resource_deploy.sh
+                        chmod +x resource_deploy.sh
+                        SANITIZED_NAME=$(echo equus-user | sed 's/-/_/g')
+                        RESOURCE_VAR_NAME="${SANITIZED_NAME}_REPOSITORY"
+                        ./resource_deploy.sh equus-user prod ${!RESOURCE_VAR_NAME}
