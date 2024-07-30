@@ -41,3 +41,9 @@ jobs:
           commit_user_name: XQUARE GitOps Bot
           commit_user_email: teamxquare@gmail.com
           commit_author: XQUARE GitOps Bot <teamxquare@gmail.com>
+
+      - name: Trigger GoCD Pipeline
+        run: |
+          curl -X POST "https://gocd.xquare.app/go/api/pipelines/${{ github.event.client_payload.pipeline_name }}/schedule" \
+          -H "Accept: application/vnd.go.cd.v1+json" \
+          -H "X-GoCD-Confirm: xZiORT40ts4+d9wkFNPExsxaTRyloVKgRWAeo+6CU0s="
