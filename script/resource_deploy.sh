@@ -29,7 +29,7 @@ helm template \
 kubectl apply -f $RESOURCE_DIR/manifest.yaml
 
 # 매니페스트를 Git 리포지토리에 커밋하고 푸시
-git pull --rebase
 git add $RESOURCE_DIR/manifest.yaml
+git pull --rebase
 git commit -m "record :: $SERVICE_NAME-$ENVIRONMENT kubernetes manifest"
 git push --set-upstream origin v2
