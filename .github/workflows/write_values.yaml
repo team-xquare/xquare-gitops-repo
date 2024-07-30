@@ -43,6 +43,13 @@ jobs:
           commit_user_email: teamxquare@gmail.com
           commit_author: XQUARE GitOps Bot <teamxquare@gmail.com>
 
+      - name: Sync Container Domain to infra server
+        continue-on-error: true
+        shell: bash
+        run: |
+          url="https://prod-server.xquare.app/xquare-infra/v2/container/${{ github.event.client_payload.name }}/${{ github.event.client_payload.environment }}/sync-domain?domain=${{ github.event.client_payload.name }}-${{ github.event.client_payload.environment }}.xquare.app"
+          curl -X PUT $url
+
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
