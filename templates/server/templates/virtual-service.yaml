@@ -8,7 +8,7 @@ metadata:
   name: {{ $fullname }}-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-  namespace: $namespace
+  namespace: {{ $namespace }}
 spec:
   gateways:
     - istio-system/xquare-ingressgateway
