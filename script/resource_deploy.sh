@@ -8,8 +8,7 @@ REPOSITORY=$3
 
 # GitOps 리포지토리로 이동하여 최신 변경 사항을 가져오기
 cd /home/go/xquare-gitops-repo
-git fetch origin
-git reset --hard origin/$(git rev-parse --abbrev-ref HEAD)
+git pull --rebase
 
 # 리소스 디렉토리가 존재하는지 확인
 RESOURCE_DIR="./pipelines/$ENVIRONMENT/$SERVICE_NAME/resource"
