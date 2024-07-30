@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 ENVIRONMENT=$1
 SERVICE_NAME=$2
 
