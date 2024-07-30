@@ -94,7 +94,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-r29yu9zx
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-66pv651d
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -154,7 +154,7 @@ metadata:
   name: xquare-infra-prod-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-  namespace: $namespace
+  namespace: xquare-prod
 spec:
   gateways:
     - istio-system/xquare-ingressgateway
@@ -164,9 +164,9 @@ spec:
     - name: xquare-infra
       route:
         - destination:
-          host: 'xquare-infra-prod.xquare-prod.svc.cluster.local'
-          port:
-            number: 8080
+            host: 'xquare-infra-prod.xquare-prod.svc.cluster.local'
+            port:
+              number: 8080
       corsPolicy:
         allowOrigins:
           - regex: ".*"
