@@ -18,9 +18,9 @@ spec:
     - name: {{ .Values.name }}
       route:
         - destination:
-          host: '{{ $fullname }}.{{ $namespace }}.svc.cluster.local'
-          port:
-            number: {{ .Values.containerPort }}
+            host: '{{ $fullname }}.{{ $namespace }}.svc.cluster.local'
+            port:
+              number: {{ .Values.containerPort }}
       corsPolicy:
         allowOrigins:
           - regex: ".*"
