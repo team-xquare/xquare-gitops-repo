@@ -1,0 +1,8 @@
+club: xquare
+name: gocd-test
+organization: team-xquare
+repository: gocd-test-repository
+branch: main
+environment: prod
+containerPort: 8080
+domain: gocd-test-prod.xquare.app
