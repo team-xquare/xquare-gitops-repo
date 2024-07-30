@@ -51,5 +51,6 @@ jobs:
           event-type: generate_pipeline
           client-payload: |
             {
-              "ref" : "v2"
+              "ref" : "v2",
+              "pipeline_name" : "build-${{ github.event.client_payload.name }}-${{ github.event.client_payload.environment }}"
             }
