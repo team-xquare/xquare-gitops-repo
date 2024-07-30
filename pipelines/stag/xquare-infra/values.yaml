@@ -4,4 +4,5 @@ organization: team-xquare
 repository: xquare-infra-backend
 branch: develop
 environment: stag
-containerPort: 0
+containerPort: 8080
+domain: xquare-infra-stag.xquare.app
