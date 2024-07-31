@@ -1,0 +1,194 @@
+---
+# Source: applications/templates/poddistruptionbudget.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  namespace: xquare-prod
+  name: gocd-test-prod
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: gocd-test-prod
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: gocd-test-prod-account
+  namespace: xquare-prod
+---
+# Source: applications/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: xquare-prod
+  name: gocd-test-prod
+  labels:
+    app: gocd-test-prod
+    project: gocd-test
+    environment: prod
+spec:
+  type: ClusterIP
+  selector:
+    app: gocd-test-prod
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: port
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+---
+# Source: applications/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: xquare-prod
+  name: gocd-test-prod
+  labels:
+    app: gocd-test-prod
+    project: gocd-test
+    test: test
+    environment: prod
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: gocd-test-prod
+  template:
+    metadata:      
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
+        sidecar.istio.io/proxyCPU: "5m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+      labels:
+        app: gocd-test-prod
+        project: gocd-test
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - gocd-test-prod
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        Karpenter: enabled
+      tolerations:
+      - effect: "NoSchedule"
+        key: xquare/server
+        operator: "Equal"
+        value: "true"
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: gocd-test-prod
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/gocd-test-prod:prod-iusdjp9i
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+          - secretRef:
+              name: gocd-test-prod
+          resources:
+            requests:
+              memory: "2000Mi"
+              cpu: "20m"
+              ephemeral-storage: "20Mi"
+            limits:
+              memory: "2000Mi"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 3
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: gocd-test-prod-auth
+  namespace: xquare-prod
+spec:
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: xquare
+    serviceAccount: gocd-test-prod-account
+    audiences:
+      - vault
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultDynamicSecret
+metadata:
+  name: gocd-test-prod-secret
+  namespace: xquare-prod
+spec:
+  mount: xquare-kv
+  path: gocd-test-prod
+  destination:
+    name: gocd-test-prod
+    create: true
+  vaultAuthRef: xquare-prod/gocd-test-prod-auth
+  rolloutRestartTargets:
+    - kind: Deployment
+      name: gocd-test-prod
+---
+# Source: applications/templates/virtual-service.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: gocd-test-prod-domain-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+  namespace: xquare-prod
+spec:
+  gateways:
+    - istio-system/xquare-ingressgateway
+  hosts:
+    - gocd-test-prod.xquare.app
+  http:
+    - name: gocd-test
+      route:
+        - destination:
+            host: 'gocd-test-prod.xquare-prod.svc.cluster.local'
+            port:
+              number: 8080
+      corsPolicy:
+        allowOrigins:
+          - regex: ".*"
+        allowMethods:
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
+        allowCredentials: true
+        allowHeaders:
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
+          - Request-User-Id
+          - Request-User-Role
+          - X-Refresh-Token
+          - x-identifier
+        maxAge: "24h"
