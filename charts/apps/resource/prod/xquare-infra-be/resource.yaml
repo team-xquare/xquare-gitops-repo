@@ -3,7 +3,7 @@ config:
     name: null
     mountPath: null
     secretName: null
-  serviceAccount: null
+  serviceAccount: xquare-infra
   replicas: 1
   clubName: xquare
   serviceName: xquare-infra
