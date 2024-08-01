@@ -94,7 +94,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-1qxlo5ps
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-snhk3tym
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -159,7 +159,7 @@ spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - xquare-infra-prod.xquare.app
+    - xquare-infra.xquare.app
   http:
     - name: xquare-infra
       route:
