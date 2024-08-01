@@ -94,7 +94,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-stag:stag-9zxyestq
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-stag:stag-fua2h9hd
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
