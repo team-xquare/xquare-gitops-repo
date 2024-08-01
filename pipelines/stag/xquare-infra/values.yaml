@@ -5,4 +5,4 @@ repository: xquare-infra-backend
 branch: develop
 environment: stag
 containerPort: 8080
-domain: stag-server.xquare.app/xquare-infra
+domain: xquare-infra-backend-stag.xquare.app
