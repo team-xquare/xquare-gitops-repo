@@ -94,7 +94,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-stag:stag-0jg7lfcl
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-stag:stag-1z0evbch
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -159,7 +159,7 @@ spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - stag-server.xquare.app/xquare-infra
+    - xquare-infra-backend-stag.xquare.app
   http:
     - name: xquare-infra
       route:
