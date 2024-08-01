@@ -30,7 +30,7 @@ jobs:
           branch: ${{ github.event.client_payload.branch }}
           environment: ${{ github.event.client_payload.environment }}
           containerPort: ${{ github.event.client_payload.containerPort }}
-          domain: ${{ github.event.client_payload.name }}-${{ github.event.client_payload.environment }}.xquare.app
+          domain: ${{ github.event.client_payload.domain }}
           EOF
 
       - name: Commit The New Image Reference
