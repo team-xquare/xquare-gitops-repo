@@ -22,3 +22,9 @@ spec:
       port: {{ .Values.containerPort }}
       targetPort: {{ .Values.containerPort }}
       protocol: TCP
+    {{- if eq $fullname "xquare-infra-prod" }}
+    - name: otel-grpc
+      port: 4317
+      targetPort: 4317
+      protocol: TCP
+    {{- end }}
