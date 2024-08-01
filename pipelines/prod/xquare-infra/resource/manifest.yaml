@@ -159,7 +159,7 @@ spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - prod-server.xquare.app/xquare-infra
+    - xquare-infra-backend.xquare.app
   http:
     - name: xquare-infra
       route:
