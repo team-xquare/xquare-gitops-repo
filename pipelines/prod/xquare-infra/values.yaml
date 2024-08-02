@@ -6,3 +6,4 @@ branch: main
 environment: prod
 containerPort: 8080
 domain: xquare-infra-backend.xquare.app
+language: java
