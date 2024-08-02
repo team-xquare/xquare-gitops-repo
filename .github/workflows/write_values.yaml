@@ -31,6 +31,7 @@ jobs:
           environment: ${{ github.event.client_payload.environment }}
           containerPort: ${{ github.event.client_payload.containerPort }}
           domain: ${{ github.event.client_payload.domain }}
+          language: ${{ github.event.client_payload.language }}
           EOF
 
       - name: Commit The New Image Reference
