@@ -70,6 +70,7 @@ spec:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
         sidecar.istio.io/proxyCPU: "5m"
         sidecar.istio.io/proxyMemory: "128Mi"
+        instrumentation.opentelemetry.io/inject-java: "true"
       labels:
         app: xquare-infra-stag
         project: xquare-infra
@@ -94,7 +95,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-stag:stag-1z0evbch
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-stag:stag-if1vbtyn
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
