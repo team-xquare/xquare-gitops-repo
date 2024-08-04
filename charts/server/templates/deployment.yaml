@@ -99,6 +99,11 @@ spec:
             initialDelaySeconds: 20
             periodSeconds: 10
             successThreshold: 3
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
       {{- if ne .Values.volume.name "<nil>" }}
       volumes:
         - name: {{ .Values.volume.name }}
