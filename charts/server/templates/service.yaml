@@ -22,3 +22,8 @@ spec:
       port: {{ .Values.containerPort }}
       targetPort: {{ .Values.containerPort }}
       protocol: TCP
+    - name: otel-grpc
+      port: 4317
+      targetPort: 4317
+      protocol: TCP
+    
