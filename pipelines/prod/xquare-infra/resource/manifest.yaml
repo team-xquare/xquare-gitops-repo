@@ -119,6 +119,11 @@ spec:
             initialDelaySeconds: 20
             periodSeconds: 10
             successThreshold: 3
+          env:
+            - name: HOST_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
 ---
 # Source: applications/templates/vaultsecret.yaml
 apiVersion: secrets.hashicorp.com/v1beta1
