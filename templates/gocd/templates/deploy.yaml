@@ -15,8 +15,7 @@ pipelines:
       - build:
           jobs:
             build:
-              resources:
-                - build
+              elastic_profile_id: build-agent-profile
               artifacts:
                 - build:
                     source: build_result.env
@@ -34,8 +33,7 @@ pipelines:
       - deploy:
           jobs:
             deploy:
-              resources:
-                - deploy
+              elastic_profile_id: deploy-agent-profile
               tasks:
                 - fetch:
                     run_if: any
