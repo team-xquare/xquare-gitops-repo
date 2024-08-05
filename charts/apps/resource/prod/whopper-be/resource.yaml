@@ -15,3 +15,4 @@ config:
   private_service: "false"
   domain: null
   prefix: /whopper
+  language: java
