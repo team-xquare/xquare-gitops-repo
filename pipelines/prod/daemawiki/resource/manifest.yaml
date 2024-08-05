@@ -95,7 +95,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: daemawiki-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-prod:prod-dzew5gq6
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-prod:prod-9cwotf4r
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -160,7 +160,7 @@ spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - daemawiki-backend.xquare.app
+    - daemawiki.xquare.app
   http:
     - name: daemawiki
       route:
