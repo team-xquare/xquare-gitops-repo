@@ -75,6 +75,7 @@ spec:
         app: daemawiki-stag
         project: daemawiki
     spec:
+      serviceAccountName: daemawiki-stag-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -95,7 +96,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: daemawiki-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-scvgkpnd
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-5v1eva7p
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -160,7 +161,7 @@ spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - daemawiki-backend-stag.xquare.app
+    - daemawiki-stag.xquare.app
   http:
     - name: daemawiki
       route:
