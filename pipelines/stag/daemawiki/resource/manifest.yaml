@@ -1,0 +1,195 @@
+---
+# Source: applications/templates/poddistruptionbudget.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  namespace: daemawiki-stag
+  name: daemawiki-stag
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: daemawiki-stag
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: daemawiki-stag-account
+  namespace: daemawiki-stag
+---
+# Source: applications/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: daemawiki-stag
+  name: daemawiki-stag
+  labels:
+    app: daemawiki-stag
+    project: daemawiki
+    environment: stag
+spec:
+  type: ClusterIP
+  selector:
+    app: daemawiki-stag
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: port
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+---
+# Source: applications/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: daemawiki-stag
+  name: daemawiki-stag
+  labels:
+    app: daemawiki-stag
+    project: daemawiki
+    test: test
+    environment: stag
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: daemawiki-stag
+  template:
+    metadata:      
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
+        sidecar.istio.io/proxyCPU: "5m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        instrumentation.opentelemetry.io/inject-java: "true"
+      labels:
+        app: daemawiki-stag
+        project: daemawiki
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - daemawiki-stag
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        Karpenter: enabled
+      tolerations:
+      - effect: "NoSchedule"
+        key: xquare/server
+        operator: "Equal"
+        value: "true"
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: daemawiki-stag
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-fhtgqqnu
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+          - secretRef:
+              name: daemawiki-stag
+          resources:
+            requests:
+              memory: "2000Mi"
+              cpu: "20m"
+              ephemeral-storage: "20Mi"
+            limits:
+              memory: "2000Mi"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 3
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: daemawiki-stag-auth
+  namespace: daemawiki-stag
+spec:
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: xquare
+    serviceAccount: daemawiki-stag-account
+    audiences:
+      - vault
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultDynamicSecret
+metadata:
+  name: daemawiki-stag-secret
+  namespace: daemawiki-stag
+spec:
+  mount: xquare-kv
+  path: daemawiki-stag
+  destination:
+    name: daemawiki-stag
+    create: true
+  vaultAuthRef: daemawiki-stag/daemawiki-stag-auth
+  rolloutRestartTargets:
+    - kind: Deployment
+      name: daemawiki-stag
+---
+# Source: applications/templates/virtual-service.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: daemawiki-stag-domain-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+  namespace: daemawiki-stag
+spec:
+  gateways:
+    - istio-system/xquare-ingressgateway
+  hosts:
+    - daemawiki-backend-stag.xquare.app
+  http:
+    - name: daemawiki
+      route:
+        - destination:
+            host: 'daemawiki-stag.daemawiki-stag.svc.cluster.local'
+            port:
+              number: 8080
+      corsPolicy:
+        allowOrigins:
+          - regex: ".*"
+        allowMethods:
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
+        allowCredentials: true
+        allowHeaders:
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
+          - Request-User-Id
+          - Request-User-Role
+          - X-Refresh-Token
+          - x-identifier
+        maxAge: "24h"
