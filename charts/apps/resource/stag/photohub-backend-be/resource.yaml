@@ -15,3 +15,4 @@ config:
   private_service: "false"
   domain: photohub-backend-stag.xquare.app
   prefix: null
+  language: java
