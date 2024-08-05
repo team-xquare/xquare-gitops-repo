@@ -79,6 +79,7 @@ spec:
         app: xquare-infra-prod
         project: xquare-infra
     spec:
+      serviceAccountName: xquare-infra-prod-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
