@@ -95,7 +95,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: daemawiki-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-prod:prod-l61ulk20
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-prod:prod-dzew5gq6
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
