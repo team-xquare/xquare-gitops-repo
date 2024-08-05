@@ -5,5 +5,5 @@ repository: Claude
 branch: develop
 environment: stag
 containerPort: 8080
-domain: daemawiki-backend-stag.xquare.app
+domain: daemawiki-stag.xquare.app
 language: java
