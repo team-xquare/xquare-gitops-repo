@@ -34,6 +34,7 @@ spec:
         app: {{ $fullname }}
         project: {{ .Values.name }}
     spec:
+      serviceAccountName: {{ $fullname }}-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
