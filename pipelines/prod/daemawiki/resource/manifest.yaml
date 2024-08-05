@@ -75,6 +75,7 @@ spec:
         app: daemawiki-prod
         project: daemawiki
     spec:
+      serviceAccountName: daemawiki-prod-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
