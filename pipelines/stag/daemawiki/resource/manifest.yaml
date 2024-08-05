@@ -95,7 +95,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: daemawiki-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-fhtgqqnu
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-4tjhmlmi
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
