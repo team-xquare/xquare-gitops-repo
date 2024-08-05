@@ -5,8 +5,6 @@ COPY . .
 RUN chmod +x gradlew
 
 
-RUN ./gradlew build -x test
-
 
 FROM openjdk:17-jdk-slim
 
