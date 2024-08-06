@@ -4,7 +4,7 @@ COPY . .
 
 RUN chmod +x gradlew
 
-{% for command in commands %}
+{% for command in build_commands %}
 RUN {{ command }}
 {% endfor %}
 

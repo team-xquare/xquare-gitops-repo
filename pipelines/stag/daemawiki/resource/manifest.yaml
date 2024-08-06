@@ -3,35 +3,35 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  namespace: xquare-prod
-  name: xquare-infra-prod
+  namespace: daemawiki-stag
+  name: daemawiki-stag
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: xquare-infra-prod
+      app.kubernetes.io/name: daemawiki-stag
 ---
 # Source: applications/templates/vaultsecret.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: xquare-infra-prod-account
-  namespace: xquare-prod
+  name: daemawiki-stag-account
+  namespace: daemawiki-stag
 ---
 # Source: applications/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: xquare-prod
-  name: xquare-infra-prod
+  namespace: daemawiki-stag
+  name: daemawiki-stag
   labels:
-    app: xquare-infra-prod
-    project: xquare-infra
-    environment: prod
+    app: daemawiki-stag
+    project: daemawiki
+    environment: stag
 spec:
   type: ClusterIP
   selector:
-    app: xquare-infra-prod
+    app: daemawiki-stag
   ports:
     - name: http
       port: 80
@@ -41,22 +41,18 @@ spec:
       port: 8080
       targetPort: 8080
       protocol: TCP
-    - name: otel-grpc
-      port: 4317
-      targetPort: 4317
-      protocol: TCP
 ---
 # Source: applications/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: xquare-prod
-  name: xquare-infra-prod
+  namespace: daemawiki-stag
+  name: daemawiki-stag
   labels:
-    app: xquare-infra-prod
-    project: xquare-infra
+    app: daemawiki-stag
+    project: daemawiki
     test: test
-    environment: prod
+    environment: stag
 spec:
   replicas: 1
   revisionHistoryLimit: 0
@@ -67,7 +63,7 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: xquare-infra-prod
+      app: daemawiki-stag
   template:
     metadata:      
       annotations:
@@ -76,10 +72,10 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         instrumentation.opentelemetry.io/inject-java: "true"
       labels:
-        app: xquare-infra-prod
-        project: xquare-infra
+        app: daemawiki-stag
+        project: daemawiki
     spec:
-      serviceAccountName: xquare-infra-prod-account
+      serviceAccountName: daemawiki-stag-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -88,7 +84,7 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - xquare-infra-prod
+                      - daemawiki-stag
               topologyKey: "kubernetes.io/hostname"
       nodeSelector:
         Karpenter: enabled
@@ -99,14 +95,14 @@ spec:
         value: "true"
       terminationGracePeriodSeconds: 120
       containers:
-        - name: xquare-infra-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-1mh3wb1u
+        - name: daemawiki-stag
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-csgw0s8e
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           envFrom:
           - secretRef:
-              name: xquare-infra-prod
+              name: daemawiki-stag
           resources:
             requests:
               memory: "2000Mi"
@@ -125,14 +121,14 @@ spec:
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultAuth
 metadata:
-  name: xquare-infra-prod-auth
-  namespace: xquare-prod
+  name: daemawiki-stag-auth
+  namespace: daemawiki-stag
 spec:
   method: kubernetes
   mount: kubernetes
   kubernetes:
     role: xquare
-    serviceAccount: xquare-infra-prod-account
+    serviceAccount: daemawiki-stag-account
     audiences:
       - vault
 ---
@@ -140,37 +136,37 @@ spec:
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultDynamicSecret
 metadata:
-  name: xquare-infra-prod-secret
-  namespace: xquare-prod
+  name: daemawiki-stag-secret
+  namespace: daemawiki-stag
 spec:
   mount: xquare-kv
-  path: xquare-infra-prod
+  path: daemawiki-stag
   destination:
-    name: xquare-infra-prod
+    name: daemawiki-stag
     create: true
-  vaultAuthRef: xquare-prod/xquare-infra-prod-auth
+  vaultAuthRef: daemawiki-stag/daemawiki-stag-auth
   rolloutRestartTargets:
     - kind: Deployment
-      name: xquare-infra-prod
+      name: daemawiki-stag
 ---
 # Source: applications/templates/virtual-service.yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: xquare-infra-prod-domain-ingress
+  name: daemawiki-stag-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-  namespace: xquare-prod
+  namespace: daemawiki-stag
 spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - xquare-infra-backend.xquare.app
+    - daemawiki-stag.xquare.app
   http:
-    - name: xquare-infra
+    - name: daemawiki
       route:
         - destination:
-            host: 'xquare-infra-prod.xquare-prod.svc.cluster.local'
+            host: 'daemawiki-stag.daemawiki-stag.svc.cluster.local'
             port:
               number: 8080
       corsPolicy:

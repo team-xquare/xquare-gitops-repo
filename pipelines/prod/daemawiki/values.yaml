@@ -1,0 +1,9 @@
+club: daemawiki
+name: daemawiki
+organization: daemawiki
+repository: Claude
+branch: main
+environment: prod
+containerPort: 8080
+domain: daemawiki.xquare.app
+language: java

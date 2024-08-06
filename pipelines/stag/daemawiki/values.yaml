@@ -1,0 +1,9 @@
+club: daemawiki
+name: daemawiki
+organization: daemawiki
+repository: Claude
+branch: develop
+environment: stag
+containerPort: 8080
+domain: daemawiki-stag.xquare.app
+language: java

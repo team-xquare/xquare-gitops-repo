@@ -1,12 +1,14 @@
 
-FROM openjdk:17-jdk-slim AS build
+FROM openjdk:21-jdk-slim AS build
 COPY . .
 
 RUN chmod +x gradlew
 
 
+RUN ./gradlew build -x test
 
-FROM openjdk:17-jdk-slim
+
+FROM openjdk:21-jdk-slim
 
 # Set the time zone
 ENV TZ=Asia/Seoul

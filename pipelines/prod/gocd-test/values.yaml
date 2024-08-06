@@ -4,5 +4,6 @@ organization: team-xquare
 repository: gocd-test-repository
 branch: main
 environment: prod
-containerPort: 8080
-domain: gocd-test-prod.xquare.app
+containerPort: 5500
+domain: gocd.xquare.app
+language: java
