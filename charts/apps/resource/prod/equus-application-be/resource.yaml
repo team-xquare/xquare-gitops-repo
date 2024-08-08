@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: entry
+  serviceName: equus-application
+  imageTag: prod-4977b9796ec133d302247479acb3627f200bed88
+  containerPort: 8080
+  environment: prod
+  type: be
+  critical_service: "true"
+  private_service: "true"
+  domain: null
+  prefix: /equus-application
