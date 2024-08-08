@@ -1,0 +1,10 @@
+club: entry
+name: equus-application
+organization: EntryDSM
+repository: Equus-Application
+branch: main
+environment: prod
+containerPort: 8080
+domain: equus-application.xquare.app
+language: java
+critical_service: true
