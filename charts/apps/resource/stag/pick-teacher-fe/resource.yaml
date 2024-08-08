@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-teacher
-  imageTag: stag-fa0ee7405c049066da39964120426f177eaa527c
+  imageTag: stag-f2622346600aefe29c444aa2ab13cce3d714f4d5
   containerPort: 3000
   environment: stag
   type: fe
