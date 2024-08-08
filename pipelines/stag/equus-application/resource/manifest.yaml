@@ -89,14 +89,14 @@ spec:
       nodeSelector:
         Karpenter: enabled
       tolerations:
-      - effect: "NoSchedule"
-        key: xquare/server
-        operator: "Equal"
-        value: "true"
+        - effect: "NoSchedule"
+          key: xquare/critical_service
+          operator: "Equal"
+          value: "true"
       terminationGracePeriodSeconds: 120
       containers:
         - name: equus-application-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-application-stag:stag-j2nvnos7
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-application-stag:stag-4n0fics4
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
