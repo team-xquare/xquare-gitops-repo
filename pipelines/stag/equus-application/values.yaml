@@ -1,0 +1,10 @@
+club: entry
+name: equus-application
+organization: EntryDSM
+repository: Equus-Application
+branch: develop
+environment: stag
+containerPort: 8080
+domain: equus-application-stag.xquare.app
+language: java
+critical_service: true
