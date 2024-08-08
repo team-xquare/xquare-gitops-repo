@@ -89,14 +89,14 @@ spec:
       nodeSelector:
         Karpenter: enabled
       tolerations:
-      - effect: "NoSchedule"
-        key: xquare/server
-        operator: "Equal"
-        value: "true"
+        - effect: "NoSchedule"
+          key: xquare/server
+          operator: "Equal"
+          value: "true"
       terminationGracePeriodSeconds: 120
       containers:
         - name: daemawiki-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-6k3g83nf
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/daemawiki-stag:stag-v9ie3ag7
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
