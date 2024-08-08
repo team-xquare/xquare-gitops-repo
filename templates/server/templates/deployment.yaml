@@ -50,11 +50,19 @@ spec:
       {{- end }}
       nodeSelector:
         Karpenter: enabled
+      {{ - if eq .Values.critical_service "true" }}
       tolerations:
-      - effect: "NoSchedule"
-        key: xquare/server
-        operator: "Equal"
-        value: "true"
+        - effect: "NoSchedule"
+          key: xquare/critical_service
+          operator: "Equal"
+          value: "true"
+      {{ - else }}
+      tolerations:
+        - effect: "NoSchedule"
+          key: xquare/server
+          operator: "Equal"
+          value: "true"
+      {{ - end }}
       terminationGracePeriodSeconds: 120
       containers:
         - name: {{ $fullname }}
