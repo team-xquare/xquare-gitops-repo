@@ -6,3 +6,5 @@ branch: develop
 environment: stag
 containerPort: 8080
 domain: equus-application-stag.xquare.app
+language: java
+critical_service: true

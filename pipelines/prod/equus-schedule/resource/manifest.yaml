@@ -3,35 +3,35 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  namespace: xquare-prod
-  name: xquare-infra-prod
+  namespace: entry-prod
+  name: equus-schedule-prod
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: xquare-infra-prod
+      app.kubernetes.io/name: equus-schedule-prod
 ---
 # Source: applications/templates/vaultsecret.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: xquare-infra-prod-account
-  namespace: xquare-prod
+  name: equus-schedule-prod-account
+  namespace: entry-prod
 ---
 # Source: applications/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: xquare-prod
-  name: xquare-infra-prod
+  namespace: entry-prod
+  name: equus-schedule-prod
   labels:
-    app: xquare-infra-prod
-    project: xquare-infra
+    app: equus-schedule-prod
+    project: equus-schedule
     environment: prod
 spec:
   type: ClusterIP
   selector:
-    app: xquare-infra-prod
+    app: equus-schedule-prod
   ports:
     - name: http
       port: 80
@@ -41,20 +41,16 @@ spec:
       port: 8080
       targetPort: 8080
       protocol: TCP
-    - name: otel-grpc
-      port: 4317
-      targetPort: 4317
-      protocol: TCP
 ---
 # Source: applications/templates/deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: xquare-prod
-  name: xquare-infra-prod
+  namespace: entry-prod
+  name: equus-schedule-prod
   labels:
-    app: xquare-infra-prod
-    project: xquare-infra
+    app: equus-schedule-prod
+    project: equus-schedule
     test: test
     environment: prod
 spec:
@@ -67,7 +63,7 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: xquare-infra-prod
+      app: equus-schedule-prod
   template:
     metadata:      
       annotations:
@@ -76,10 +72,10 @@ spec:
         sidecar.istio.io/proxyMemory: "128Mi"
         instrumentation.opentelemetry.io/inject-java: "true"
       labels:
-        app: xquare-infra-prod
-        project: xquare-infra
+        app: equus-schedule-prod
+        project: equus-schedule
     spec:
-      serviceAccountName: xquare-infra-prod-account
+      serviceAccountName: equus-schedule-prod-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -88,7 +84,7 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - xquare-infra-prod
+                      - equus-schedule-prod
               topologyKey: "kubernetes.io/hostname"
       nodeSelector:
         Karpenter: enabled
@@ -99,14 +95,14 @@ spec:
         value: "true"
       terminationGracePeriodSeconds: 120
       containers:
-        - name: xquare-infra-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-zbzzlfdh
+        - name: equus-schedule-prod
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-schedule-prod:prod-oixwqav7
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           envFrom:
           - secretRef:
-              name: xquare-infra-prod
+              name: equus-schedule-prod
           resources:
             requests:
               memory: "2000Mi"
@@ -125,14 +121,14 @@ spec:
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultAuth
 metadata:
-  name: xquare-infra-prod-auth
-  namespace: xquare-prod
+  name: equus-schedule-prod-auth
+  namespace: entry-prod
 spec:
   method: kubernetes
   mount: kubernetes
   kubernetes:
     role: xquare
-    serviceAccount: xquare-infra-prod-account
+    serviceAccount: equus-schedule-prod-account
     audiences:
       - vault
 ---
@@ -140,37 +136,37 @@ spec:
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultDynamicSecret
 metadata:
-  name: xquare-infra-prod-secret
-  namespace: xquare-prod
+  name: equus-schedule-prod-secret
+  namespace: entry-prod
 spec:
   mount: xquare-kv
-  path: xquare-infra-prod
+  path: equus-schedule-prod
   destination:
-    name: xquare-infra-prod
+    name: equus-schedule-prod
     create: true
-  vaultAuthRef: xquare-prod/xquare-infra-prod-auth
+  vaultAuthRef: entry-prod/equus-schedule-prod-auth
   rolloutRestartTargets:
     - kind: Deployment
-      name: xquare-infra-prod
+      name: equus-schedule-prod
 ---
 # Source: applications/templates/virtual-service.yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: xquare-infra-prod-domain-ingress
+  name: equus-schedule-prod-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-  namespace: xquare-prod
+  namespace: entry-prod
 spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - xquare-infra-backend.xquare.app
+    - equus-schedule.xquare.app
   http:
-    - name: xquare-infra
+    - name: equus-schedule
       route:
         - destination:
-            host: 'xquare-infra-prod.xquare-prod.svc.cluster.local'
+            host: 'equus-schedule-prod.entry-prod.svc.cluster.local'
             port:
               number: 8080
       corsPolicy:

@@ -1,14 +1,16 @@
 
-FROM gradle:8.8.0 AS build
+FROM openjdk:17-jdk-slim AS build
+COPY . .
 
-COPY --chown=gradle:gradle . .
+RUN chmod +x gradlew
 
 
 RUN ./gradlew build -x test
 
 
-FROM openjdk:21-jdk-slim
+FROM openjdk:17-jdk-slim
 
+# Set the time zone
 ENV TZ=Asia/Seoul
 
 COPY --from=build /application-infrastructure/build/libs/application-infrastructure-0.0.1-SNAPSHOT.jar app.jar

@@ -5,4 +5,6 @@ repository: Equus-User
 branch: main
 environment: prod
 containerPort: 8080
-domain: equus-user-prod.xquare.app
+domain: equus-feed.xquare.app
+language: java
+critical_service: true

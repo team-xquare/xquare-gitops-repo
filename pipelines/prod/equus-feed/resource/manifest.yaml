@@ -3,35 +3,35 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  namespace: entry-stag
-  name: equus-user-stag
+  namespace: entry-prod
+  name: equus-feed-prod
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app.kubernetes.io/name: equus-user-stag
+      app.kubernetes.io/name: equus-feed-prod
 ---
 # Source: applications/templates/vaultsecret.yaml
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: equus-user-stag-account
-  namespace: entry-stag
+  name: equus-feed-prod-account
+  namespace: entry-prod
 ---
 # Source: applications/templates/service.yaml
 apiVersion: v1
 kind: Service
 metadata:
-  namespace: entry-stag
-  name: equus-user-stag
+  namespace: entry-prod
+  name: equus-feed-prod
   labels:
-    app: equus-user-stag
-    project: equus-user
-    environment: stag
+    app: equus-feed-prod
+    project: equus-feed
+    environment: prod
 spec:
   type: ClusterIP
   selector:
-    app: equus-user-stag
+    app: equus-feed-prod
   ports:
     - name: http
       port: 80
@@ -46,13 +46,13 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  namespace: entry-stag
-  name: equus-user-stag
+  namespace: entry-prod
+  name: equus-feed-prod
   labels:
-    app: equus-user-stag
-    project: equus-user
+    app: equus-feed-prod
+    project: equus-feed
     test: test
-    environment: stag
+    environment: prod
 spec:
   replicas: 1
   revisionHistoryLimit: 0
@@ -63,17 +63,19 @@ spec:
     type: RollingUpdate
   selector:
     matchLabels:
-      app: equus-user-stag
+      app: equus-feed-prod
   template:
     metadata:      
       annotations:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
         sidecar.istio.io/proxyCPU: "5m"
         sidecar.istio.io/proxyMemory: "128Mi"
+        instrumentation.opentelemetry.io/inject-java: "true"
       labels:
-        app: equus-user-stag
-        project: equus-user
+        app: equus-feed-prod
+        project: equus-feed
     spec:
+      serviceAccountName: equus-feed-prod-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -82,7 +84,7 @@ spec:
                   - key: app
                     operator: In
                     values:
-                      - equus-user-stag
+                      - equus-feed-prod
               topologyKey: "kubernetes.io/hostname"
       nodeSelector:
         Karpenter: enabled
@@ -93,14 +95,14 @@ spec:
         value: "true"
       terminationGracePeriodSeconds: 120
       containers:
-        - name: equus-user-stag
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-user-stag:stag-thi3cazv
+        - name: equus-feed-prod
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-feed-prod:prod-zq7tk2l2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
           envFrom:
           - secretRef:
-              name: equus-user-stag
+              name: equus-feed-prod
           resources:
             requests:
               memory: "2000Mi"
@@ -119,14 +121,14 @@ spec:
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultAuth
 metadata:
-  name: equus-user-stag-auth
-  namespace: entry-stag
+  name: equus-feed-prod-auth
+  namespace: entry-prod
 spec:
   method: kubernetes
   mount: kubernetes
   kubernetes:
     role: xquare
-    serviceAccount: equus-user-stag-account
+    serviceAccount: equus-feed-prod-account
     audiences:
       - vault
 ---
@@ -134,39 +136,39 @@ spec:
 apiVersion: secrets.hashicorp.com/v1beta1
 kind: VaultDynamicSecret
 metadata:
-  name: equus-user-stag-secret
-  namespace: entry-stag
+  name: equus-feed-prod-secret
+  namespace: entry-prod
 spec:
   mount: xquare-kv
-  path: equus-user-stag
+  path: equus-feed-prod
   destination:
-    name: equus-user-stag
+    name: equus-feed-prod
     create: true
-  vaultAuthRef: entry-stag/equus-user-stag-auth
+  vaultAuthRef: entry-prod/equus-feed-prod-auth
   rolloutRestartTargets:
     - kind: Deployment
-      name: equus-user-stag
+      name: equus-feed-prod
 ---
 # Source: applications/templates/virtual-service.yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: equus-user-stag-domain-ingress
+  name: equus-feed-prod-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-  namespace: $namespace
+  namespace: entry-prod
 spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - equus-user-stag.xquare.app
+    - equus-feed.xquare.app
   http:
-    - name: equus-user
+    - name: equus-feed
       route:
         - destination:
-          host: 'equus-user-stag.entry-stag.svc.cluster.local'
-          port:
-            number: 8080
+            host: 'equus-feed-prod.entry-prod.svc.cluster.local'
+            port:
+              number: 8080
       corsPolicy:
         allowOrigins:
           - regex: ".*"

@@ -1,10 +1,10 @@
 club: entry
-name: equus-user
+name: equus-api-gateway
 organization: EntryDSM
-repository: Equus-User
+repository: Equus-Api-Gateway
 branch: develop
 environment: stag
 containerPort: 8080
-domain: equus-feed-stag.xquare.app
+domain: equus-stag.xquare.app
 language: java
 critical_service: true

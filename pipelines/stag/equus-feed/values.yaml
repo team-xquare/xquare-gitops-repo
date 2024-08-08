@@ -1,7 +1,7 @@
 club: entry
-name: equus-user
+name: equus-feed
 organization: EntryDSM
-repository: Equus-User
+repository: Equus-Feed
 branch: develop
 environment: stag
 containerPort: 8080

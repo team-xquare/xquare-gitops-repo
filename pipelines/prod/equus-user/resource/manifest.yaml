@@ -70,10 +70,12 @@ spec:
         sidecar.istio.io/rewriteAppHTTPProbers: "false"
         sidecar.istio.io/proxyCPU: "5m"
         sidecar.istio.io/proxyMemory: "128Mi"
+        instrumentation.opentelemetry.io/inject-java: "true"
       labels:
         app: equus-user-prod
         project: equus-user
     spec:
+      serviceAccountName: equus-user-prod-account
       affinity:
         podAntiAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -94,7 +96,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: equus-user-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-user-prod:prod-49geq9nm
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-user-prod:prod-7sbqlbav
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
@@ -154,19 +156,19 @@ metadata:
   name: equus-user-prod-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-  namespace: $namespace
+  namespace: entry-prod
 spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - equus-user-prod.xquare.app
+    - equus-feed.xquare.app
   http:
     - name: equus-user
       route:
         - destination:
-          host: 'equus-user-prod.entry-prod.svc.cluster.local'
-          port:
-            number: 8080
+            host: 'equus-user-prod.entry-prod.svc.cluster.local'
+            port:
+              number: 8080
       corsPolicy:
         allowOrigins:
           - regex: ".*"

@@ -13,7 +13,7 @@ FROM openjdk:17-jdk-slim
 # Set the time zone
 ENV TZ=Asia/Seoul
 
-COPY --from=build build/libs/Equus-User-0.0.0.jar app.jar app.jar
+COPY --from=build build/libs/Equus-Schedule-0.0.0.jar app.jar app.jar
 
 ENTRYPOINT ["java", "-jar", "/app.jar"]
 
