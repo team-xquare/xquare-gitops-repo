@@ -18,6 +18,10 @@ jobs:
         with:
           ref: v2
 
+      - name: Sleep 3 Second
+        run: |
+          sleep 3
+
       - name: Create Directory
         run: mkdir -p ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
 
