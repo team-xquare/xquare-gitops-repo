@@ -5,4 +5,6 @@ repository: Equus-User
 branch: develop
 environment: stag
 containerPort: 8080
-domain: equus-user-stag.xquare.app
+domain: equus-feed-stag.xquare.app
+language: java
+critical_service: true
