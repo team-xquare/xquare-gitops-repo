@@ -56,6 +56,9 @@ jobs:
           jinja2 templates/dockerfile/templates/Dockerfile_use_node_with_nginx.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
           rm template.json
 
+      - name: Pull Commit
+        run: git pull
+
       - name: Commit The New Image Reference
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
