@@ -93,14 +93,14 @@ spec:
       nodeSelector:
         Karpenter: enabled
       tolerations:
-      - effect: "NoSchedule"
-        key: xquare/server
-        operator: "Equal"
-        value: "true"
+        - effect: "NoSchedule"
+          key: xquare/server
+          operator: "Equal"
+          value: "true"
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-zbzzlfdh
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-ocsr34c2
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
