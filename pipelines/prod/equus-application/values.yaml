@@ -1,7 +1,0 @@
-club: entry
-name: equus-application
-organization: EntryDSM
-repository: Equus-Application
-branch: main
-environment: prod
-containerPort: 8080
