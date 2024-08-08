@@ -1,0 +1,10 @@
+club: entry
+name: equus-schedule
+organization: EntryDSM
+repository: Equus-Schedule
+branch: main
+environment: prod
+containerPort: 8080
+domain: equus-schedule.xquare.app
+language: java
+critical_service: true
