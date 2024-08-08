@@ -50,7 +50,7 @@ spec:
       {{- end }}
       nodeSelector:
         Karpenter: enabled
-      {{- if eq .Values.critical_service "true" }}
+      {{- if eq .Values.critical_service true }}
       tolerations:
         - effect: "NoSchedule"
           key: xquare/critical_service
