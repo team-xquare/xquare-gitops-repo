@@ -1,0 +1,196 @@
+---
+# Source: applications/templates/poddistruptionbudget.yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  namespace: entry-stag
+  name: equus-application-stag
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: equus-application-stag
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: equus-application-stag-account
+  namespace: entry-stag
+---
+# Source: applications/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: entry-stag
+  name: equus-application-stag
+  labels:
+    app: equus-application-stag
+    project: equus-application
+    environment: stag
+spec:
+  type: ClusterIP
+  selector:
+    app: equus-application-stag
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8080
+      protocol: TCP
+    - name: port
+      port: 8080
+      targetPort: 8080
+      protocol: TCP
+---
+# Source: applications/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: entry-stag
+  name: equus-application-stag
+  labels:
+    app: equus-application-stag
+    project: equus-application
+    test: test
+    environment: stag
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: equus-application-stag
+  template:
+    metadata:      
+      annotations:
+        sidecar.istio.io/rewriteAppHTTPProbers: "false"
+        sidecar.istio.io/proxyCPU: "5m"
+        sidecar.istio.io/proxyMemory: "128Mi"
+        instrumentation.opentelemetry.io/inject-java: "true"
+      labels:
+        app: equus-application-stag
+        project: equus-application
+    spec:
+      serviceAccountName: equus-application-stag-account
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchExpressions:
+                  - key: app
+                    operator: In
+                    values:
+                      - equus-application-stag
+              topologyKey: "kubernetes.io/hostname"
+      nodeSelector:
+        Karpenter: enabled
+      tolerations:
+      - effect: "NoSchedule"
+        key: xquare/server
+        operator: "Equal"
+        value: "true"
+      terminationGracePeriodSeconds: 120
+      containers:
+        - name: equus-application-stag
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/equus-application-stag:stag-j2nvnos7
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+          envFrom:
+          - secretRef:
+              name: equus-application-stag
+          resources:
+            requests:
+              memory: "2000Mi"
+              cpu: "20m"
+              ephemeral-storage: "20Mi"
+            limits:
+              memory: "2000Mi"
+          readinessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            successThreshold: 3
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultAuth
+metadata:
+  name: equus-application-stag-auth
+  namespace: entry-stag
+spec:
+  method: kubernetes
+  mount: kubernetes
+  kubernetes:
+    role: xquare
+    serviceAccount: equus-application-stag-account
+    audiences:
+      - vault
+---
+# Source: applications/templates/vaultsecret.yaml
+apiVersion: secrets.hashicorp.com/v1beta1
+kind: VaultDynamicSecret
+metadata:
+  name: equus-application-stag-secret
+  namespace: entry-stag
+spec:
+  mount: xquare-kv
+  path: equus-application-stag
+  destination:
+    name: equus-application-stag
+    create: true
+  vaultAuthRef: entry-stag/equus-application-stag-auth
+  rolloutRestartTargets:
+    - kind: Deployment
+      name: equus-application-stag
+---
+# Source: applications/templates/virtual-service.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: equus-application-stag-domain-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+  namespace: entry-stag
+spec:
+  gateways:
+    - istio-system/xquare-ingressgateway
+  hosts:
+    - equus-application-stag.xquare.app
+  http:
+    - name: equus-application
+      route:
+        - destination:
+            host: 'equus-application-stag.entry-stag.svc.cluster.local'
+            port:
+              number: 8080
+      corsPolicy:
+        allowOrigins:
+          - regex: ".*"
+        allowMethods:
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
+        allowCredentials: true
+        allowHeaders:
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
+          - Request-User-Id
+          - Request-User-Role
+          - X-Refresh-Token
+          - x-identifier
+        maxAge: "24h"
