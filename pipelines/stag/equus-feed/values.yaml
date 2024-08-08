@@ -1,0 +1,10 @@
+club: entry
+name: equus-feed
+organization: EntryDSM
+repository: Equus-Feed
+branch: develop
+environment: stag
+containerPort: 8080
+domain: equus-feed-stag.xquare.app
+language: java
+critical_service: true
