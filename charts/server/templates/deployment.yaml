@@ -32,6 +32,9 @@ spec:
         {{- if eq .Values.language "java"}}
         instrumentation.opentelemetry.io/inject-java: "true"
         {{- end }}
+        {{- if eq .Values.language "nodejs"}}
+        instrumentation.opentelemetry.io/inject-nodejs: "true"
+        {{- end }}
       labels:
         tags.datadoghq.com/env: {{ .Values.environment }}
         tags.datadoghq.com/service: {{ $fullname }}
