@@ -100,7 +100,7 @@ spec:
       terminationGracePeriodSeconds: 120
       containers:
         - name: xquare-infra-prod
-          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-8ohc7zui
+          image: 786584124104.dkr.ecr.ap-northeast-2.amazonaws.com/xquare-infra-prod:prod-byxo6oze
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8080
