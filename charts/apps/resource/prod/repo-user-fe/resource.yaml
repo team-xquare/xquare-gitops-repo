@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: repo
+  serviceName: repo-user
+  imageTag: prod-a457f6082bcfda1139923e591f6c26f9bf3ee5a1
+  containerPort: 3001
+  environment: prod
+  type: fe
+  critical_service: "false"
+  private_service: "false"
+  domain: user.dsm-repo.com
+  prefix: null
