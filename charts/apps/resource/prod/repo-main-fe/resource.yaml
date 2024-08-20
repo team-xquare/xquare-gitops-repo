@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: repo
   serviceName: repo-main
-  imageTag: prod-db6fe0b6be5c3f14ff67d1ef415b768caec0b5c8
+  imageTag: prod-beb6a1c6b5f17f652057e0fbba700494573b7cee
   containerPort: 3000
   environment: prod
   type: fe
