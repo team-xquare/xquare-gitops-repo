@@ -57,10 +57,10 @@ spec:
       {{- end }}
       nodeSelector:
         Karpenter: enabled
-      {{- if eq .Values.critical_service "true" }}
+      {{- if and (eq .Values.clubName "entry") (eq .Values.environment "prod") }}
       tolerations:
         - effect: "NoSchedule"
-          key: xquare/critical
+          key: xquare/critical_service
           operator: "Equal"
           value: "true"
       {{- else }}
