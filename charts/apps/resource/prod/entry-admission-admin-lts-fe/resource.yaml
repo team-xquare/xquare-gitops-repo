@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: entry
+  serviceName: entry-admission-admin-lts
+  imageTag: prod-ffcdabd9e5d9d6537ab04d45a0157c439a33784b
+  containerPort: 3001
+  environment: prod
+  type: fe
+  critical_service: "false"
+  private_service: "false"
+  domain: admin.entrydsm.hs.kr
+  prefix: null
