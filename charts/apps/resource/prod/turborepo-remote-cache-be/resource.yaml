@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: turborepo-remote-cache
+  imageTag: prod-2a42c2ee86eb67a83a360c94c0c17ab58a7e2a43
+  containerPort: 3000
+  environment: prod
+  type: be
+  critical_service: "false"
+  private_service: "false"
+  domain: turborepo-remote-cache.xquare.app
+  prefix: null
