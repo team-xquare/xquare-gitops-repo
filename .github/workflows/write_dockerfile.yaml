@@ -40,21 +40,21 @@ jobs:
         run: |
           echo '${{ github.event.client_payload.template_json }}' > template.json
           jinja2 templates/dockerfile/templates/Dockerfile_use_gradle.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
-          mv template ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
+          mv template.json ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
 
       - name: Render Jinja template if builder is node
         if: ${{ github.event.client_payload.builder == 'node' }}
         run: |
           echo '${{ github.event.client_payload.template_json }}' > template.json
           jinja2 templates/dockerfile/templates/Dockerfile_use_node.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
-          mv template ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
+          mv template.json ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
 
       - name: Render Jinja template if builder is gradle
         if: ${{ github.event.client_payload.builder == 'node_with_nginx' }}
         run: |
           echo '${{ github.event.client_payload.template_json }}' > template.json
           jinja2 templates/dockerfile/templates/Dockerfile_use_node_with_nginx.template template.json -o ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}/Dockerfile
-          mv template ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
+          mv template.json ./pipelines/${{ github.event.client_payload.environment }}/${{ github.event.client_payload.name }}
 
       - name: Pull Commit
         run: git pull
