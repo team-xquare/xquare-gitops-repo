@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: otel-trace-reciever
-  imageTag: prod-9b1bc4a8c037f5c71a4bf19c0cc8d4d58cbec8d2
+  imageTag: prod-ecb0fbdafbf093e58345bb96f002a1d603609790
   containerPort: 4317
   environment: prod
   type: be
