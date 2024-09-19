@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: entry
   serviceName: entry-lts
-  imageTag: stag-8596c4d36904ee11d819e88cad740523949fcc88
+  imageTag: stag-f588ca0a79437fa41afa6ea513eb310aa080b37d
   containerPort: 3002
   environment: stag
   type: fe
