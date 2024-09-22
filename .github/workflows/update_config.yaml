@@ -7,9 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    concurrency:
-      cancel-in-progress: true
       
     steps:
       - name: Check Out The Repository
