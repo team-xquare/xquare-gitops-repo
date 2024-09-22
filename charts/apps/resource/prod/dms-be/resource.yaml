@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: dms
   serviceName: dms
-  imageTag: prod-v1.4.5
+  imageTag: prod-v1.4.6
   containerPort: 8080
   environment: prod
   type: be
