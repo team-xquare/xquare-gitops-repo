@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: xquare-infra-fe
-  imageTag: prod-ef7fd64e483d39effb2de82b041dd14a24eeea24
+  imageTag: prod-6b6261815096079d4fa784facc8c30ab1d534013
   containerPort: 3000
   environment: prod
   type: fe
