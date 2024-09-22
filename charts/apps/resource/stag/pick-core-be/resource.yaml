@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-core
-  imageTag: stag-7df5046b3bfaa8e969a74a4602d30feb3e48e844
+  imageTag: stag-022c33ea5b10b0faa75eec8a01d24da0098e9f68
   containerPort: 8080
   environment: stag
   type: be
