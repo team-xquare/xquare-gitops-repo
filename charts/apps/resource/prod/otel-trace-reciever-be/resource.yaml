@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: xquare
+  serviceName: otel-trace-reciever
+  imageTag: prod-6a7a1a0fc4ac6a1b836a0e536da1be5bb6c54832
+  containerPort: 4317
+  environment: prod
+  type: be
+  critical_service: "false"
+  private_service: "false"
+  domain: otel-trace-reciever.xquare.app
+  prefix: null
