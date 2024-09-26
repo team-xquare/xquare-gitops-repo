@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: repo
   serviceName: whopper
-  imageTag: prod-0f0c8d6327c911efa2de9d04e61bd8a3fcdb667a
+  imageTag: prod-0676a804c82357957ca7d5ec65a78915091e0a3f
   containerPort: 8080
   environment: prod
   type: be
