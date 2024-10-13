@@ -14,5 +14,5 @@ config:
   domain: auth.entrydsm.hs.kr
   prefix: null
   private_service: "false"
-  critical_service: "false"
+  critical_service: "true"
   language: nodejs
