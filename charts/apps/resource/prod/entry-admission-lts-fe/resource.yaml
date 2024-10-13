@@ -12,6 +12,6 @@ config:
   environment: prod
   type: fe
   critical_service: "false"
-  private_service: "false"
+  private_service: "true"
   domain: apply.entrydsm.hs.kr
   prefix: null
