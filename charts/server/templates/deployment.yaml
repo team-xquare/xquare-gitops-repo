@@ -13,7 +13,11 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
+  {{- if and (eq .Values.clubName "entry") (eq .Values.environment "prod") }}
+  replicas: 2
+  {{- else }}
   replicas: 1
+  {{- end }}
   revisionHistoryLimit: 0
   strategy:
     rollingUpdate:
