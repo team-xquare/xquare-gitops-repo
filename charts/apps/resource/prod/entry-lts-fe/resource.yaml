@@ -14,4 +14,4 @@ config:
   domain: www.entrydsm.hs.kr
   prefix: null
   private_service: "false"
-  critical_service: "false"
+  critical_service: "true"
