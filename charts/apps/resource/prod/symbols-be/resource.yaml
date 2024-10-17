@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: modeep
   serviceName: symbols
-  imageTag: prod-127bdb676c1654c1da3f52eaa5474de33a22575c
+  imageTag: prod-73385a3a2fd08e49a9bb65d2c8d1964b08c40539
   containerPort: 8000
   environment: prod
   type: be
