@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: modeep
   serviceName: frontend
-  imageTag: prod-387105ca11a77adfacfa204000603aead2c8b147
+  imageTag: prod-7bbc42f96a0805a219bd25fde788f523c10f2097
   containerPort: 3000
   environment: prod
   type: fe
