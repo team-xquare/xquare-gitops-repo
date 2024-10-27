@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: modeep
+  serviceName: frontend
+  imageTag: prod-7ac77f882b48d33690121a88778ee24516e16074
+  containerPort: 3000
+  environment: prod
+  type: fe
+  critical_service: "false"
+  private_service: "false"
+  domain: symbols-client.xquare.app
+  prefix: null
