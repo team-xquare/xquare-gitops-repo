@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: entry
   serviceName: entry-lts
-  imageTag: prod-b94e76e9f478a7646e86ee11c16b1a8f1590d193
+  imageTag: prod-2cdf3a608cf7bd67dbd67a6893dbb823ecf04ef8
   containerPort: 3002
   environment: prod
   type: fe
