@@ -62,7 +62,6 @@ spec:
           key: xquare/server
           operator: "Equal"
           value: "true"
-      {{- end }}
       {{- if ne .Values.serviceAccount "<nil>" }}
       serviceAccountName: {{ .Values.serviceAccount }}
       {{- end }}
