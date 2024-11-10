@@ -13,11 +13,7 @@ metadata:
     tags.datadoghq.com/env: {{ .Values.environment }}
     tags.datadoghq.com/service: {{ $fullname }}
 spec:
-  {{- if and (eq .Values.clubName "entry") (eq .Values.environment "prod") }}
-  replicas: 2
-  {{- else }}
   replicas: 1
-  {{- end }}
   revisionHistoryLimit: 0
   strategy:
     rollingUpdate:
@@ -61,13 +57,6 @@ spec:
       {{- end }}
       nodeSelector:
         Karpenter: enabled
-      {{- if and (eq .Values.clubName "entry") (eq .Values.environment "prod") }}
-      tolerations:
-        - effect: "NoSchedule"
-          key: xquare/critical_service
-          operator: "Equal"
-          value: "true"
-      {{- else }}
       tolerations:
         - effect: "NoSchedule"
           key: xquare/server
