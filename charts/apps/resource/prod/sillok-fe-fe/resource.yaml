@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: jeong-ho-kim
+  serviceName: sillok-fe
+  imageTag: prod-d7fd0f39e2e42074e25ff7687e98d4cdf9e8e8b4
+  containerPort: 3000
+  environment: prod
+  type: fe
+  critical_service: "false"
+  private_service: "false"
+  domain: sillok.xquare.app
+  prefix: null
