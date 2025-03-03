@@ -1,0 +1,17 @@
+config:
+  volume:
+    name: null
+    mountPath: null
+    secretName: null
+  serviceAccount: null
+  replicas: 1
+  clubName: trading-helper
+  serviceName: trader
+  imageTag: prod-5f1cb413dc5fa615a2ff7e3a583f5cec8a71479d
+  containerPort: 8080
+  environment: prod
+  type: be
+  critical_service: "false"
+  private_service: "false"
+  domain: null
+  prefix: /trader
