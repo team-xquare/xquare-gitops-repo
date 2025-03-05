@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: xquare
   serviceName: project-manager-front
-  imageTag: prod-046162137fea8702dc3f0f623f5d09db70fd03e2
+  imageTag: prod-03cca715339ee3115f73ac43e7216773a683073e
   containerPort: 3000
   environment: prod
   type: fe
