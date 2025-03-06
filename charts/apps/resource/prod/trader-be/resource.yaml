@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: trading-helper
   serviceName: trader
-  imageTag: prod-7adfeca20cee7343fddd06932ffa232f4ecbde62
+  imageTag: prod-d84f2211346a2694bb6832dda1dd7577a9f784c2
   containerPort: 8080
   environment: prod
   type: be
