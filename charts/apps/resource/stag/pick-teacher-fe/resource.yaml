@@ -7,8 +7,8 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-teacher
-  imageTag: stag-8cdc28c271638c1bac31cdcb812cddea379c6117
-  containerPort: 3000
+  imageTag: stag-f2d716def22ac6f62c65f795f0eeefd544a40f4c
+  containerPort: 3001
   environment: stag
   type: fe
   domain: pick-teacher-stag.xquare.app
