@@ -1,7 +1,8 @@
-{{- $environment := .Values.spec.environment }}
-{{- $project := .Values.spec.project }}
-{{- $host := .Values.spec.host }}
-{{- $namespace := .Values.spec.namespace }}
+{{- $config := .Values.config }}
+{{- $environment := $config.environment }}
+{{- $project := $config.serviceName }}
+{{- $host := $config.host | default "stag.xquare.app" }}  # 필요한 경우 기본값 처리
+{{- $namespace := printf "%s-%s" $config.serviceName $config.environment }}
 
 # =========================================================================
 # prefix 기반 VirtualService
@@ -20,20 +21,17 @@ spec:
   hosts:
     - {{ $host }}
   http:
-    {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
-    {{- $yamlData := $file | toString | fromYaml }}
-    {{- if $yamlData.config }}
-    {{- if $yamlData.config.prefix }}
-    - name: {{ $yamlData.config.serviceName }}
+    {{- if $config.prefix }}
+    - name: {{ $config.serviceName }}
       match:
         - uri:
-            prefix: {{ $yamlData.config.prefix }}
+            prefix: {{ $config.prefix }}
       route:
         - destination:
-            {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
-            host: {{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local
+            {{- $fullname := (printf "%s-%s-%s" $config.serviceName $config.type $config.environment) }}
+            host: {{ $fullname }}.{{ $config.clubName }}-{{ $config.environment }}.svc.cluster.local
             port:
-              number: {{ $yamlData.config.containerPort }}
+              number: {{ $config.containerPort }}
       corsPolicy:
         allowOrigins:
           - regex: ".*"
@@ -60,21 +58,16 @@ spec:
           - x-identifier
         maxAge: "24h"
     {{- end }}
-    {{- end }}
-    {{- end }}
 
 # =========================================================================
-# custom domain 기반 VirtualService
+# custom domain 기반 VirtualService (domain 이 설정된 경우)
 # =========================================================================
-{{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
-{{- $yamlData := $file | toString | fromYaml }}
-{{- if $yamlData.config }}
-{{- if $yamlData.config.domain }}
+{{- if $config.domain }}
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
-  name: {{ $project }}-{{ $environment }}-{{ $yamlData.config.serviceName }}-domain-ingress
+  name: {{ $project }}-{{ $environment }}-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
     project: {{ $project }}
@@ -83,15 +76,15 @@ spec:
   gateways:
     - istio-system/xquare-ingressgateway
   hosts:
-    - {{ $yamlData.config.domain }}
+    - {{ $config.domain }}
   http:
-    - name: {{ $yamlData.config.serviceName }}
+    - name: {{ $config.serviceName }}
       route:
         - destination:
-            {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
-            host: '{{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local'
+            {{- $fullname := (printf "%s-%s-%s" $config.serviceName $config.type $config.environment) }}
+            host: '{{ $fullname }}.{{ $config.clubName }}-{{ $config.environment }}.svc.cluster.local'
             port:
-              number: {{ $yamlData.config.containerPort }}
+              number: {{ $config.containerPort }}
       corsPolicy:
         allowOrigins:
           - regex: ".*"
@@ -109,14 +102,12 @@ spec:
           - accept
           - accept-encoding
           - Refresh-Token
-          - X-Refresh-Token
           - X-Not-Using-Xquare-Auth
           - Oauth-Token
           - oa-token
           - Request-User-Id
           - Request-User-Role
+          - X-Refresh-Token
           - x-identifier
         maxAge: "24h"
-{{- end }}
-{{- end }}
 {{- end }}
