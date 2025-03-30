@@ -13,8 +13,7 @@ metadata:
   name: {{ $project }}-{{ $environment }}-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-    labels:
-      project: {{ $project }}
+    project: {{ $project }}
   namespace: {{ $namespace }}
 spec:
   gateways:
@@ -80,8 +79,7 @@ metadata:
   name: {{ $project }}-{{ $environment }}-{{ $yamlData.config.serviceName }}-domain-ingress
   labels:
     app.kubernetes.io/instance: xquare-ingress
-    labels:
-      project: {{ $project }}
+    project: {{ $project }}
   namespace: {{ $namespace }}
 spec:
   gateways:
