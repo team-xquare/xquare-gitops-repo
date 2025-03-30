@@ -1,0 +1,122 @@
+{{- $environment := .Values.spec.environment }}
+{{- $project := .Values.spec.project }}
+{{- $host := .Values.spec.host }}
+{{- $namespace := .Values.spec.namespace }}
+
+# =========================================================================
+# prefix 기반 VirtualService
+# =========================================================================
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ $project }}-{{ $environment }}-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+    project: {{ $project }}
+  namespace: {{ $namespace }}
+spec:
+  gateways:
+    - istio-system/xquare-ingressgateway
+  hosts:
+    - {{ $host }}
+  http:
+    {{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
+    {{- $yamlData := $file | toString | fromYaml }}
+    {{- if $yamlData.config }}
+    {{- if $yamlData.config.prefix }}
+    - name: {{ $yamlData.config.serviceName }}
+      match:
+        - uri:
+            prefix: {{ $yamlData.config.prefix }}
+      route:
+        - destination:
+            {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
+            host: {{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local
+            port:
+              number: {{ $yamlData.config.containerPort }}
+      corsPolicy:
+        allowOrigins:
+          - regex: ".*"
+        allowMethods:
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
+        allowCredentials: true
+        allowHeaders:
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
+          - Request-User-Id
+          - Request-User-Role
+          - x-identifier
+        maxAge: "24h"
+    {{- end }}
+    {{- end }}
+    {{- end }}
+
+# =========================================================================
+# custom domain 기반 VirtualService
+# =========================================================================
+{{- range $file := $.Files.Glob (printf "resource/%s/**" $environment) }}
+{{- $yamlData := $file | toString | fromYaml }}
+{{- if $yamlData.config }}
+{{- if $yamlData.config.domain }}
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: {{ $project }}-{{ $environment }}-{{ $yamlData.config.serviceName }}-domain-ingress
+  labels:
+    app.kubernetes.io/instance: xquare-ingress
+    project: {{ $project }}
+  namespace: {{ $namespace }}
+spec:
+  gateways:
+    - istio-system/xquare-ingressgateway
+  hosts:
+    - {{ $yamlData.config.domain }}
+  http:
+    - name: {{ $yamlData.config.serviceName }}
+      route:
+        - destination:
+            {{- $fullname := (printf "%s-%s-%s" $yamlData.config.serviceName $yamlData.config.type $yamlData.config.environment) }}
+            host: '{{ $fullname }}.{{ $yamlData.config.clubName }}-{{ $yamlData.config.environment }}.svc.cluster.local'
+            port:
+              number: {{ $yamlData.config.containerPort }}
+      corsPolicy:
+        allowOrigins:
+          - regex: ".*"
+        allowMethods:
+          - POST
+          - GET
+          - PUT
+          - PATCH
+          - DELETE
+          - OPTIONS
+        allowCredentials: true
+        allowHeaders:
+          - content-type
+          - authorization
+          - accept
+          - accept-encoding
+          - Refresh-Token
+          - X-Refresh-Token
+          - X-Not-Using-Xquare-Auth
+          - Oauth-Token
+          - oa-token
+          - Request-User-Id
+          - Request-User-Role
+          - x-identifier
+        maxAge: "24h"
+{{- end }}
+{{- end }}
+{{- end }}
