@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: team-nuneddine
   serviceName: nuneddine
-  imageTag: prod-005330e79942dbfee00d664aa6661007253badf8
+  imageTag: prod-417dd6fc7621bf466ca3b8b19e8e638c7a954c50
   containerPort: 8080
   environment: prod
   type: be
