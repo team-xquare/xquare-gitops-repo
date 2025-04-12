@@ -84,7 +84,7 @@ spec:
           resources:
             requests:
               memory: "{{- if (eq .Values.type "be")}}300Mi{{- else }}100Mi{{- end }}"
-              cpu: "3m"
+              cpu: "2m"
             limits:
               memory: "1000Mi"
           readinessProbe:
