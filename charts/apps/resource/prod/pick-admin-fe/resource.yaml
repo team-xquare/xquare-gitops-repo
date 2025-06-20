@@ -7,7 +7,7 @@ config:
   replicas: 1
   clubName: pick
   serviceName: pick-admin
-  imageTag: prod-dd49c9bb494a01a90674fd68da9ffcb3ae45a736
+  imageTag: prod-0cdd7da4dbea276fcd56408bc51257286275169e
   containerPort: 3000
   environment: prod
   type: fe
